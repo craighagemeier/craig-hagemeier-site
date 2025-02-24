@@ -1,0 +1,121 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+
+  &__list {
+    display: none;
+
+    @media (min-width: 990px) {
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__item {
+    color: var(--color-text-header);
+    font-weight: 500;
+    padding: 0.5rem;
+    border-bottom: 1px dotted var(--color-accent);
+    transition: color 300ms ease-in-out;
+    display: flex;
+    width: 100%;
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover,
+    &:focus-within {
+      color: var(--color-accent);
+    }
+
+
+    a {
+      color: inherit;
+      flex-grow: 1; /* Make the link fill the whole space */
+      padding: 0.5rem;
+
+      &:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+    }
+
+    @media (min-width: 990px) {
+      width: auto;
+      border-bottom: none;
+    }
+  }
+
+  .active {
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  &__themeButton,
+  &__menuButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-header);
+    transition: color 300ms ease-in-out;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    &:hover,
+    &:focus-within {
+      color: var(--color-accent);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: -4px;
+      border-radius: 4px;
+    }
+  }
+
+  &__menuButton {
+    padding-top: 6px;
+    display: block;
+
+    @media (min-width: 990px) {
+      display: none;
+    }
+  }
+
+  &__mobileMenu,
+  &__themeMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: calc(100% - 80px);
+    background: var(--color-background-menu);
+    border-top: 1px solid var(--color-accent);
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    @media (min-width: 769px) {
+      width: 240px;
+    }
+  }
+}
+
+/* Fix for sticky hover state on mobile device after click */
+@media (hover: none) {
+  .navigation__item a:hover {
+    color: var(--color-text-header);
+  }
+}

@@ -1,7 +1,7 @@
 import PageStructure from "./components/PageStructure";
 import ThemeProvider from "./components/ThemeProvider";
 import { Metadata } from "next";
-import "./styles/globals.css";
+import "./styles/global.scss";
 
 export const metadata: Metadata = {
   title: "Craig Hagemeier | Exploring Ideas, Capturing Moments, Pushing Limits",

@@ -22,6 +22,15 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    document.querySelectorAll("h1, h2, h3, h4").forEach((heading) => {
+      heading.innerHTML = heading.textContent?.replace(
+        /\b(\w)/g,
+        "<span class='first-letter'>$1</span>"
+      ) || "";
+    });
+  }, []);
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
