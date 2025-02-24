@@ -1,0 +1,116 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: all 300ms ease-in-out;
+  z-index: 1000;
+
+  &__topBar {
+    background: var(--color-background-body);
+    height: 40px;
+    transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease-in-out;
+    overflow: hidden;
+  }
+
+  &__bottomBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    background: var(--color-background-header);
+    color: var(--color-text-header);
+    position: relative;
+    transition: all 300ms ease-in-out;
+  }
+
+  &__imageWrapper {
+    position: absolute;
+    top: -30px;
+    left: 4px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    border-radius: 50%;
+    width: clamp(48px, 100%, 80px);
+    min-width: 48px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 2px solid var(--color-accent);
+    transition: all 300ms ease-in-out;
+  }
+
+  &__title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    transition: color 300ms ease-in-out;
+  }
+
+  &.shrink {
+    .header__topBar {
+      height: 0px;
+      transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease-in-out;
+    }
+
+    .header__bottomBar {
+      height: 56px;
+    }
+
+    .header__imageWrapper {
+      top: 4px;
+      width: 48px;
+    }
+
+    .header__image {
+      width: 48px;
+    }
+
+    .header__title {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 769px) {
+    &__topBar {
+      height: 80px;
+    }
+
+    &__bottomBar {
+      height: 80px;
+      padding-left: calc(160px + 24px);
+    }
+
+    &__imageWrapper {
+      top: -60px;
+      left: 16px;
+      width: 160px;
+    }
+
+    &__image {
+      width: clamp(80px, 100%, 160px);
+    }
+
+    &__title {
+      font-size: 2rem;
+      position: static;
+      transform: none;
+      text-align: left;
+    }
+    &.shrink {
+      .header__bottomBar {
+        padding-left: calc(160px + 24px);
+      }
+      .header__title {
+        font-size: 2rem;
+      }
+    }
+  }
+}
