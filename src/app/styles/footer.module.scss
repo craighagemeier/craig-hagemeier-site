@@ -1,0 +1,58 @@
+.footer {
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+  padding: 1rem 0;
+  text-align: center;
+  border-top: 1px solid var(--color-accent-secondary);
+
+  &__container {
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    max-width: 100%;
+  }
+
+  &__socialList {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    @media (min-width: 769px) {
+      gap: 1rem;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      color: var(--color-text-secondary);
+      transition: color 300ms ease-in-out;
+
+      &:hover {
+        color: var(--color-accent-primary);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline-offset: 2px;
+        border-radius: 4px;
+        outline: 2px solid var(--color-accent-secondary);
+        color: inherit;
+      }
+    }
+  }
+}
+
+// Fix sticky color on mobile
+@media (hover: none) {
+  .footer__socialList a:hover {
+    color: var(--color-text-secondary);
+    -webkit-tap-highlight-color: transparent;
+  }
+}

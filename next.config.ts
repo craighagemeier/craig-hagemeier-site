@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const nextConfig = {
+  reactStrictMode: true,
+  // Enable SASS/SCSS support
+  sassOptions: {
+    includePaths: ['./src/app/styles'],
+  },
+}
 
 export default nextConfig;
