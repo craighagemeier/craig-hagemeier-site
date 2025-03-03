@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: light dark;
+
+  --font-family-heading: "Oswald", "Noto Sans", Helvetica, Arial, sans-serif;
+  --font-family-body: "Manrope", "Noto Sans", Helvetica, Arial, sans-serif;
+
+  --color-background-page: light-dark(#fff, #0e0e12);
+  --color-background-primary: light-dark(#fff, #0e0e12);
+  --color-background-secondary: light-dark(#000, #303030);
+  --color-background-tertiary: light-dark(rgba(0, 0, 0, 0.9), #303036);
+  --color-text-primary: light-dark(#333, #fff);
+  --color-text-secondary: light-dark(#fff, #fff);
+  --color-accent-primary: #999;
+  --color-accent-secondary: #999;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-variant: small-caps;
+  }
+
+  .theme-first-letter {
+    font-size: 1.2em;
+    font-weight: 700;
+    transform: scale(1.1);
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}

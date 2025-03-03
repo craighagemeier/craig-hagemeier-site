@@ -21,12 +21,23 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://craig.hagemeier.com"),
   authors: [{ name: "Craig Hagemeier", url: "https://craig.hagemeier.com" }],
   robots: "index, follow",
-  viewport: "width=device-width, initial-scale=1.0",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
       <body>
         <ThemeProvider>
           <PageStructure>{children}</PageStructure>

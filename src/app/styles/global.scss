@@ -1,4 +1,5 @@
-@import "./themes/base.scss";
+@import "./themes/theme-kruger.scss";
+@import "./themes/theme-base.scss";
 
 // Box-sizing reset
 *,
@@ -14,6 +15,7 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  height: 100%;
 }
 
 // Remove list styles (bullets, numbers, etc.)
@@ -27,16 +29,49 @@ a {
   color: inherit;
 }
 
+// Reset button styles
+button {
+  all: unset;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
 // Set base properties
 body {
   min-height: 100vh;
-  background-color: var(--color-background-body);
-  color: var(--color-text-body);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background-page);
+  color: var(--color-text-primary);
   font-family: var(--font-family-body);
   font-size: 18px;
   line-height: 1.5;
   text-align: left;
-  margin-top: 120px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  min-height: 100%;
+}
+
+.page-structure {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 120px;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 // Ensure form elements inherit styles
@@ -82,18 +117,6 @@ h1, h2, h3, h4 {
   margin: 0;
   padding: 0;
   font-family: var(--font-family-heading);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-variant: small-caps;
-  letter-spacing: 0.05em;
-}
-
-.first-letter {
-  font-size: 1.2em;
-  font-weight: 700;
-  transform: scale(1.1);
-  display: inline-block;
-  vertical-align: bottom;
 }
 
 strong,
@@ -104,6 +127,8 @@ b {
 @media (min-width: 769px) {
   body {
     font-size: 16px;
-    margin-top: 240px;
+  }
+  .page-structure {
+    padding-top: 240px;
   }
 }

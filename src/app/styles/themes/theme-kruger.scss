@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+
+.theme-kruger {
+  --font-family-heading: "Archivo Black", "Helvetica Bold", sans-serif;
+  --font-family-body: "Archivo Black", "Helvetica Bold", sans-serif;
+
+  --color-background-page: light-dark(#fff, #0e0e12);
+  --color-background-primary: light-dark(#f00, #f00);
+  --color-background-secondary: light-dark(#f00, #f00);
+  --color-background-tertiary: #f00;
+  --color-text-primary: light-dark(#000, #fff);
+  --color-text-secondary: light-dark(#fff, #fff);
+  --color-accent-primary: #000;
+  --color-accent-secondary: #000;
+
+  h1, h2, h3, h4 {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    background-color: var(--color-accent-tertiary);
+    padding: 4px 8px;
+    color: var(--color-text-secondary);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+
+  img:hover {
+    filter: grayscale(0%) contrast(1.2);
+    transform: scale(1.05);
+    box-shadow: 10px 10px 0px var(--color-accent-secondary);
+  }
+
+  .theme-box {
+    display: inline-block;
+    background-color: var(--color-accent-secondary);
+    color: var(--color-text-secondary);
+    padding: 4px 8px;
+    font-weight: 900;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  }
+
+  .theme-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-accent-tertiary);
+    transition: left 0.3s ease;
+  }
+
+  .theme-box:hover::after {
+    left: 0;
+  }
+
+  .theme-box:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes text-wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-2deg); }
+    75% { transform: rotate(1deg); }
+  }
+
+  .theme-wobble:hover {
+    animation: text-wobble 0.15s ease-in-out infinite;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1, h2, h3, h4 {
+    animation: slideIn 0.5s ease-in-out;
+  }
+
+  .theme-box:hover {
+    background-color: black;
+    color: red;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body:has(.theme-box:hover) {
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-ticker {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: ticker 10s linear infinite;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+  }
+}

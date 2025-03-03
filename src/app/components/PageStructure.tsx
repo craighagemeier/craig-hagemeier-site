@@ -21,7 +21,7 @@ const PageStructure: React.FC<PageStructureProps> = ({ children }) => {
   }, []);
 
   return (
-    <div>
+    <div className="page-structure">
       <Header isShrunk={isShrunk} />
       <main>{children}</main>
       <Footer />
