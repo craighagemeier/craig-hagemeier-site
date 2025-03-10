@@ -14,9 +14,9 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
 
 const getInitialTheme = (): string => {
   if (typeof window !== "undefined") {
-    return localStorage.getItem("selectedTheme") || "base";
+    return localStorage.getItem("selectedTheme") || "monochrome";
   }
-  return "base";
+  return "monochrome";
 };
 
 const getInitialColorMode = (): string => {
@@ -77,8 +77,8 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     });
 
     // Then apply the current theme's transformations
-    if (currentTheme === "base") {
-      // Apply base theme transformations
+    if (currentTheme === "monochrome") {
+      // Apply monochrome theme transformations
       headings.forEach((heading) => {
         heading.innerHTML = heading.textContent?.replace(/\b(\w)/g, "<span class='theme-first-letter'>$1</span>") || "";
       });
@@ -99,7 +99,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
       textElements.forEach((el) => {
         el.innerHTML = el.innerHTML.replace(
-          /\b(BUY|CONSUME|OBEY|YOU|YOUR|I|WE|THEY)\b/gi,
+          /\b(BUY|CONSUME|OBEY|YOU|ARE|BEAUTIFUL)\b/gi,
           '<span class="theme-box theme-ticker">$1</span>'
         );
       });
@@ -113,7 +113,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     localStorage.setItem("selectedColorMode", colorMode);
 
     // Remove all theme classes
-    document.body.classList.remove("theme-base", "theme-kruger");
+    document.body.classList.remove("theme-monochrome", "theme-kruger");
 
     // Add theme class
     document.body.classList.add(`theme-${theme}`);
@@ -139,7 +139,6 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   if (!isLoaded) return null;
 
   // Determine effective color mode for UI display
-  const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
 
   return (
     <ThemeContext.Provider value={{

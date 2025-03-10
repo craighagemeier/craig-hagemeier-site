@@ -4,6 +4,7 @@
   padding: 1rem 0;
   text-align: center;
   border-top: 1px solid var(--color-accent-secondary);
+  border-bottom: 1px solid var(--color-background-secondary);
 
   &__container {
     margin: 0 auto;
@@ -29,7 +30,7 @@
       width: 40px;
       height: 40px;
       color: var(--color-text-secondary);
-      transition: color 300ms ease-in-out;
+      transition: color var(--transition-standard);
 
       &:hover {
         color: var(--color-accent-primary);
@@ -40,8 +41,8 @@
       }
 
       &:focus-visible {
-        outline-offset: 2px;
-        border-radius: 4px;
+        outline-offset: var(--outline-offset);
+        border-radius: var(--border-radius);
         outline: 2px solid var(--color-accent-secondary);
         color: inherit;
       }

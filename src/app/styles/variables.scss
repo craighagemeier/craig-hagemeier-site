@@ -1,0 +1,12 @@
+:root {
+  /* Define your transition variables as CSS custom properties */
+  --transition-duration: 200ms;
+  --transition-timing: ease-in-out;
+  --transition-standard: var(--transition-duration) var(--transition-timing);
+
+  --border-radius: 4px;
+  --outline-offset: 2px;
+  --outline-width: 2px;
+  --outline-color: var(--color-accent-secondary);
+  --outline: var(--outline-width) solid var(--outline-color);
+}
