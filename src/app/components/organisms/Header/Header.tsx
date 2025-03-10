@@ -2,8 +2,8 @@
 
 import { useEffect, useState, forwardRef } from "react";
 import Image from "next/image";
-import Navigation from "./Navigation";
-import styles from "../styles/header.module.scss";
+import Navigation from "../Navigation/Navigation";
+import styles from "./header.module.scss";
 
 const Header = forwardRef<HTMLElement, { isShrunk: boolean }>(({ isShrunk }, ref) => {
   const [shouldRenderTopBar, setShouldRenderTopBar] = useState(true);
@@ -24,7 +24,7 @@ const Header = forwardRef<HTMLElement, { isShrunk: boolean }>(({ isShrunk }, ref
           <a href="/">
             <Image
               src="/images/Craig-Hagemeier.jpg"
-              alt="Craig Hagemeier"
+              alt="Craig Hagemeier's profile photo"
               width={160}
               height={160}
               className={styles.header__image}

@@ -2,9 +2,15 @@
 
 export default function ContactPage() {
   return (
-    <section>
-      <h2>Contact Me</h2>
-      {/* <ContactForm /> */}
-    </section>
+    <div>
+      <section className="ch-container">
+        <div className="ch-row">
+          <div className="ch-col">
+            <h2>Contact Me</h2>
+            {/* <ContactForm /> */}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

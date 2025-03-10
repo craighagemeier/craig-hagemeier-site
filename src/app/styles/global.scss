@@ -1,5 +1,7 @@
 @import "./themes/theme-kruger.scss";
-@import "./themes/theme-base.scss";
+@import "./themes/theme-monochrome.scss";
+@import "./grid.css";
+@import "./variables.scss";
 
 // Box-sizing reset
 *,
@@ -10,15 +12,17 @@
   padding: 0;
 }
 
-// Prevent text auto-resizing on mobile browsers
+// Prevent text auto-resizing on mobile
 html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-// Remove list styles (bullets, numbers, etc.)
+// Remove default list styles
 ul, ol {
   list-style: none;
 }
@@ -29,18 +33,18 @@ a {
   color: inherit;
 }
 
-// Reset button styles
-button {
+// Reset input styles
+button, input, select, textarea {
   all: unset;
-  color: inherit;
   font: inherit;
+  color: inherit;
   cursor: pointer;
 }
 
-// Set base properties
+// Base properties
 body {
   min-height: 100vh;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   background-color: var(--color-background-page);
@@ -54,6 +58,7 @@ body {
   overflow-x: hidden;
 }
 
+// Root container
 #root {
   display: flex;
   flex-direction: column;
@@ -62,10 +67,11 @@ body {
   min-height: 100%;
 }
 
+// Page structure
 .page-structure {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 120px;
 }
 
@@ -80,32 +86,30 @@ input, button, textarea, select {
   font-size: inherit;
 }
 
-// Images
-img,
-picture {
+// Image defaults
+img, picture {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-h1 {
-  font-size: 2rem;
-  line-height: 1.25;
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-heading);
 }
 
-h2 {
-  font-size: 1.75rem;
-  line-height: 1.3;
-}
+h1 { font-size: 2rem; line-height: 1.25; }
+h2 { font-size: 1.75rem; line-height: 1.3; }
+h3 { font-size: 1.5rem; line-height: 1.33; }
+h4 { font-size: 1.25rem; line-height: 1.4; }
+h5 { font-size: 1rem; line-height: 1.5; }
+h6 { font-size: 0.875rem; line-height: 1.6; }
 
-h3 {
-  font-size: 1.5rem;
-  line-height: 1.33;
-}
-
-h4 {
-  font-size: 1.25rem;
-  line-height: 1.4;
+label, p, li {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 small {
@@ -113,17 +117,11 @@ small {
   line-height: 1.23;
 }
 
-h1, h2, h3, h4 {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-family-heading);
-}
-
-strong,
-b {
+strong, b {
   font-weight: 600;
 }
 
+// Responsive adjustments
 @media (min-width: 769px) {
   body {
     font-size: 16px;

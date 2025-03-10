@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faStrava, faGithub, faLinkedinIn, faInstagram, faFlickr } from "@fortawesome/free-brands-svg-icons";
-import styles from "../styles/footer.module.scss";
+import styles from "./footer.module.scss";
 
 export default function Footer() {
   return (

@@ -1,5 +1,5 @@
-import PageStructure from "./components/PageStructure";
-import ThemeProvider from "./components/ThemeProvider";
+import PageStructure from "./components/templates/PageStructure";
+import ThemeProvider from "./components/providers/ThemeProvider";
 import { Metadata } from "next";
 import "./styles/global.scss";
 
