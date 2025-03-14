@@ -16,6 +16,31 @@
   --color-accent-primary: #999;
   --color-accent-secondary: #999;
 
+  --color-button-bg: light-dark(#fff, #222);
+  --color-button-border: light-dark(#333, #ccc);
+  --color-button-text: light-dark(#333, #ccc);
+  --color-button-focus-outline: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
+
+  --color-button-hover-bg: light-dark(#f5f5f5, #333);
+  --color-button-hover-border: light-dark(#555, #aaa);
+  --color-button-hover-text: light-dark(#555, #aaa);
+
+  --color-button-active-bg: light-dark(#e0e0e0, #444);
+  --color-button-active-border: light-dark(#666, #999);
+  --color-button-active-text: light-dark(#666, #999);
+
+  --color-button-active-state-bg: light-dark(#000, #fff);
+  --color-button-active-state-border: light-dark(#000, #fff);
+  --color-button-active-state-text: light-dark(#fff, #000);
+
+  --color-button-active-hover-bg: light-dark(#222, #f0f0f0);
+  --color-button-active-hover-border: light-dark(#222, #f0f0f0);
+  --color-button-active-hover-text: light-dark(#fff, #111);
+
+  --color-button-active-pressed-bg: light-dark(#333, #e0e0e0);
+  --color-button-active-pressed-border: light-dark(#333, #e0e0e0);
+  --color-button-active-pressed-text: light-dark(#fff, #222);
+
   h1,
   h2,
   h3,

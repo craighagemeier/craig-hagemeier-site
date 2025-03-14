@@ -14,6 +14,26 @@
   --color-accent-primary: #000;
   --color-accent-secondary: #000;
 
+  --color-button-bg: light-dark(#000, #000);
+  --color-button-border: light-dark(#fff, #fff);
+  --color-button-text: light-dark(#fff, #fff);
+  --color-button-focus-outline: light-dark(rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.5));
+  --color-button-hover-bg: light-dark(#333, #333);
+  --color-button-hover-border: light-dark(#fff, #fff);
+  --color-button-hover-text: light-dark(#fff, #fff);
+  --color-button-active-bg: light-dark(#444, #444);
+  --color-button-active-border: light-dark(#fff, #fff);
+  --color-button-active-text: light-dark(#fff, #fff);
+  --color-button-active-state-bg: light-dark(#f00, #f00);
+  --color-button-active-state-border: light-dark(#000, #000);
+  --color-button-active-state-text: light-dark(#000, #000);
+  --color-button-active-hover-bg: light-dark(#d00, #d00);
+  --color-button-active-hover-border: light-dark(#000, #000);
+  --color-button-active-hover-text: light-dark(#000, #000);
+  --color-button-active-pressed-bg: light-dark(#b00, #b00);
+  --color-button-active-pressed-border: light-dark(#000, #000);
+  --color-button-active-pressed-text: light-dark(#000, #000);
+
   h1, h2, h3, h4 {
     text-transform: uppercase;
     font-weight: 900;

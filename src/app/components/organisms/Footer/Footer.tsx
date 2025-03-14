@@ -4,13 +4,13 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faStrava, faGithub, faLinkedinIn, faInstagram, faFlickr } from "@fortawesome/free-brands-svg-icons";
-import styles from "./footer.module.scss";
+import "./footer.scss";
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.footer__container}>
-        <ul className={styles.footer__socialList}>
+    <footer className="footer">
+      <div className="footer__container">
+        <ul className="footer__socialList">
           <li>
             <Link href="/contact" aria-label="Contact">
               <FontAwesomeIcon icon={faEnvelope} size="2xl" />
