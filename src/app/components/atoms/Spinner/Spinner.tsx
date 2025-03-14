@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./spinner.module.scss";
+import "./spinner.scss";
 
 interface SpinnerProps {
   text?: string;
@@ -15,9 +15,9 @@ const Spinner: React.FC<SpinnerProps> = ({
   className
 }) => {
   return (
-    <div className={`${styles.container} ${className || ''}`}>
-      <div className={`${styles.spinner} ${styles[size]} ${styles[color]}`} />
-      {text && <p className={styles.text}>{text}</p>}
+    <div className={`spinner__container ${className || ''}`}>
+      <div className={`spinner__loader spinner__loader--${size} spinner__loader--${color}`} />
+      {text && <p className="spinner__text">{text}</p>}
     </div>
   );
 };

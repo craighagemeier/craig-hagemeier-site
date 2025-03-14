@@ -50,11 +50,11 @@
         color: inherit;
       }
     }
-  }
 
-  .active {
-    font-weight: 600;
-    color: var(--color-accent-secondary);
+    &--active {
+      font-weight: 600;
+      color: var(--color-accent-secondary);
+    }
   }
 
   &__themeButton,

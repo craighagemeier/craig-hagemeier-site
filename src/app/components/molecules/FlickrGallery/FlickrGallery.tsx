@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Button from "../../atoms/Button/Button";
 import ButtonGroup from "../../atoms/ButtonGroup/ButtonGroup";
 import Spinner from "../../atoms/Spinner/Spinner";
-import styles from "./FlickrGallery.module.scss";
+import "./flickr-gallery.scss";
 
 interface FlickrPhoto {
   id: string;
@@ -72,8 +72,8 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
   };
 
   // Function to determine column span class - with fewer large items
-  const getColumnSpanClass = (photo: FlickrPhoto, index: number) => {
-    let baseClass = styles['masonry-item'];
+  const getItemSizeClass = (photo: FlickrPhoto, index: number) => {
+    let baseClass = 'flickr-gallery__item';
 
     // Use a larger prime number to make the pattern less predictable
     // and reduce the frequency of larger items
@@ -84,22 +84,22 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
 
       // Make sure very tall images are small in column span
       if (aspectRatio < 0.6) {
-        return `${baseClass} ${styles.small}`;
+        return `${baseClass} ${baseClass}--small`;
       }
 
       // Only make truly panoramic photos span wider
       if (aspectRatio > 2.5) {
-        return `${baseClass} ${styles.wide}`;
+        return `${baseClass} ${baseClass}--wide`;
       }
     }
 
     // Assign size classes based on pattern - with much fewer large items
     if (patternIndex === 0) {
-      return `${baseClass} ${styles.wide}`;  // Only one wide item every 23 photos
+      return `${baseClass} ${baseClass}--wide`;  // Only one wide item every 23 photos
     } else if (patternIndex === 7 || patternIndex === 14 || patternIndex === 21) {
-      return `${baseClass} ${styles.medium}`; // A few medium items
+      return `${baseClass} ${baseClass}--medium`; // A few medium items
     } else {
-      return `${baseClass} ${styles.small}`; // Most items are small
+      return `${baseClass} ${baseClass}--small`; // Most items are small
     }
   };
 
@@ -127,7 +127,7 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
         // Apply the span calculation to each image
         Object.entries(imageElements).forEach(([photoId, img]) => {
           if (img) {
-            const item = img.closest(`.${styles['masonry-item']}`) as HTMLElement;
+            const item = img.closest('.flickr-gallery__item') as HTMLElement;
             if (item) {
               // Calculate row span based on image height, but cap it at maxRowSpan
               const imageHeight = img.getBoundingClientRect().height;
@@ -146,10 +146,10 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
   }, [imageElements, isLoading, photos.length]);
 
   return (
-    <div>
+    <div className="flickr-gallery">
       <div className="ch-container">
         <div className="ch-row">
-          <div className={`${styles['sort-buttons']} ch-col`}>
+          <div className="flickr-gallery__sort-buttons ch-col">
             <ButtonGroup>
               {sortOptions.map((option) => (
                 <Button
@@ -170,13 +170,13 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
 
       <div
         ref={gridRef}
-        className={`${styles['masonry-grid']} ${isLoading ? styles.fadeOut : styles.fadeIn}`}
+        className={`flickr-gallery__masonry-grid ${isLoading ? 'flickr-gallery__masonry-grid--fade-out' : 'flickr-gallery__masonry-grid--fade-in'}`}
         style={{ opacity: (layoutReady || photos.length === 0) ? 1 : 0.3, transition: 'opacity 0.3s ease' }}
       >
         {photos.map((photo, index) => (
           <div
             key={photo.id}
-            className={getColumnSpanClass(photo, index)}
+            className={getItemSizeClass(photo, index)}
           >
             {photo.urls ? (
               <img
@@ -184,7 +184,7 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
                 srcSet={`${photo.urls.small} 320w, ${photo.urls.medium} 800w, ${photo.urls.large} 1024w, ${photo.urls.original} 2048w`}
                 sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
                 alt={photo.title || 'Flickr photo'}
-                className={styles['masonry-image']}
+                className="flickr-gallery__image"
                 loading="lazy"
                 onLoad={(e) => handleImageLoad(e, photo.id)}
                 onError={(e) => console.error(`Image failed to load: ${photo.url}`)}
@@ -193,14 +193,14 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
               <img
                 src={photo.url}
                 alt={photo.title || 'Flickr photo'}
-                className={styles['masonry-image']}
+                className="flickr-gallery__image"
                 loading="lazy"
                 onLoad={(e) => handleImageLoad(e, photo.id)}
                 onError={(e) => console.error(`Image failed to load: ${photo.url}`)}
               />
             )}
             {photo.title && (
-              <div className={styles['photo-info']}>
+              <div className="flickr-gallery__info">
                 <p>{photo.title}</p>
               </div>
             )}

@@ -3,7 +3,7 @@
 import { useEffect, useState, forwardRef } from "react";
 import Image from "next/image";
 import Navigation from "../Navigation/Navigation";
-import styles from "./header.module.scss";
+import "./header.scss";
 
 const Header = forwardRef<HTMLElement, { isShrunk: boolean }>(({ isShrunk }, ref) => {
   const [shouldRenderTopBar, setShouldRenderTopBar] = useState(true);
@@ -17,21 +17,23 @@ const Header = forwardRef<HTMLElement, { isShrunk: boolean }>(({ isShrunk }, ref
   }, [isShrunk]);
 
   return (
-    <header ref={ref} className={`${styles.header} ${isShrunk ? styles.shrink : ""}`}>
-      {shouldRenderTopBar && <div className={`${styles.header__topBar} ${isShrunk ? styles.hidden : ""}`}></div>}
-      <div className={styles.header__bottomBar}>
-        <div className={styles.header__imageWrapper}>
+  <header ref={ref} className={`header ${isShrunk ? "header--shrink" : ""}`}>
+    {shouldRenderTopBar && (
+      <div className={`header__topBar ${isShrunk ? "header__topBar--hidden" : ""}`}></div>
+    )}
+      <div className="header__bottomBar">
+        <div className="header__imageWrapper">
           <a href="/">
             <Image
               src="/images/Craig-Hagemeier.jpg"
               alt="Craig Hagemeier's profile photo"
               width={160}
               height={160}
-              className={styles.header__image}
+              className="header__image"
             />
           </a>
         </div>
-        <h1 className={styles.header__title}>Craig Hagemeier</h1>
+        <h1 className="header__title">Craig Hagemeier</h1>
         <Navigation />
       </div>
     </header>

@@ -21,7 +21,7 @@ export default async function Photography() {
         </div>
         <div className="ch-row">
           <div className="ch-col">
-            <p>Most of my photos are happy accidents. Whether I'm our running or riding the subway, something about the light catches my eye. Photography is a thrill, a way to freeze time. Are my shots perfect? Definitely not. But they tell a story, and that's what I love.</p>
+            <p>Most of my photos are happy accidents. Whether I'm out running or riding the subway, something about the light catches my eye. Photography is a way to freeze time and capture a moment.</p>
           </div>
         </div>
         <div className="ch-row">

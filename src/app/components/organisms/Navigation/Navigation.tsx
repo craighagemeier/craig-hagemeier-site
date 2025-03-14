@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Palette } from "lucide-react";
 import MobileNavMenu from "../../molecules/Menus/MobileNavMenu";
 import ThemeMenu from "../../molecules/Menus/ThemeMenu";
-import styles from "./navigation.module.scss";
+import "./navigation.scss";
 
 const linkLabels: Record<string, string> = {
   "/": "Home",
@@ -21,17 +21,20 @@ export default function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className={styles.navigation}>
-      <ul className={styles.navigation__list}>
+    <nav className="navigation">
+      <ul className="navigation__list">
         {["/", "/photography", "/endurance-quests", "/contact"].map((path, index) => (
-          <li key={index} className={`${styles.navigation__item} ${pathname === path ? styles.active : ""}`}>
+          <li
+            key={index}
+            className={`navigation__item ${pathname === path ? "navigation__item--active" : ""}`}
+          >
             <Link href={path}>{linkLabels[path]}</Link>
           </li>
         ))}
       </ul>
 
       <button
-        className={styles.navigation__themeButton}
+        className="navigation__themeButton"
         onClick={() => setThemeMenuOpen(!themeMenuOpen)}
         aria-expanded={themeMenuOpen}
         aria-label="Toggle theme menu"
@@ -40,7 +43,7 @@ export default function Navigation() {
       </button>
 
       <button
-        className={styles.navigation__menuButton}
+        className="navigation__menuButton"
         onClick={() => setMenuOpen(!menuOpen)}
         aria-expanded={menuOpen}
         aria-label="Toggle navigation menu"

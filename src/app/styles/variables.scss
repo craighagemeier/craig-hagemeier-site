@@ -3,10 +3,18 @@
   --transition-duration: 200ms;
   --transition-timing: ease-in-out;
   --transition-standard: var(--transition-duration) var(--transition-timing);
+  --transition-outline: 150ms ease-out;
+  --transition-all: all var(--transition-standard),
+                     outline-offset var(--transition-outline),
+                     outline-width var(--transition-outline),
+                     outline-color var(--transition-outline);
 
   --border-radius: 4px;
+  --border-width: 1px;
   --outline-offset: 2px;
   --outline-width: 2px;
-  --outline-color: var(--color-accent-secondary);
-  --outline: var(--outline-width) solid var(--outline-color);
+  --color-outline: var(--color-accent-secondary);
+  --outline: var(--outline-width) solid var(--color-outline);
+
+  --padding: 8px;
 }
