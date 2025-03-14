@@ -8,9 +8,11 @@
   --color-background-primary: light-dark(#f00, #f00);
   --color-background-secondary: light-dark(#f00, #f00);
   --color-background-tertiary: #f00;
+
   --color-text-primary: light-dark(#000, #fff);
   --color-text-secondary: light-dark(#fff, #fff);
   --color-text-inverted: light-dark(#fff, #000);
+
   --color-accent-primary: #000;
   --color-accent-secondary: #000;
 
@@ -18,30 +20,42 @@
   --color-button-border: light-dark(#fff, #fff);
   --color-button-text: light-dark(#fff, #fff);
   --color-button-focus-outline: light-dark(rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.5));
+
   --color-button-hover-bg: light-dark(#333, #333);
   --color-button-hover-border: light-dark(#fff, #fff);
   --color-button-hover-text: light-dark(#fff, #fff);
+
   --color-button-active-bg: light-dark(#444, #444);
   --color-button-active-border: light-dark(#fff, #fff);
   --color-button-active-text: light-dark(#fff, #fff);
+
   --color-button-active-state-bg: light-dark(#f00, #f00);
   --color-button-active-state-border: light-dark(#000, #000);
   --color-button-active-state-text: light-dark(#000, #000);
+
   --color-button-active-hover-bg: light-dark(#d00, #d00);
   --color-button-active-hover-border: light-dark(#000, #000);
   --color-button-active-hover-text: light-dark(#000, #000);
+
   --color-button-active-pressed-bg: light-dark(#b00, #b00);
   --color-button-active-pressed-border: light-dark(#000, #000);
   --color-button-active-pressed-text: light-dark(#000, #000);
 
-  h1, h2, h3, h4 {
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 0.875rem;
+    }
+  }
+
+  h2, h3, h4 {
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: -0.5px;
-    background-color: var(--color-accent-tertiary);
+    background-color: var(--color-accent-secondary);
     padding: 4px 8px;
     color: var(--color-text-secondary);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    width: fit-content;
   }
 
   img {
@@ -52,16 +66,16 @@
   img:hover {
     filter: grayscale(0%) contrast(1.2);
     transform: scale(1.05);
-    box-shadow: 10px 10px 0px var(--color-accent-secondary);
   }
 
   .theme-box {
     display: inline-block;
-    background-color: var(--color-accent-secondary);
-    color: var(--color-text-secondary);
+    background-color: var(--color-background-tertiary) !important;
+    color: var(--color-text-secondary) !important;
     padding: 4px 8px;
     font-weight: 900;
     position: relative;
+    z-index: 1;
     overflow: hidden;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out;
   }
@@ -73,7 +87,8 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background-color: var(--color-accent-tertiary);
+    background-color: var(--color-accent-secondary);
+    z-index: -1;
     transition: left 0.3s ease;
   }
 
@@ -101,13 +116,13 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  h1, h2, h3, h4 {
+  h2, h3, h4 {
     animation: slideIn 0.5s ease-in-out;
   }
 
   .theme-box:hover {
-    background-color: black;
-    color: red;
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 

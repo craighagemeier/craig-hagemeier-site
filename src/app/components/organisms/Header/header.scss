@@ -79,10 +79,6 @@
     .header__image {
       width: 48px;
     }
-
-    .header__title {
-      font-size: 1.25rem;
-    }
   }
 
   &__topBar--hidden {
@@ -120,9 +116,6 @@
     &--shrink {
       .header__bottomBar {
         padding-left: calc(160px + 24px);
-      }
-      .header__title {
-        font-size: 2rem;
       }
     }
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 interface ThemeContextType {
   theme: string;
@@ -27,6 +28,7 @@ const getInitialColorMode = (): string => {
 };
 
 const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const pathname = usePathname(); // Use pathname inside the component
   const [theme, setTheme] = useState<string>(getInitialTheme);
   const [colorMode, setColorMode] = useState<string>(getInitialColorMode);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -76,36 +78,44 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         .replace(/<span class='theme-first-letter'>(.*?)<\/span>/gi, "$1");
     });
 
-    // Then apply the current theme's transformations
+    // Apply transformations for monochrome theme (first letter effect for all headings)
     if (currentTheme === "monochrome") {
-      // Apply monochrome theme transformations
       headings.forEach((heading) => {
         heading.innerHTML = heading.textContent?.replace(/\b(\w)/g, "<span class='theme-first-letter'>$1</span>") || "";
       });
-    } else if (currentTheme === "kruger") {
-      // Apply Kruger theme transformations
+    }
+
+    // Apply transformations for Kruger theme (removes `theme-box` from h1)
+    if (currentTheme === "kruger") {
+      // Apply Kruger theme transformations to text elements
       textElements.forEach((el) => {
-        el.innerHTML = el.innerHTML.replace(
+        let content = el.innerHTML;
+        // Process key words for theme-box
+        content = content.replace(
           /\b(consume|control|desire|buy)\b/gi,
           '<span class="theme-box">$1</span>'
         );
-      });
 
-      headings.forEach((heading) => {
-        if (!heading.classList.contains("theme-box")) {
-          heading.classList.add("theme-box");
-        }
-      });
-
-      textElements.forEach((el) => {
-        el.innerHTML = el.innerHTML.replace(
+        // Process keywords for ticker effect
+        content = content.replace(
           /\b(BUY|CONSUME|OBEY|YOU|ARE|BEAUTIFUL)\b/gi,
           '<span class="theme-box theme-ticker">$1</span>'
         );
+
+        el.innerHTML = content;
+      });
+
+      // Ensure the theme-box class is not applied to H1 in Kruger theme
+      headings.forEach((heading) => {
+        if (heading.tagName !== "H1") {
+          heading.classList.add("theme-box");
+        }
       });
     }
   };
 
+
+  // Main theme effect
   useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
 
@@ -118,8 +128,21 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     // Add theme class
     document.body.classList.add(`theme-${theme}`);
 
-    // Apply the theme transformations
-    applyThemeTransformations(theme);
+    // Function to apply theme with retries
+    const applyThemeWithRetries = (retries = 3, delay = 200) => {
+      // Apply the theme transformations
+      applyThemeTransformations(theme);
+
+      if (retries > 0) {
+        setTimeout(() => {
+          applyThemeTransformations(theme);
+          applyThemeWithRetries(retries - 1, delay);
+        }, delay);
+      }
+    };
+
+    // Start applying theme with retries
+    applyThemeWithRetries();
 
     // Determine which color mode to actually apply
     const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
@@ -135,10 +158,42 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     }
   }, [theme, colorMode, systemPreference, isLoaded]);
 
+  // Listen for page transition completion
+  useEffect(() => {
+    if (!isLoaded || typeof window === "undefined") return;
+
+    // Listen for page transition completion
+    const handleTransitionComplete = () => {
+      // Reapply theme transformations
+      applyThemeTransformations(theme);
+    };
+
+    window.addEventListener('pageTransitionComplete', handleTransitionComplete);
+
+    // Apply theme on initial load
+    setTimeout(() => {
+      applyThemeTransformations(theme);
+    }, 100);
+
+    return () => {
+      window.removeEventListener('pageTransitionComplete', handleTransitionComplete);
+    };
+  }, [isLoaded, theme]);
+
+  // Effect to reapply theme on route changes
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    // When route changes, wait for animation to complete
+    const timer = setTimeout(() => {
+      applyThemeTransformations(theme);
+    }, 500); // slightly longer than the page transition duration
+
+    return () => clearTimeout(timer);
+  }, [pathname, isLoaded, theme]);
+
   // Prevent render until the theme is loaded
   if (!isLoaded) return null;
-
-  // Determine effective color mode for UI display
 
   return (
     <ThemeContext.Provider value={{
