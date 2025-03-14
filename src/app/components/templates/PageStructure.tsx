@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../organisms/Header/Header";
 import Footer from "../organisms/Footer/Footer";
+import PageTransition from "../providers/PageTransition";
 
 interface PageStructureProps {
   children: React.ReactNode;
@@ -23,7 +24,9 @@ const PageStructure: React.FC<PageStructureProps> = ({ children }) => {
   return (
     <div className="page-structure">
       <Header isShrunk={isShrunk} />
-      <main>{children}</main>
+      <main>
+        <PageTransition>{children}</PageTransition>
+      </main>
       <Footer />
     </div>
   );
