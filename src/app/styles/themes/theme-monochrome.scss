@@ -14,14 +14,17 @@
   --color-text-primary: light-dark(#333, #fff);
   --color-text-secondary: light-dark(#fff, #fff);
   --color-text-inverted: light-dark(#fff, #333);
+  --color-text-error: light-dark(#f00, #f00);
+  --color-border-error: light-dark(#f00, #f00);
 
   --color-accent-primary: #999;
   --color-accent-secondary: #999;
+  --color-accent-tertiary: light-dark(#999, #999);
 
   --color-button-bg: light-dark(#fff, #222);
   --color-button-border: light-dark(#333, #ccc);
   --color-button-text: light-dark(#333, #ccc);
-  --color-button-focus-outline: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
+  --color-button-focus-outline: light-dark(#999, #999);
 
   --color-button-hover-bg: light-dark(#f5f5f5, #333);
   --color-button-hover-border: light-dark(#555, #aaa);
@@ -42,6 +45,10 @@
   --color-button-active-pressed-bg: light-dark(#333, #e0e0e0);
   --color-button-active-pressed-border: light-dark(#333, #e0e0e0);
   --color-button-active-pressed-text: light-dark(#fff, #222);
+
+  --color-button-disabled-bg: light-dark(#ddd, #222);
+  --color-button-disabled-border: light-dark(#bbb, #444);
+  --color-button-disabled-text: light-dark(#888, #666);
 
   h1,
   h2,
