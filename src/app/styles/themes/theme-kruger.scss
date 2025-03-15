@@ -12,14 +12,17 @@
   --color-text-primary: light-dark(#000, #fff);
   --color-text-secondary: light-dark(#fff, #fff);
   --color-text-inverted: light-dark(#fff, #000);
+  --color-text-error: light-dark(#f00, #f00);
+  --color-border-error: light-dark(#f00, #f00);
 
   --color-accent-primary: #000;
   --color-accent-secondary: #000;
+  --color-accent-tertiary: light-dark(#f00, #f00);
 
   --color-button-bg: light-dark(#000, #000);
   --color-button-border: light-dark(#fff, #fff);
   --color-button-text: light-dark(#fff, #fff);
-  --color-button-focus-outline: light-dark(rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.5));
+  --color-button-focus-outline: light-dark(#f00, #f00);
 
   --color-button-hover-bg: light-dark(#333, #333);
   --color-button-hover-border: light-dark(#fff, #fff);
@@ -40,6 +43,10 @@
   --color-button-active-pressed-bg: light-dark(#b00, #b00);
   --color-button-active-pressed-border: light-dark(#000, #000);
   --color-button-active-pressed-text: light-dark(#000, #000);
+
+  --color-button-disabled-bg: light-dark(#ddd, #222);
+  --color-button-disabled-border: light-dark(#bbb, #444);
+  --color-button-disabled-text: light-dark(#888, #666);
 
   @media (max-width: 768px) {
     h1 {

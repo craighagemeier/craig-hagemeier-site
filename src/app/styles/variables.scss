@@ -9,8 +9,10 @@
                      outline-width var(--transition-outline),
                      outline-color var(--transition-outline);
 
-  --border-radius: 4px;
+  --border-radius: 8px;
   --border-width: 1px;
+  --color-border: var(--color-accent-secondary);
+  --border: var(--border-width) solid var(--color-border);
   --outline-offset: 2px;
   --outline-width: 2px;
   --color-outline: var(--color-accent-secondary);

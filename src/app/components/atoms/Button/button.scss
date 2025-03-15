@@ -1,5 +1,7 @@
 .button {
   flex: 1;
+  width: 100%;
+  box-sizing: border-box;
   padding: var(--padding);
   border: var(--border-width) solid var(--color-button-border);
   background-color: var(--color-button-bg);
@@ -60,6 +62,34 @@
       background-color: var(--color-button-active-pressed-bg);
       border-color: var(--color-button-active-pressed-border);
       color: var(--color-button-active-pressed-text);
+    }
+  }
+
+  &--primary {
+    background-color: var(--color-button-active-state-bg);
+    color: var(--color-button-active-state-text);
+    border-color: var(--color-button-active-state-border);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-button-active-hover-bg);
+        border-color: var(--color-button-active-hover-border);
+        color: var(--color-button-active-hover-text);
+      }
+    }
+
+    &:active {
+      background-color: var(--color-button-active-pressed-bg);
+      border-color: var(--color-button-active-pressed-border);
+      color: var(--color-button-active-pressed-text);
+    }
+
+    &[disabled] {
+      background-color: var(--color-button-disabled-bg);
+      border-color: var(--color-button-disabled-border);
+      color: var(--color-button-disabled-text);
+      cursor: not-allowed;
+      opacity: 0.7;
     }
   }
 }
