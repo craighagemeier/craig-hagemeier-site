@@ -48,7 +48,18 @@
   --color-button-disabled-border: light-dark(#bbb, #444);
   --color-button-disabled-text: light-dark(#888, #666);
 
-  @media (max-width: 768px) {
+  --color-progress-bar-bg: light-dark(#f0f0f0, #222222);
+  --color-progress-bar-completed: light-dark(#f00, #f00);
+  --color-progress-bar-completed-border: light-dark(#000, #fff);
+  --color-progress-bar-completed-text: light-dark(#fff, #fff);
+  --color-progress-bar-current: light-dark(#000, #fff);
+  --color-progress-bar-current-border: light-dark(#f00, #f00);
+  --color-progress-bar-current-text: light-dark(#fff, #000);
+  --color-progress-bar-upcoming: light-dark(#d0d0d0, #333333);
+  --color-progress-bar-upcoming-border: light-dark(#999, #555);
+  --color-progress-bar-upcoming-text: light-dark(#000, #ccc);
+
+  @media (max-width: 743px) {
     h1 {
       font-size: 0.875rem;
     }
