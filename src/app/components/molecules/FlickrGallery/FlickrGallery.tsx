@@ -30,7 +30,7 @@ type SortOption = {
 
 const sortOptions: SortOption[] = [
   { id: "recent", label: "Recent", value: "date-taken-desc" },
-  { id: "interesting", label: "Interesting", value: "interestingness-desc" },
+  { id: "interesting", label: "Popular", value: "interestingness-desc" },
   { id: "oldest", label: "Oldest", value: "date-taken-asc" },
 ];
 

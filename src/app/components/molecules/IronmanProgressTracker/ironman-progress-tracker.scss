@@ -1,0 +1,132 @@
+.ironman-circular-progress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__svg {
+    overflow: visible;
+  }
+
+  &__path {
+    stroke: var(--color-progress-bar-bg);
+    stroke-linecap: round;
+  }
+
+  &__progress {
+    stroke: var(--color-progress-bar-completed);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-in-out;
+  }
+
+  &__central-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    fill: var(--color-text-primary);
+  }
+
+  &__central-subtext {
+    font-size: 1rem;
+    fill: var(--color-text-primary);
+  }
+
+  &__milestone {
+    stroke-width: 2px;
+    transition: all 0.3s ease;
+
+    &--completed {
+      fill: var(--color-progress-bar-completed);
+      stroke: var(--color-progress-bar-completed-border);
+    }
+
+    &--current {
+      fill: var(--color-progress-bar-current);
+      stroke: var(--color-progress-bar-current-border);
+    }
+
+    &--upcoming {
+      fill: var(--color-progress-bar-upcoming);
+      stroke: var(--color-progress-bar-upcoming-border);
+    }
+  }
+
+  &__milestone-text {
+    font-size: 12px;
+    font-weight: bold;
+    fill: var(--color-progress-bar-completed-text);
+    pointer-events: none;
+
+    .ironman-circular-progress__milestone--current + & {
+      fill: var(--color-progress-bar-current-text);
+    }
+
+    .ironman-circular-progress__milestone--upcoming + & {
+      fill: var(--color-progress-bar-upcoming-text);
+    }
+  }
+
+  &__milestone-label {
+    font-size: 0.8125rem;
+    fill: var(--color-text-primary);
+    pointer-events: none;
+  }
+
+  &__milestone-date {
+    font-size: 0.8125rem;
+    fill: var(--color-text-primary);
+    pointer-events: none;
+  }
+
+  &__legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
+
+  &__legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    &--completed {
+      background-color: var(--color-progress-bar-completed);
+    }
+
+    &--current {
+      background-color: var(--color-progress-bar-current);
+    }
+
+    &--upcoming {
+      background-color: var(--color-progress-bar-upcoming);
+    }
+  }
+}
+
+// Media query for responsiveness
+@media (max-width: 1023px) {
+  .ironman-circular-progress {
+    &__svg {
+      width: 100%;
+      height: auto;
+    }
+
+    &__milestone-label,
+    &__milestone-date {
+      display: none;
+    }
+  }
+}
