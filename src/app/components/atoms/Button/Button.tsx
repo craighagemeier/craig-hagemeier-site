@@ -6,7 +6,12 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "default" | "primary";
 }
 
-export default function Button({ isActive, variant = "default", className = "", ...props }: ButtonProps) {
+export default function Button({
+  isActive,
+  variant = "default",
+  className = "",
+  ...props
+}: ButtonProps) {
   const buttonClasses = [
     "button",
     isActive ? "button--active" : "",

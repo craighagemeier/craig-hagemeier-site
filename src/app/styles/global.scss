@@ -80,6 +80,14 @@ main {
   width: 100%;
 }
 
+section, article {
+  padding-bottom: 2rem;
+}
+
+aside {
+  padding: 2rem 0;
+}
+
 // Ensure form elements inherit styles
 input, button, textarea, select {
   font-family: inherit;

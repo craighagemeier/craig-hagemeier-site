@@ -90,15 +90,9 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       // Apply Kruger theme transformations to text elements
       textElements.forEach((el) => {
         let content = el.innerHTML;
-        // Process key words for theme-box
-        content = content.replace(
-          /\b(consume|control|desire|buy)\b/gi,
-          '<span class="theme-box">$1</span>'
-        );
-
         // Process keywords for ticker effect
         content = content.replace(
-          /\b(BUY|CONSUME|OBEY|YOU|ARE|BEAUTIFUL|AMAZING|EPIC)\b/gi,
+          /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS)\b/gi,
           '<span class="theme-box theme-ticker">$1</span>'
         );
 

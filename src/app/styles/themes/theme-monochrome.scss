@@ -6,60 +6,73 @@
   --font-family-heading: "Oswald", "Noto Sans", Helvetica, Arial, sans-serif;
   --font-family-body: "Manrope", "Noto Sans", Helvetica, Arial, sans-serif;
 
-  --color-background-page: light-dark(#fff, #0e0e12);
-  --color-background-primary: light-dark(#fff, #0e0e12);
-  --color-background-secondary: light-dark(#000, #303030);
-  --color-background-tertiary: light-dark(rgba(0, 0, 0, 0.9), #303036);
+  // Primitive color variables
+  --color-white: #fff;
+  --color-gray-90: #e5e5e5;
+  --color-gray-80: #ccc;
+  --color-gray-60: #999;
+  --color-gray-46: #757575;
+  --color-gray-40: #666;
+  --color-gray-20: #333;
+  --color-gray-10: #1a1a1a;
+  --color-gray-05: #0d0d0d;
+  --color-black: #000;
+  --color-red: #EB0000;
 
-  --color-text-primary: light-dark(#333, #fff);
-  --color-text-secondary: light-dark(#fff, #fff);
-  --color-text-inverted: light-dark(#fff, #333);
-  --color-text-error: light-dark(#f00, #f00);
-  --color-border-error: light-dark(#f00, #f00);
+  // Semantic color variables
+  --color-background-page: light-dark(var(--color-white), var(--color-gray-10));
+  --color-text-primary: light-dark(var(--color-gray-20), var(--color-white));
+  --color-text-white: var(--color-white);
 
-  --color-accent-primary: #999;
-  --color-accent-secondary: #999;
-  --color-accent-tertiary: light-dark(#999, #999);
+  --color-header-top-bar-bg: light-dark(var(--color-white), var(--color-gray-10));
+  --color-header-bottom-bar-bg: light-dark(var(--color-black), var(--color-gray-20));
 
-  --color-button-bg: light-dark(#fff, #222);
-  --color-button-border: light-dark(#333, #ccc);
-  --color-button-text: light-dark(#333, #ccc);
-  --color-button-focus-outline: light-dark(#999, #999);
+  --color-menu-bg: light-dark(rgba(0, 0, 0, 0.9), var(--color-gray-20));
 
-  --color-button-hover-bg: light-dark(#f5f5f5, #333);
-  --color-button-hover-border: light-dark(#555, #aaa);
-  --color-button-hover-text: light-dark(#555, #aaa);
+  --color-footer-bg: light-dark(var(--color-black), var(--color-gray-20));
 
-  --color-button-active-bg: light-dark(#e0e0e0, #444);
-  --color-button-active-border: light-dark(#666, #999);
-  --color-button-active-text: light-dark(#666, #999);
+  --color-caption-bg: rgba(0, 0, 0, 0.7);
 
-  --color-button-active-state-bg: light-dark(#000, #fff);
-  --color-button-active-state-border: light-dark(#000, #fff);
-  --color-button-active-state-text: light-dark(#fff, #000);
+  --color-input-error-text: var(--color-red);
+  --color-input-error-border: var(--color-red);
+  --color-input-border: light-dark(var(--color-gray-20), var(--color-gray-80));
+  --color-input-border-focus: var(--color-gray-60);
 
-  --color-button-active-hover-bg: light-dark(#222, #f0f0f0);
-  --color-button-active-hover-border: light-dark(#222, #f0f0f0);
-  --color-button-active-hover-text: light-dark(#fff, #111);
+  --color-navigation-focus: var(--color-gray-60);
+  --color-navigation-hover: var(--color-gray-60);
+  --color-navigation-active: var(--color-gray-60);
 
-  --color-button-active-pressed-bg: light-dark(#333, #e0e0e0);
-  --color-button-active-pressed-border: light-dark(#333, #e0e0e0);
-  --color-button-active-pressed-text: light-dark(#fff, #222);
+  --color-divider: var(--color-gray-60);
 
-  --color-button-disabled-bg: light-dark(#ddd, #222);
-  --color-button-disabled-border: light-dark(#bbb, #444);
-  --color-button-disabled-text: light-dark(#888, #666);
+  --color-button-primary-bg: light-dark(var(--color-black), var(--color-white));
+  --color-button-primary-text: light-dark(var(--color-white), var(--color-black));
+  --color-button-primary-border: light-dark(var(--color-white), var(--color-black));
+  --color-button-secondary-bg: light-dark(var(--color-white), var(--color-gray-40));
+  --color-button-secondary-text: light-dark(var(--color-black), var(--color-white));
+  --color-button-secondary-border: light-dark(var(--color-black), var(--color-white));
+  --color-button-focus-outline: var(--color-gray-60);
 
-  --color-progress-bar-bg: light-dark(#dadada, #2a2a35);
-  --color-progress-bar-completed: light-dark(#787878, #707070);
-  --color-progress-bar-completed-border: light-dark(#6a6a6a, #808080);
-  --color-progress-bar-completed-text: light-dark(#ffffff, #1a1a1a);
-  --color-progress-bar-current: light-dark(#202020, #d8d8d8);
-  --color-progress-bar-current-border: light-dark(#000000, #ffffff);
-  --color-progress-bar-current-text: light-dark(#ffffff, #000000);
-  --color-progress-bar-upcoming: light-dark(#d8d8d8, #3a3a3a);
-  --color-progress-bar-upcoming-border: light-dark(#b0b0b0, #505050);
-  --color-progress-bar-upcoming-text: light-dark(#333333, #e0e0e0);
+  --color-progress-bar-bg: light-dark(var(--color-gray-80), var(--color-gray-20));
+  --color-progress-bar-completed: var(--color-gray-40);
+  --color-progress-bar-completed-border: light-dark(var(--color-black), var(--color-white));
+  --color-progress-bar-completed-text: var(--color-white);
+  --color-progress-bar-current: light-dark(var(--color-black), var(--color-white));
+  --color-progress-bar-current-border: light-dark(var(--color-gray-80), var(--color-gray-20));
+  --color-progress-bar-current-text: light-dark(var(--color-white), var(--color-black));
+  --color-progress-bar-upcoming: light-dark(var(--color-gray-80), var(--color-gray-20));
+  --color-progress-bar-upcoming-border: light-dark(var(--color-gray-60), var(--color-gray-40));
+  --color-progress-bar-upcoming-text: light-dark(var(--color-gray-20), var(--color-white));
+
+  --color-state-default: var(--color-gray-80);
+  --color-state-completed: var(--color-black);
+  --color-state-border: #f9f9f7;
+
+  --color-star-default: light-dark(var(--color-gray-46), var(--color-gray-40));
+  --color-star-default-text: var(--color-white);
+  --color-star-completed: light-dark(var(--color-black), var(--color-gray-90));
+  --color-star-completed-text: light-dark(var(--color-white), var(--color-black));
+  --color-star-tooltip-background: light-dark(var(--color-white), var(--color-black));
+  --color-star-tooltip-border: light-dark(var(--color-gray-20), var(--color-white));
 
   h1,
   h2,

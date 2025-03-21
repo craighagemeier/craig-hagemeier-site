@@ -4,9 +4,9 @@
   font-weight: 500;
   color: var(--color-text-primary);
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 
   &--error {
-    color: var(--color-text-error);
+    color: var(--color-input-error-text);
   }
 }

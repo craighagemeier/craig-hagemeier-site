@@ -166,7 +166,7 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
         </div>
       </div>
 
-      {isLoading && <Spinner text="Loading photos..." size="medium" />}
+      {isLoading && <Spinner text="Loading photos..." />}
 
       <div
         ref={gridRef}

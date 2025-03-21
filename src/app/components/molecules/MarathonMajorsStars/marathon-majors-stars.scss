@@ -1,0 +1,118 @@
+.marathon-majors {
+  &__count-text {
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  &__stars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 2rem 0;
+  }
+
+  &__star-container {
+    position: relative;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-0.5rem);
+      z-index: 5;
+    }
+
+    &--completed {
+      .marathon-majors__star {
+        background-color: var(--color-star-completed);
+
+        &:before,
+        &:after {
+          background-color: var(--color-star-completed);
+        }
+      }
+
+      .marathon-majors__star-content {
+        color: var(--color-star-completed-text);
+      }
+    }
+  }
+
+  &__star {
+    width: 8rem;
+    height: 8rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-star-default);
+    color: var(--color-star-default-text);
+    transition: all 0.3s ease;
+
+    /* Create five-pointed star shape using CSS */
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+
+  &__star-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.25rem;
+    padding-top: 1.25rem;;
+    transform: translateY(-0.25rem);
+  }
+
+  &__star-city {
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  &__star-year {
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
+  }
+
+  &__tooltip {
+    position: absolute;
+    bottom: -6.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12rem;
+    background-color: var(--color-star-tooltip-background);
+    border: var(--border-width) solid var(--color-star-tooltip-border);
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &__tooltip-title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  &__tooltip-description {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__tooltip-status {
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+}

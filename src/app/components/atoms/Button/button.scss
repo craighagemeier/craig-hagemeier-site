@@ -2,10 +2,14 @@
   flex: 1;
   width: 100%;
   box-sizing: border-box;
+  min-width: 0;
+  position: relative;
+  text-align: center;
+
   padding: var(--padding);
-  border: var(--border-width) solid var(--color-button-border);
-  background-color: var(--color-button-bg);
-  color: var(--color-button-text);
+  border: var(--border-width) solid var(--color-button-secondary-border);
+  background-color: var(--color-button-secondary-bg);
+  color: var(--color-button-secondary-text);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition-all);
@@ -33,61 +37,52 @@
 
   @media (hover: hover) {
     &:hover {
-      background-color: var(--color-button-hover-bg);
-      border-color: var(--color-button-hover-border);
-      color: var(--color-button-hover-text);
+      background-color: color-mix(in srgb, var(--color-button-secondary-bg) 75%, rgba(0, 0, 0, 0.1) 25%);
     }
   }
 
+  // Active (pressed) state
   &:active {
-    background-color: var(--color-button-active-bg);
-    border-color: var(--color-button-active-border);
-    color: var(--color-button-active-text);
+    background-color: color-mix(in srgb, var(--color-button-secondary-bg) 75%, rgba(0, 0, 0, 0.9) 25%);
   }
 
+  // Active (toggled on) state
   &--active {
-    background-color: var(--color-button-active-state-bg);
-    color: var(--color-button-active-state-text);
-    border-color: var(--color-button-active-state-border);
+    background-color: var(--color-button-primary-bg);
+    color: var(--color-button-primary-text);
+    border-color: var(--color-button-primary-border);
 
     @media (hover: hover) {
       &:hover {
-        background-color: var(--color-button-active-hover-bg);
-        border-color: var(--color-button-active-hover-border);
-        color: var(--color-button-active-hover-text);
+        background-color: color-mix(in srgb, var(--color-button-primary-bg) 75%, rgba(0, 0, 0, 0.1) 25%);
       }
     }
 
     &:active {
-      background-color: var(--color-button-active-pressed-bg);
-      border-color: var(--color-button-active-pressed-border);
-      color: var(--color-button-active-pressed-text);
+      background-color: color-mix(in srgb, var(--color-button-primary-bg) 75%, rgba(0, 0, 0, 0.9) 25%);
     }
   }
 
   &--primary {
-    background-color: var(--color-button-active-state-bg);
-    color: var(--color-button-active-state-text);
-    border-color: var(--color-button-active-state-border);
+    background-color: var(--color-button-primary-bg);
+    color: var(--color-button-primary-text);
+    border-color: var(--color-button-primary-border);
 
     @media (hover: hover) {
       &:hover {
-        background-color: var(--color-button-active-hover-bg);
-        border-color: var(--color-button-active-hover-border);
-        color: var(--color-button-active-hover-text);
+        background-color: color-mix(in srgb, var(--color-button-primary-bg) 75%, rgba(0, 0, 0, 0.1) 25%);
       }
     }
 
     &:active {
-      background-color: var(--color-button-active-pressed-bg);
-      border-color: var(--color-button-active-pressed-border);
-      color: var(--color-button-active-pressed-text);
+      background-color: color-mix(in srgb, var(--color-button-primary-bg) 75%, rgba(0, 0, 0, 0.9) 25%);
     }
 
+    &:disabled,
     &[disabled] {
-      background-color: var(--color-button-disabled-bg);
-      border-color: var(--color-button-disabled-border);
-      color: var(--color-button-disabled-text);
+      background-color: light-dark(var(--color-gray-80), var(--color-gray-20));
+      border-color: light-dark(var(--color-gray-60), var(--color-gray-40));
+      color: light-dark(var(--color-gray-40), var(--color-gray-60));
       cursor: not-allowed;
       opacity: 0.7;
     }

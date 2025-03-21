@@ -11,6 +11,10 @@ export default async function Photography() {
         <div className="ch-row">
           <div className="ch-col">
             <h2>Photography</h2>
+          </div>
+        </div>
+        <div className="ch-row">
+          <div className="ch-col">
             <p>One of my favorite toys as a kid was a Kodak Instamatic 124. It was completely broken, but I loved pretending to take photos with it. Some of the most inspiring people in my life were photographers. I guess I was paying attention, and learned a thing or two.</p>
           </div>
         </div>
@@ -27,6 +31,10 @@ export default async function Photography() {
         <div className="ch-row">
           <div className="ch-col">
             <h3>Recent Photos</h3>
+          </div>
+        </div>
+        <div className="ch-row">
+          <div className="ch-col">
             <p>Here are some of my latest captures from Flickr. Want to see more? Check out my <Link href="https://www.flickr.com/photos/craighagemeier/">Flickr page</Link> or <Link href="https://www.instagram.com/craighagemeier/">Instagram</Link>.</p>
           </div>
         </div>
