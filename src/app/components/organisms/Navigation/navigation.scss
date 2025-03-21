@@ -19,7 +19,7 @@
   }
 
   &__item {
-    color: var(--color-text-secondary);
+    color: var(--color-text-white);
     font-weight: 500;
     padding: 0 0.5rem;
     transition: color var(--transition-standard);
@@ -30,7 +30,7 @@
 
     @media (hover: hover) {
       &:hover {
-        color: var(--color-accent-primary);
+        color: var(--color-navigation-hover);
       }
     }
 
@@ -46,14 +46,14 @@
       &:focus-visible {
         outline-offset: var(--outline-offset);
         border-radius: var(--border-radius);
-        outline: 2px solid var(--color-accent-secondary);
+        outline: 2px solid var(--color-navigation-focus);
         color: inherit;
       }
     }
 
     &--active {
       font-weight: 600;
-      color: var(--color-accent-secondary);
+      color: var(--color-navigation-active);
     }
   }
 
@@ -62,7 +62,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: var(--color-text-secondary);
+    color: var(--color-text-white);
     transition: color var(--transition-standard);
     width: 48px;
     height: 48px;
@@ -73,7 +73,7 @@
 
     @media (hover: hover) {
       &:hover {
-        color: var(--color-accent-primary);
+        color: var(--color-navigation-hover);
       }
     }
 
@@ -84,7 +84,7 @@
     &:focus-visible {
       outline-offset: var(--outline-offset);
       border-radius: var(--border-radius);
-      outline: 2px solid var(--color-accent-secondary);
+      outline: 2px solid var(--color-navigation-focus);
     }
   }
 

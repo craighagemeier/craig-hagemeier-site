@@ -3,12 +3,12 @@
   &__input {
     width: 100%;
     box-sizing: border-box;
-    padding: 0.5rem;
+    padding: var(--padding);
     min-height: 2.5rem;
     overflow-y: hidden;
     resize: none;
 
-    border: var(--border);
+    border: var(--border-width) solid var(--color-input-border);
     background-color: transparent;
     border-radius: var(--border-radius);
     font-size: 1rem;
@@ -17,8 +17,8 @@
     &:focus {
       -webkit-appearance: none;
       appearance: none;
-      border: var(--border-width) solid var(--color-accent-tertiary);
-      box-shadow: inset 0 0 0 1px var(--color-accent-tertiary);
+      border: var(--border-width) solid var(--color-input-border-focus);
+      box-shadow: inset 0 0 0 1px var(--color-input-border-focus);
     }
 
     &:focus:not(:focus-visible) {
@@ -29,22 +29,22 @@
     &:focus-visible {
       -webkit-appearance: none;
       appearance: none;
-      border: var(--border-width) solid var(--color-accent-tertiary);
-      box-shadow: inset 0 0 0 1px var(--color-accent-tertiary);
+      border: var(--border-width) solid var(--color-input-border-focus);
+      box-shadow: inset 0 0 0 1px var(--color-input-border-focus);
     }
   }
 
   &--error {
     .text-area__input {
-      border-color: var(--color-border-error);
+      border-color: var(--color-input-error-border);
       border-width: 1px;
-      box-shadow: inset 0 0 0 1px var(--color-border-error);
+      box-shadow: inset 0 0 0 1px var(--color-input-error-border);
 
       &:focus {
         -webkit-appearance: none;
         appearance: none;
-        border: var(--border-width) solid var(--color-accent-tertiary);
-        box-shadow: inset 0 0 0 1px var(--color-accent-tertiary);
+        border: var(--border-width) solid var(--color-input-border-focus);
+        box-shadow: inset 0 0 0 1px var(--color-input-border-focus);
       }
 
       &:focus:not(:focus-visible) {
@@ -55,8 +55,8 @@
       &:focus-visible {
         -webkit-appearance: none;
         appearance: none;
-        border: var(--border-width) solid var(--color-accent-tertiary);
-        box-shadow: inset 0 0 0 1px var(--color-accent-tertiary);
+        border: var(--border-width) solid var(--color-input-border-focus);
+        box-shadow: inset 0 0 0 1px var(--color-input-border-focus);
       }
     }
   }
@@ -67,7 +67,7 @@
   }
 
   &__error {
-    color: var(--color-text-error);
+    color: var(--color-input-error-text);
     font-size: 0.875rem;
     line-height: 1.4;
     margin: 0;
