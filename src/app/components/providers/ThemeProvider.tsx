@@ -92,7 +92,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         let content = el.innerHTML;
         // Process keywords for ticker effect
         content = content.replace(
-          /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS)\b/gi,
+          /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS|ENOUGH)\b/gi,
           '<span class="theme-box theme-ticker">$1</span>'
         );
 
@@ -108,7 +108,6 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     }
   };
 
-
   // Main theme effect
   useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
@@ -117,7 +116,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     localStorage.setItem("selectedColorMode", colorMode);
 
     // Remove all theme classes
-    document.body.classList.remove("theme-monochrome", "theme-kruger");
+    document.body.classList.remove("theme-monochrome", "theme-kruger", "theme-rogue-coast");
 
     // Add theme class
     document.body.classList.add(`theme-${theme}`);

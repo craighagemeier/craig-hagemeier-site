@@ -3,7 +3,7 @@ export default function HomePage() {
     <div className="ch-container">
       <div className="ch-row">
         <div className="ch-col">
-          <h1>Craig Hagemeier</h1>
+          <h2>Craig Hagemeier</h2>
           <p>Welcome to my personal site. More coming soon!</p>
           <section>
             <article>

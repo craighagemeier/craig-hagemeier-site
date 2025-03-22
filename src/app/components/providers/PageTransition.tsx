@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import "./page-transition.scss";
 
 // Define the order of pages in navigation
-const pageOrder = ["/", "/photography", "/endurance-quests", "/contact"];
+const pageOrder = ["/", "/photography", "/endurance-quests", "/contact", "/inspiration"];
 
 const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname();

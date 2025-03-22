@@ -46,6 +46,7 @@ export default function ThemeToggler({ isMenuOpen }: ThemeTogglerProps) {
   const themeOptions = [
     { value: "monochrome", label: "Monochrome" },
     { value: "kruger", label: "Barbara Kruger" },
+    { value: "rogue-coast", label: "Rogue Coast" },
   ];
 
   if (!isLoaded) return null; // Wait until loaded to prevent flashing
