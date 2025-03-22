@@ -18,18 +18,20 @@
   --color-gray-05: #0d0d0d;
   --color-black: #000;
   --color-red: #EB0000;
+  --color-black-sheep: #0e0e12;
+  --color-vulcan: #37373c;
 
   // Semantic color variables
-  --color-background-page: light-dark(var(--color-white), var(--color-gray-10));
+  --color-background-page: light-dark(var(--color-white), var(--color-black-sheep));
   --color-text-primary: light-dark(var(--color-gray-20), var(--color-white));
   --color-text-white: var(--color-white);
 
-  --color-header-top-bar-bg: light-dark(var(--color-white), var(--color-gray-10));
-  --color-header-bottom-bar-bg: light-dark(var(--color-black), var(--color-gray-20));
+  --color-header-top-bar-bg: light-dark(var(--color-white), var(--color-black-sheep));
+  --color-header-bottom-bar-bg: light-dark(var(--color-black), var(--color-vulcan));
 
-  --color-menu-bg: light-dark(rgba(0, 0, 0, 0.9), var(--color-gray-20));
+  --color-menu-bg: light-dark(rgba(0, 0, 0, 0.9), var(--color-vulcan));
 
-  --color-footer-bg: light-dark(var(--color-black), var(--color-gray-20));
+  --color-footer-bg: light-dark(var(--color-black), var(--color-vulcan));
 
   --color-caption-bg: rgba(0, 0, 0, 0.7);
 
@@ -47,7 +49,7 @@
   --color-button-primary-bg: light-dark(var(--color-black), var(--color-white));
   --color-button-primary-text: light-dark(var(--color-white), var(--color-black));
   --color-button-primary-border: light-dark(var(--color-white), var(--color-black));
-  --color-button-secondary-bg: light-dark(var(--color-white), var(--color-gray-40));
+  --color-button-secondary-bg: light-dark(var(--color-white), var(--color-vulcan));
   --color-button-secondary-text: light-dark(var(--color-black), var(--color-white));
   --color-button-secondary-border: light-dark(var(--color-black), var(--color-white));
   --color-button-focus-outline: var(--color-gray-60);

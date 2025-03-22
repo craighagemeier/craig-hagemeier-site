@@ -1,0 +1,41 @@
+.theme-rogue-coast {
+
+  --color-header-top-bar-bg: transparent;
+
+  @keyframes pulseGradientX {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+
+  @keyframes pulseGradientY {
+    0% { background-position: 100% 0%; }
+    50% { background-position: 0% 100%; }
+    100% { background-position: 100% 0%; }
+  }
+
+  .page-structure {
+    background:
+      linear-gradient(
+        120deg,
+        light-dark(rgba(255,165,0,0.7), rgba(204,85,0,0.8)),
+        light-dark(rgba(255,215,0,0.7), rgba(184,134,11,0.8)),
+        light-dark(rgba(255,130,171,0.7), rgba(85,26,139,0.8)),
+        light-dark(rgba(186,85,211,0.7), rgba(25,25,112,0.8)),
+        light-dark(rgba(100,149,237,0.7), rgba(0,71,171,0.8))),
+      linear-gradient(
+        240deg,
+        light-dark(rgba(100,149,237,0.7), rgba(0,71,171,0.8)),
+        light-dark(rgba(186,85,211,0.7), rgba(25,25,112,0.8)),
+        light-dark(rgba(255,130,171,0.7), rgba(85,26,139,0.8)),
+        light-dark(rgba(255,215,0,0.7), rgba(184,134,11,0.8)),
+        light-dark(rgba(255,165,0,0.7), rgba(204,85,0,0.8)));
+    background-blend-mode: screen;
+    background-size: 400% 400%;
+    animation:
+      pulseGradientX 15s ease-in-out infinite,
+      pulseGradientY 20s ease-in-out infinite;
+  }
+}

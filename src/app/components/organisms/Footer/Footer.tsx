@@ -47,7 +47,10 @@ export default function Footer() {
             </Link>
           </li>
         </ul>
-        <small>&copy; {new Date().getFullYear()} &mdash; Craig Hagemeier</small>
+        <div className="footer__copyright">
+          <small>&copy; {new Date().getFullYear()} &mdash; Craig Hagemeier</small>
+          <small><Link href="/inspiration">Inspiration</Link></small>
+        </div>
       </div>
     </footer>
   );

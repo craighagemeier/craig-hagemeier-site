@@ -48,6 +48,31 @@
       }
     }
   }
+
+  &__copyright {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: var(--color-text-white);
+      transition: color var(--transition-standard);
+
+      &:hover {
+        color: var(--color-navigation-hover);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        border-radius: var(--border-radius);
+        outline: 2px solid var(--color-navigation-focus);
+        color: inherit;
+      }
+    }
+  }
 }
 
 // Fix sticky color on mobile
