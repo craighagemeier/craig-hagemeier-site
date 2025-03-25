@@ -1,41 +1,228 @@
-.theme-rogue-coast {
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300..900&family=Playfair+Display:wght@400;700&display=swap");
 
+.theme-rogue-coast {
+  --font-family-heading: "Playfair Display", "Times New Roman", serif;
+  --font-family-body: "Outfit", "Helvetica Neue", sans-serif;
+
+  --glass-bg-lowest: linear-gradient(150deg,
+      light-dark(rgb(255 255 255 / 0.1), rgb(0 0 0 / 0.1)),
+      light-dark(rgb(255 255 255 / 0.1), rgb(0 0 0 / 0.1)) 2%,
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)) 3%,
+      light-dark(rgb(255 255 255 / 0.1), rgb(0 0 0 / 0.1)) 4%,
+      light-dark(rgb(255 255 255 / 0.1), rgb(0 0 0 / 0.1)) 12%,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 23%,
+      light-dark(rgb(255 255 255 / 0.1), rgb(0 0 0 / 0.1)) 25%,
+      light-dark(rgb(255 255 255 / 0.1), rgb(0 0 0 / 0.1)) 94%,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 95%,
+      light-dark(rgb(255 255 255 / 0.1), rgb(0 0 0 / 0.1)) 96%);
+
+  --glass-bg-low: linear-gradient(150deg,
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)),
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)) 2%,
+      light-dark(rgb(255 255 255 / 0.35), rgb(0 0 0 / 0.35)) 3%,
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)) 4%,
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)) 12%,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 23%,
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)) 25%,
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)) 94%,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 95%,
+      light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2)) 96%);
+
+  --glass-bg-mid: linear-gradient(150deg,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)),
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 2%,
+      light-dark(rgb(255 255 255 / 0.45), rgb(0 0 0 / 0.45)) 3%,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 4%,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 12%,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 23%,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 25%,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 94%,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 95%,
+      light-dark(rgb(255 255 255 / 0.3), rgb(0 0 0 / 0.3)) 96%);
+
+  --glass-bg-high: linear-gradient(150deg,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)),
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 2%,
+      light-dark(rgb(255 255 255 / 0.55), rgb(0 0 0 / 0.55)) 3%,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 4%,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 12%,
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 23%,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 25%,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 94%,
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 95%,
+      light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 96%);
+
+  --glass-bg-highest: linear-gradient(150deg,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)),
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 2%,
+      light-dark(rgb(255 255 255 / 0.65), rgb(0 0 0 / 0.65)) 3%,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 4%,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 12%,
+      light-dark(rgb(255 255 255 / 0.7), rgb(0 0 0 / 0.7)) 23%,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 25%,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 94%,
+      light-dark(rgb(255 255 255 / 0.7), rgb(0 0 0 / 0.7)) 95%,
+      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 96%);
+
+  --glass-border: 0.5px solid rgba(255, 255, 255, 0.2);
+  --glass-box-shadow: 0 8px 80px 0 rgba(79, 66, 181, 0.37);
+
+  --glass-blur-lowest: 4px;
+  --glass-blur-low: 8px;
+  --glass-blur-mid: 12px;
+  --glass-blur-high: 16px;
+  --glass-blur-highest: 20px;
+
+  // Primitive color variables
+  // Only need to define the colors that are different from the default theme
+  --color-red: light-dark(oklch(40% 0.3 30), oklch(75% 0.3 30));
+
+  // Semantic color variables
+  // Only need to define the colors that are different from the default theme
   --color-header-top-bar-bg: transparent;
+  --color-header-bottom-bar-bg: var(--glass-bg-lowest);
+  --header-bottom-bar-backdrop-filter: blur(var(--glass-blur-lowest));
+  --header-bottom-bar-border: var(--glass-border);
+  --header-bottom-bar-box-shadow: var(--glass-box-shadow);
+  --color-header-text: light-dark(var(--color-black), var(--color-white));
+  --header-image-border: var(--glass-border);
+
+  --color-footer-bg: var(--glass-bg-lowest);
+  --footer-backdrop-filter: blur(var(--glass-blur-lowest));
+  --footer-border: var(--glass-border);
+  --color-footer-text: light-dark(var(--color-black), var(--color-white));
+
+  --color-menu-bg: var(--glass-bg-highest);
+  --menu-backdrop-filter: blur(var(--glass-blur-highest));
+  --color-menu-text: light-dark(var(--color-black), var(--color-white));
+  --menu-top-border: none;
+  --menu-divider: 0.5px dotted rgba(0, 0, 0, 0.2);
+  --menu-border-radius: 16px;
+  --color-divider: rgba(255, 255, 255, 0.2);
+
+  --color-navigation-focus: light-dark(var(--color-black), var(--color-white));
+  --color-navigation-hover: light-dark(oklch(40% 0.3 200), oklch(80% 0.3 90));
+  --color-navigation-active: light-dark(oklch(40% 0.3 200), oklch(80% 0.3 90));
+
+  --color-input-error-text: var(--color-red);
+  --color-input-error-border: var(--color-red);
+  --color-input-border-focus: light-dark(var(--color-black), var(--color-white));
+
+  --color-star-tooltip-background: var(--glass-bg-highest);
+  --color-star-tooltip-border: var(--glass-border);
+  --color-star-tooltip-backdrop-filter: blur(var(--glass-blur-highest));
+  --color-star-tooltip-box-shadow: var(--glass-box-shadow);
+
+  --color-button-primary-bg: var(--glass-bg-high);
+  --color-button-secondary-bg: var(--glass-bg-high);
+  
+  --color-button-primary-text: light-dark(oklch(40% 0.3 200), oklch(80% 0.3 90));
+  --color-button-secondary-text: light-dark(var(--color-black), var(--color-white));
+
+  --button-primary-border: var(--border-width) solid light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
+  --button-secondary-border: var(--border-width) solid light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
+
+  --button-backdrop-filter: blur(var(--glass-blur-high));
+  --button-box-shadow: var(--glass-box-shadow);
+  --button-text-transform: uppercase;
+  --button-letter-spacing: 1px;
+  --color-button-focus-outline: light-dark(var(--color-black), var(--color-white));
+
+  section {
+    background: var(--glass-bg-low);
+    backdrop-filter: blur(var(--glass-blur-low));
+    -webkit-backdrop-filter: blur(var(--glass-blur-low));
+    border: var(--glass-border);
+    box-shadow: var(--glass-box-shadow);
+    border-radius: 16px;
+  }
+
+  article,
+  aside {
+    background: var(--glass-bg-mid);
+    backdrop-filter: blur(var(--glass-blur-mid));
+    -webkit-backdrop-filter: blur(var(--glass-blur-mid));
+    border: var(--glass-border);
+    box-shadow: var(--glass-box-shadow);
+    border-radius: 16px;
+  }
 
   @keyframes pulseGradientX {
-    0% { background-position: 0% 0%; }
-    25% { background-position: 100% 0%; }
-    50% { background-position: 100% 100%; }
-    75% { background-position: 0% 100%; }
-    100% { background-position: 0% 0%; }
+    0% {
+      background-position: 0% 0%;
+    }
+
+    25% {
+      background-position: 100% 0%;
+    }
+
+    50% {
+      background-position: 100% 100%;
+    }
+
+    75% {
+      background-position: 0% 100%;
+    }
+
+    100% {
+      background-position: 0% 0%;
+    }
   }
 
   @keyframes pulseGradientY {
-    0% { background-position: 100% 0%; }
-    50% { background-position: 0% 100%; }
-    100% { background-position: 100% 0%; }
+    0% {
+      background-position: 100% 0%;
+    }
+
+    50% {
+      background-position: 0% 100%;
+    }
+
+    100% {
+      background-position: 100% 0%;
+    }
   }
 
   .page-structure {
     background:
-      linear-gradient(
-        120deg,
-        light-dark(rgba(255,165,0,0.7), rgba(204,85,0,0.8)),
-        light-dark(rgba(255,215,0,0.7), rgba(184,134,11,0.8)),
-        light-dark(rgba(255,130,171,0.7), rgba(85,26,139,0.8)),
-        light-dark(rgba(186,85,211,0.7), rgba(25,25,112,0.8)),
-        light-dark(rgba(100,149,237,0.7), rgba(0,71,171,0.8))),
-      linear-gradient(
-        240deg,
-        light-dark(rgba(100,149,237,0.7), rgba(0,71,171,0.8)),
-        light-dark(rgba(186,85,211,0.7), rgba(25,25,112,0.8)),
-        light-dark(rgba(255,130,171,0.7), rgba(85,26,139,0.8)),
-        light-dark(rgba(255,215,0,0.7), rgba(184,134,11,0.8)),
-        light-dark(rgba(255,165,0,0.7), rgba(204,85,0,0.8)));
+      linear-gradient(120deg,
+        light-dark(oklch(80% 0.25 60 / 0.7), oklch(50% 0.3 50 / 0.8)),
+        light-dark(oklch(85% 0.3 90 / 0.7), oklch(55% 0.25 80 / 0.8)),
+        light-dark(oklch(75% 0.3 20 / 0.7), oklch(50% 0.3 280 / 0.8)),
+        light-dark(oklch(70% 0.3 320 / 0.7), oklch(35% 0.25 250 / 0.8)),
+        light-dark(oklch(65% 0.3 260 / 0.7), oklch(30% 0.3 250 / 0.8))),
+      linear-gradient(240deg,
+        light-dark(oklch(65% 0.3 260 / 0.7), oklch(30% 0.3 250 / 0.8)),
+        light-dark(oklch(70% 0.3 320 / 0.7), oklch(35% 0.25 250 / 0.8)),
+        light-dark(oklch(75% 0.3 20 / 0.7), oklch(50% 0.3 280 / 0.8)),
+        light-dark(oklch(85% 0.3 90 / 0.7), oklch(55% 0.25 80 / 0.8)),
+        light-dark(oklch(80% 0.25 60 / 0.7), oklch(50% 0.3 50 / 0.8)));
     background-blend-mode: screen;
     background-size: 400% 400%;
     animation:
       pulseGradientX 15s ease-in-out infinite,
       pulseGradientY 20s ease-in-out infinite;
   }
+
+  h1 {
+    font-size: 1rem;
+
+    @media (min-width: 744px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  h2, h3, h4 {
+    text-wrap: wrap !important;
+  }
+}
+
+.theme-rogue-coast .button:hover {
+  background: var(--glass-bg-highest);
+  border-color: light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
+}
+
+.theme-rogue-coast .button:active {
+  background: var(--glass-bg-mid);
+  transform: scale(0.98);
 }

@@ -4,8 +4,10 @@
   right: calc(-1 * 0.5rem);
   width: calc(100% - 80px);
   background: var(--color-menu-bg);
-  border-top: 1px solid var(--color-divider);
-  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
+  border-top: var(--menu-top-border);
+  box-shadow: var(--menu-box-shadow);
+  backdrop-filter: var(--menu-backdrop-filter);
+  -webkit-backdrop-filter: var(--menu-backdrop-filter);
   overflow: hidden;
   transform: translateX(100%);
   transition: transform 0.3s ease-out, visibility 0.3s ease-out;
@@ -25,14 +27,15 @@
   right: calc(-1 * 0.5rem);
   width: calc(100% - 80px);
   background: var(--color-menu-bg);
-  border-top: 1px solid var(--color-divider);
-  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
+  border-top: var(--menu-top-border);
+  box-shadow: var(--menu-box-shadow);
   overflow: hidden;
   transform: translateX(100%);
   transition: transform 0.3s ease-out, visibility 0.3s ease-out;
   z-index: 100;
   visibility: hidden;
   pointer-events: none;
+  border-bottom-left-radius: var(--menu-border-radius);
 
   @media (min-width: 769px) {
     width: 240px;
@@ -51,10 +54,10 @@
   }
 
   &__item {
-    color: var(--color-text-white);
+    color: var(--color-header-text);
     font-weight: 500;
     padding: 0.5rem;
-    border-bottom: 1px dotted var(--color-divider);
+    border-bottom: var(--menu-divider);
     transition: color var(--transition-standard);
     display: flex;
     width: 100%;
@@ -100,14 +103,15 @@
   right: calc(-1 * 0.5rem);
   width: calc(100% - 80px);
   background: var(--color-menu-bg);
-  border-top: 1px solid var(--color-divider);
-  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
+  border-top: var(--menu-top-border);
+  box-shadow: var(--menu-box-shadow);
   overflow: hidden;
   transform: translateX(100%);
   transition: transform 0.3s ease-out, visibility 0.3s ease-out;
   z-index: 100;
   visibility: hidden;
   pointer-events: none;
+  border-bottom-left-radius: var(--menu-border-radius);
 
   @media (min-width: 769px) {
     width: 240px;
@@ -142,7 +146,7 @@
     align-items: center;
     justify-content: space-evenly;
     padding: 0.5rem;
-    border-top: 1px dotted var(--color-divider);
+    border-top: var(--menu-divider);
     width: 100%;
   }
 
@@ -150,7 +154,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: var(--color-text-white);
+    color: var(--color-menu-text);
     transition: color var(--transition-standard);
     flex-grow: 1;
     height: 48px;

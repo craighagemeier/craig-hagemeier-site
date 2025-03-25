@@ -79,14 +79,19 @@ body {
 main {
   flex: 1 0 auto;
   width: 100%;
-}
-
-section, article {
   padding-bottom: 2rem;
 }
 
+section, article, aside {
+  padding: 1rem;
+}
+
+section > article:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
 aside {
-  padding: 2rem 0;
+  padding-bottom: 0;
 }
 
 // Ensure form elements inherit styles

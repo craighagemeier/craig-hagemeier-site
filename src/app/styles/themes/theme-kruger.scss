@@ -14,6 +14,7 @@
 
   --color-header-top-bar-bg: var(--color-red);
   --color-header-bottom-bar-bg: var(--color-red);
+  --header-image-border: 2px solid var(--color-black);
 
   --color-menu-bg: var(--color-red);
 
@@ -26,6 +27,9 @@
   --color-navigation-active: var(--color-black);
 
   --color-divider: var(--color-black);
+  --menu-top-border: 1px solid var(--color-black);
+  --menu-divider: 1px dotted var(--color-black);
+  --footer-border: 1px solid transparent;
 
   --color-button-primary-bg: var(--color-red);
   --color-button-focus-outline: var(--color-red);
@@ -55,6 +59,7 @@
     color: var(--color-text-white);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     width: fit-content;
+    text-wrap: wrap !important;
   }
 
   img {

@@ -19,7 +19,7 @@
   }
 
   &__item {
-    color: var(--color-text-white);
+    color: var(--color-header-text);
     font-weight: 500;
     padding: 0 0.5rem;
     transition: color var(--transition-standard);
@@ -62,7 +62,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: var(--color-text-white);
+    color: var(--color-header-text);
     transition: color var(--transition-standard);
     width: 48px;
     height: 48px;
@@ -85,6 +85,7 @@
       outline-offset: var(--outline-offset);
       border-radius: var(--border-radius);
       outline: 2px solid var(--color-navigation-focus);
+      color: inherit;
     }
   }
 
