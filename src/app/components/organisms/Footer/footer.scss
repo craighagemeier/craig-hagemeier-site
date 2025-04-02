@@ -1,9 +1,11 @@
 .footer {
   background: var(--color-footer-bg);
-  color: var(--color-text-white);
+  color: var(--color-footer-text);
   padding: 1rem 0;
   text-align: center;
-  border-top: 1px solid var(--color-divider);
+  backdrop-filter: var(--footer-backdrop-filter);
+  -webkit-backdrop-filter: var(--footer-backdrop-filter);
+  border-top: var(--footer-border);
   border-bottom: 1px solid var(--color-footer-bg);
 
   &__container {
@@ -17,7 +19,7 @@
     justify-content: center;
     gap: 0.75rem;
     padding: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
     @media (min-width: 769px) {
       gap: 1rem;
@@ -29,8 +31,8 @@
       justify-content: center;
       width: 40px;
       height: 40px;
-      color: var(--color-text-white);
-      transition: color var(--transition-standard);
+      color: var(--color-footer-text);
+      transition: var(--transition-color);
 
       &:hover {
         color: var(--color-navigation-hover);
@@ -54,8 +56,8 @@
     justify-content: space-between;
 
     a {
-      color: var(--color-text-white);
-      transition: color var(--transition-standard);
+      color: var(--color-footer-text);
+      transition: var(--transition-color);
 
       &:hover {
         color: var(--color-navigation-hover);

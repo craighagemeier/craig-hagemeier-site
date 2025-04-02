@@ -17,7 +17,7 @@
   --color-gray-10: #1a1a1a;
   --color-gray-05: #0d0d0d;
   --color-black: #000;
-  --color-red: #EB0000;
+  --color-red: light-dark(#EB0000, #FA0000);
   --color-black-sheep: #0e0e12;
   --color-vulcan: #37373c;
 
@@ -26,33 +26,51 @@
   --color-text-primary: light-dark(var(--color-gray-20), var(--color-white));
   --color-text-white: var(--color-white);
 
+  --color-divider: var(--color-gray-60);
+
   --color-header-top-bar-bg: light-dark(var(--color-white), var(--color-black-sheep));
   --color-header-bottom-bar-bg: light-dark(var(--color-black), var(--color-vulcan));
+  --color-header-text: var(--color-white);
+  --header-bottom-bar-backdrop-filter: none;
+  --header-bottom-bar-border: none;
+  --header-bottom-bar-box-shadow: none;
+  --header-image-border: 2px solid var(--color-divider);
 
   --color-menu-bg: light-dark(rgba(0, 0, 0, 0.9), var(--color-vulcan));
+  --color-menu-text: var(--color-white);
+  --menu-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
+  --menu-backdrop-filter: none;
+  --menu-top-border: 1px solid var(--color-divider);
+  --menu-divider: 1px dotted var(--color-divider);
+  --menu-border-radius: 0;
 
   --color-footer-bg: light-dark(var(--color-black), var(--color-vulcan));
-
-  --color-caption-bg: rgba(0, 0, 0, 0.7);
-
-  --color-input-error-text: var(--color-red);
-  --color-input-error-border: var(--color-red);
-  --color-input-border: light-dark(var(--color-gray-20), var(--color-gray-80));
-  --color-input-border-focus: var(--color-gray-60);
+  --color-footer-text: var(--color-white);
+  --footer-border: 1px solid var(--color-divider);
+  --footer-backdrop-filter: none;
 
   --color-navigation-focus: var(--color-gray-60);
   --color-navigation-hover: var(--color-gray-60);
   --color-navigation-active: var(--color-gray-60);
 
-  --color-divider: var(--color-gray-60);
+  --color-input-border: light-dark(var(--color-gray-20), var(--color-gray-80));
+  --color-input-border-focus: var(--color-gray-60);
+  --color-input-error-border: var(--color-red);
+  --color-input-error-text: var(--color-red);
 
   --color-button-primary-bg: light-dark(var(--color-black), var(--color-white));
   --color-button-primary-text: light-dark(var(--color-white), var(--color-black));
-  --color-button-primary-border: light-dark(var(--color-white), var(--color-black));
+  --button-primary-border: var(--border-width) solid light-dark(var(--color-white), var(--color-black));
   --color-button-secondary-bg: light-dark(var(--color-white), var(--color-vulcan));
   --color-button-secondary-text: light-dark(var(--color-black), var(--color-white));
-  --color-button-secondary-border: light-dark(var(--color-black), var(--color-white));
+  --button-secondary-border: var(--border-width) solid light-dark(var(--color-black), var(--color-white));
   --color-button-focus-outline: var(--color-gray-60);
+  --button-backdrop-filter: none;
+  --button-box-shadow: none;
+  --button-text-transform: none;
+  --button-letter-spacing: normal;
+
+  --color-caption-bg: rgba(0, 0, 0, 0.7);
 
   --color-progress-bar-bg: light-dark(var(--color-gray-80), var(--color-gray-20));
   --color-progress-bar-completed: var(--color-gray-40);
@@ -74,7 +92,9 @@
   --color-star-completed: light-dark(var(--color-black), var(--color-gray-90));
   --color-star-completed-text: light-dark(var(--color-white), var(--color-black));
   --color-star-tooltip-background: light-dark(var(--color-white), var(--color-black));
-  --color-star-tooltip-border: light-dark(var(--color-gray-20), var(--color-white));
+  --color-star-tooltip-border: 1px solid light-dark(var(--color-gray-20), var(--color-white));
+  --color-star-tooltip-backdrop-filter: none;
+  --color-star-tooltip-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
   h1,
   h2,
@@ -84,6 +104,7 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     font-variant: small-caps;
+    text-wrap: nowrap;
   }
 
   .theme-first-letter {

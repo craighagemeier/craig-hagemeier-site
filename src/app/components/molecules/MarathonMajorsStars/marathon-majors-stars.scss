@@ -11,12 +11,11 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2.5rem;
-    margin: 2rem 0;
   }
 
   &__star-container {
     position: relative;
-    transition: transform 0.3s ease;
+    transition: var(--transition-transform);
 
     &:hover {
       transform: translateY(-0.5rem);
@@ -48,7 +47,7 @@
     justify-content: center;
     background-color: var(--color-star-default);
     color: var(--color-star-default-text);
-    transition: all 0.3s ease;
+    transition: var(--transition-all);
 
     /* Create five-pointed star shape using CSS */
     clip-path: polygon(
@@ -94,11 +93,14 @@
     transform: translateX(-50%);
     width: 12rem;
     background-color: var(--color-star-tooltip-background);
-    border: var(--border-width) solid var(--color-star-tooltip-border);
+    backdrop-filter: var(--color-star-tooltip-backdrop-filter);
+    -webkit-backdrop-filter: var(--color-star-tooltip-backdrop-filter);
+    border: var(--color-star-tooltip-border);
+    box-shadow: var(--color-star-tooltip-box-shadow);
     border-radius: var(--border-radius);
     padding: 0.75rem;
     z-index: 10;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--color-star-tooltip-box-shadow);
   }
 
   &__tooltip-title {

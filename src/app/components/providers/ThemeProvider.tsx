@@ -85,7 +85,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       });
     }
 
-    // Apply transformations for Kruger theme (removes `theme-box` from h1)
+    // Apply transformations for Kruger theme
     if (currentTheme === "kruger") {
       // Apply Kruger theme transformations to text elements
       textElements.forEach((el) => {

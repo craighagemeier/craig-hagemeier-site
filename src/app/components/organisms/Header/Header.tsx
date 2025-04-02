@@ -30,6 +30,7 @@ const Header = forwardRef<HTMLElement, { isShrunk: boolean }>(({ isShrunk }, ref
               width={160}
               height={160}
               className="header__image"
+              priority
             />
           </a>
         </div>
