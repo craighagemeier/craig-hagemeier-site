@@ -225,7 +225,16 @@ export default function EndurancePage() {
         </div>
         <div className="ch-row">
           <div className="ch-col-xs-12 ch-col-sm-6 ch-order-xs-last ch-order-sm-first">
-            <MarathonMap />
+            <div className="ch-row">
+              <div className="ch-col">
+                <MarathonMap />
+              </div>
+            </div>
+            <div className="ch-row">
+              <div className="ch-col">
+                <p><strong>18 of 50 States Completed</strong></p>
+              </div>
+            </div>
           </div>
           <div className="ch-col-xs-12 ch-col-sm-6 ch-order-xs-first ch-order-sm-last">
             <div className="ch-row">

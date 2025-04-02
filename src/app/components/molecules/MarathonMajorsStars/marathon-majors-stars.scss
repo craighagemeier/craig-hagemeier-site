@@ -15,7 +15,7 @@
 
   &__star-container {
     position: relative;
-    transition: transform 0.3s ease;
+    transition: var(--transition-transform);
 
     &:hover {
       transform: translateY(-0.5rem);
@@ -47,7 +47,7 @@
     justify-content: center;
     background-color: var(--color-star-default);
     color: var(--color-star-default-text);
-    transition: all 0.3s ease;
+    transition: var(--transition-all);
 
     /* Create five-pointed star shape using CSS */
     clip-path: polygon(

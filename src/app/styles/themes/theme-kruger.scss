@@ -11,25 +11,24 @@
   // Only need to define the colors that are different from the default theme
 
   --color-accent: var(--color-black);
+  --color-divider: var(--color-black);
 
   --color-header-top-bar-bg: var(--color-red);
   --color-header-bottom-bar-bg: var(--color-red);
   --header-image-border: 2px solid var(--color-black);
 
   --color-menu-bg: var(--color-red);
+  --menu-top-border: 1px solid var(--color-black);
+  --menu-divider: 1px dotted var(--color-black);
 
   --color-footer-bg: var(--color-red);
-
-  --color-input-border-focus: var(--color-red);
+  --footer-border: 1px solid transparent;
 
   --color-navigation-focus: var(--color-black);
   --color-navigation-hover: var(--color-black);
   --color-navigation-active: var(--color-black);
 
-  --color-divider: var(--color-black);
-  --menu-top-border: 1px solid var(--color-black);
-  --menu-divider: 1px dotted var(--color-black);
-  --footer-border: 1px solid transparent;
+  --color-input-border-focus: var(--color-red);
 
   --color-button-primary-bg: var(--color-red);
   --color-button-focus-outline: var(--color-red);
@@ -57,14 +56,14 @@
     background-color: var(--color-accent);
     padding: 4px 8px;
     color: var(--color-text-white);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: var(--transition-transform), var(--transition-box-shadow);
     width: fit-content;
     text-wrap: wrap !important;
   }
 
   img {
     filter: grayscale(100%);
-    transition: filter 0.3s ease, transform 0.3s ease;
+    transition: filter var(--transition-standard), var(--transition-transform);
   }
 
   img:hover {
@@ -81,7 +80,7 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    transition: var(--transition-background), var(--transition-transform);
   }
 
   .theme-box::after {
@@ -93,7 +92,7 @@
     height: 100%;
     background-color: var(--color-accent);
     z-index: -1;
-    transition: left 0.3s ease;
+    transition: left var(--transition-standard);
   }
 
   .theme-box:hover::after {
@@ -104,42 +103,26 @@
     transform: scale(1.1);
   }
 
-  @keyframes text-wobble {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(2deg); }
-    50% { transform: rotate(-2deg); }
-    75% { transform: rotate(1deg); }
-  }
-
-  .theme-wobble:hover {
-    animation: text-wobble 0.15s ease-in-out infinite;
-  }
-
   @keyframes slideIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   h2, h3, h4 {
-    animation: slideIn 0.5s ease-in-out;
+    animation: slideIn var(--animation-duration-medium) var(--transition-timing);
   }
 
   .theme-box:hover {
     background-color: var(--color-header-bottom-bar-bg);
     color: var(--color-text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  body:has(.theme-box:hover) {
-    background-color: rgba(0, 0, 0, 0.9);
-    transition: background-color 0.3s ease;
+    transition: var(--transition-background), var(--transition-color);
   }
 
   .theme-ticker {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    animation: ticker 10s linear infinite;
+    animation: ticker var(--animation-duration-long) linear infinite;
   }
 
   @keyframes ticker {

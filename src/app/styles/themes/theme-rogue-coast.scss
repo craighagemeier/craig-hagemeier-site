@@ -53,16 +53,16 @@
       light-dark(rgb(255 255 255 / 0.4), rgb(0 0 0 / 0.4)) 96%);
 
   --glass-bg-highest: linear-gradient(150deg,
-      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)),
-      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 2%,
-      light-dark(rgb(255 255 255 / 0.65), rgb(0 0 0 / 0.65)) 3%,
-      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 4%,
-      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 12%,
-      light-dark(rgb(255 255 255 / 0.7), rgb(0 0 0 / 0.7)) 23%,
-      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 25%,
-      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 94%,
-      light-dark(rgb(255 255 255 / 0.7), rgb(0 0 0 / 0.7)) 95%,
-      light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5)) 96%);
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)),
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 2%,
+      light-dark(rgb(255 255 255 / 0.75), rgb(0 0 0 / 0.75)) 3%,
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 4%,
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 12%,
+      light-dark(rgb(255 255 255 / 0.8), rgb(0 0 0 / 0.8)) 23%,
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 25%,
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 94%,
+      light-dark(rgb(255 255 255 / 0.8), rgb(0 0 0 / 0.8)) 95%,
+      light-dark(rgb(255 255 255 / 0.6), rgb(0 0 0 / 0.6)) 96%);
 
   --glass-border: 0.5px solid rgba(255, 255, 255, 0.2);
   --glass-box-shadow: 0 8px 80px 0 rgba(79, 66, 181, 0.37);
@@ -79,54 +79,52 @@
 
   // Semantic color variables
   // Only need to define the colors that are different from the default theme
+  --color-divider: rgba(255, 255, 255, 0.2);
+
   --color-header-top-bar-bg: transparent;
   --color-header-bottom-bar-bg: var(--glass-bg-lowest);
+  --color-header-text: light-dark(var(--color-black), var(--color-white));
   --header-bottom-bar-backdrop-filter: blur(var(--glass-blur-lowest));
   --header-bottom-bar-border: var(--glass-border);
   --header-bottom-bar-box-shadow: var(--glass-box-shadow);
-  --color-header-text: light-dark(var(--color-black), var(--color-white));
   --header-image-border: var(--glass-border);
 
-  --color-footer-bg: var(--glass-bg-lowest);
-  --footer-backdrop-filter: blur(var(--glass-blur-lowest));
-  --footer-border: var(--glass-border);
-  --color-footer-text: light-dark(var(--color-black), var(--color-white));
-
   --color-menu-bg: var(--glass-bg-highest);
-  --menu-backdrop-filter: blur(var(--glass-blur-highest));
   --color-menu-text: light-dark(var(--color-black), var(--color-white));
+  --menu-backdrop-filter: blur(var(--glass-blur-highest));
   --menu-top-border: none;
   --menu-divider: 0.5px dotted rgba(0, 0, 0, 0.2);
   --menu-border-radius: 16px;
-  --color-divider: rgba(255, 255, 255, 0.2);
+
+  --color-footer-bg: var(--glass-bg-lowest);
+  --color-footer-text: light-dark(var(--color-black), var(--color-white));
+  --footer-border: var(--glass-border);
+  --footer-backdrop-filter: blur(var(--glass-blur-lowest));
 
   --color-navigation-focus: light-dark(var(--color-black), var(--color-white));
   --color-navigation-hover: light-dark(oklch(40% 0.3 200), oklch(80% 0.3 90));
   --color-navigation-active: light-dark(oklch(40% 0.3 200), oklch(80% 0.3 90));
 
-  --color-input-error-text: var(--color-red);
-  --color-input-error-border: var(--color-red);
   --color-input-border-focus: light-dark(var(--color-black), var(--color-white));
+  --color-input-error-border: var(--color-red);
+  --color-input-error-text: var(--color-red);
+
+  --color-button-primary-bg: var(--glass-bg-high);
+  --color-button-primary-text: light-dark(oklch(40% 0.3 200), oklch(80% 0.3 90));
+  --button-primary-border: var(--border-width) solid light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
+  --color-button-secondary-bg: var(--glass-bg-high);
+  --color-button-secondary-text: light-dark(var(--color-black), var(--color-white));
+  --button-secondary-border: var(--border-width) solid light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
+  --color-button-focus-outline: light-dark(var(--color-black), var(--color-white));
+  --button-backdrop-filter: blur(var(--glass-blur-high));
+  --button-box-shadow: var(--glass-box-shadow);
+  --button-text-transform: uppercase;
+  --button-letter-spacing: 1px;
 
   --color-star-tooltip-background: var(--glass-bg-highest);
   --color-star-tooltip-border: var(--glass-border);
   --color-star-tooltip-backdrop-filter: blur(var(--glass-blur-highest));
   --color-star-tooltip-box-shadow: var(--glass-box-shadow);
-
-  --color-button-primary-bg: var(--glass-bg-high);
-  --color-button-secondary-bg: var(--glass-bg-high);
-  
-  --color-button-primary-text: light-dark(oklch(40% 0.3 200), oklch(80% 0.3 90));
-  --color-button-secondary-text: light-dark(var(--color-black), var(--color-white));
-
-  --button-primary-border: var(--border-width) solid light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
-  --button-secondary-border: var(--border-width) solid light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
-
-  --button-backdrop-filter: blur(var(--glass-blur-high));
-  --button-box-shadow: var(--glass-box-shadow);
-  --button-text-transform: uppercase;
-  --button-letter-spacing: 1px;
-  --color-button-focus-outline: light-dark(var(--color-black), var(--color-white));
 
   section {
     background: var(--glass-bg-low);
@@ -145,6 +143,10 @@
     border: var(--glass-border);
     box-shadow: var(--glass-box-shadow);
     border-radius: 16px;
+  }
+
+  section > article {
+    --glass-blur-mid: 0px; /* Override blur when article is inside a section */
   }
 
   @keyframes pulseGradientX {
@@ -224,5 +226,4 @@
 
 .theme-rogue-coast .button:active {
   background: var(--glass-bg-mid);
-  transform: scale(0.98);
 }

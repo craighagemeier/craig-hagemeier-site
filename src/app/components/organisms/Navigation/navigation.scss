@@ -22,7 +22,7 @@
     color: var(--color-header-text);
     font-weight: 500;
     padding: 0 0.5rem;
-    transition: color var(--transition-standard);
+    transition: var(--transition-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +63,7 @@
     border: none;
     cursor: pointer;
     color: var(--color-header-text);
-    transition: color var(--transition-standard);
+    transition: var(--transition-color);
     width: 48px;
     height: 48px;
     display: flex;

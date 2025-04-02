@@ -3,7 +3,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  transition: all var(--transition-standard);
+  transition: var(--transition-all);
   z-index: 1000;
 
   &__topBar {
@@ -21,7 +21,7 @@
     background: var(--color-header-bottom-bar-bg);
     color: var(--color-header-text);
     position: relative;
-    transition: all var(--transition-standard);
+    transition: var(--transition-all);
     padding: 0 0.5rem;
     backdrop-filter: var(--header-bottom-bar-backdrop-filter);
     -webkit-backdrop-filter: var(--header-bottom-bar-backdrop-filter);
@@ -54,7 +54,7 @@
     aspect-ratio: 1;
     object-fit: cover;
     border: var(--header-image-border);
-    transition: all var(--transition-standard);
+    transition: var(--transition-all);
   }
 
   &__title {
@@ -64,7 +64,7 @@
     text-align: center;
     font-size: 1.25rem;
     white-space: nowrap;
-    transition: color var(--transition-standard);
+    transition: var(--transition-color);
   }
 
   &--shrink {

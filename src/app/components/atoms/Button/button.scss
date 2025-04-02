@@ -15,7 +15,7 @@
   box-shadow: var(--button-box-shadow);
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition-all);
   text-align: center;
   min-width: 0;
   position: relative;

@@ -17,7 +17,7 @@
   --color-gray-10: #1a1a1a;
   --color-gray-05: #0d0d0d;
   --color-black: #000;
-  --color-red: #EB0000;
+  --color-red: light-dark(#EB0000, #FA0000);
   --color-black-sheep: #0e0e12;
   --color-vulcan: #37373c;
 
@@ -26,12 +26,15 @@
   --color-text-primary: light-dark(var(--color-gray-20), var(--color-white));
   --color-text-white: var(--color-white);
 
+  --color-divider: var(--color-gray-60);
+
   --color-header-top-bar-bg: light-dark(var(--color-white), var(--color-black-sheep));
   --color-header-bottom-bar-bg: light-dark(var(--color-black), var(--color-vulcan));
   --color-header-text: var(--color-white);
   --header-bottom-bar-backdrop-filter: none;
   --header-bottom-bar-border: none;
   --header-bottom-bar-box-shadow: none;
+  --header-image-border: 2px solid var(--color-divider);
 
   --color-menu-bg: light-dark(rgba(0, 0, 0, 0.9), var(--color-vulcan));
   --color-menu-text: var(--color-white);
@@ -46,19 +49,14 @@
   --footer-border: 1px solid var(--color-divider);
   --footer-backdrop-filter: none;
 
-  --color-caption-bg: rgba(0, 0, 0, 0.7);
-
-  --color-input-error-text: var(--color-red);
-  --color-input-error-border: var(--color-red);
-  --color-input-border: light-dark(var(--color-gray-20), var(--color-gray-80));
-  --color-input-border-focus: var(--color-gray-60);
-
   --color-navigation-focus: var(--color-gray-60);
   --color-navigation-hover: var(--color-gray-60);
   --color-navigation-active: var(--color-gray-60);
 
-  --color-divider: var(--color-gray-60);
-  --header-image-border: 2px solid var(--color-divider);
+  --color-input-border: light-dark(var(--color-gray-20), var(--color-gray-80));
+  --color-input-border-focus: var(--color-gray-60);
+  --color-input-error-border: var(--color-red);
+  --color-input-error-text: var(--color-red);
 
   --color-button-primary-bg: light-dark(var(--color-black), var(--color-white));
   --color-button-primary-text: light-dark(var(--color-white), var(--color-black));
@@ -71,6 +69,8 @@
   --button-box-shadow: none;
   --button-text-transform: none;
   --button-letter-spacing: normal;
+
+  --color-caption-bg: rgba(0, 0, 0, 0.7);
 
   --color-progress-bar-bg: light-dark(var(--color-gray-80), var(--color-gray-20));
   --color-progress-bar-completed: var(--color-gray-40);

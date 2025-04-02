@@ -17,6 +17,14 @@ export const metadata: Metadata = {
       "A journey through code, creativity, and adventure: racing through endurance events, capturing moments behind the lens, and exploring the world.",
     url: "https://craig.hagemeier.com",
     siteName: "Craig Hagemeier",
+    images: [
+      {
+        url: "https://craig.hagemeier.com/images/Craig-Hagemeier.jpg",
+        width: 714,
+        height: 714,
+        alt: "Craig Hagemeier - Exploring Ideas, Capturing Moments, Pushing Limits",
+      },
+    ],
   },
   metadataBase: new URL("https://craig.hagemeier.com"),
   authors: [{ name: "Craig Hagemeier", url: "https://craig.hagemeier.com" }],

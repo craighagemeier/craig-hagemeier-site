@@ -1,14 +1,45 @@
 :root {
-  /* Define your transition variables as CSS custom properties */
+  /* Base transition parameters */
   --transition-duration: 200ms;
   --transition-timing: ease-in-out;
   --transition-standard: var(--transition-duration) var(--transition-timing);
-  --transition-outline: 150ms ease-out;
+
+  /* Focus transition */
+  --transition-focus-duration: 100ms;
+  --transition-focus-timing: ease-out;
+  --transition-outline: var(--transition-focus-duration) var(--transition-focus-timing);
+
+  /* Specific transition types */
+  --transition-transform: transform var(--transition-standard);
+  --transition-color: color var(--transition-standard);
+  --transition-background: background-color var(--transition-standard);
+  --transition-opacity: opacity var(--transition-standard);
+  --transition-border: border-color var(--transition-standard);
+  --transition-box-shadow: box-shadow var(--transition-standard);
+
+  /* Menu transition */
+  --transition-menu-duration: 300ms;
+  --transition-menu-timing: ease-out;
+  --transition-menu: transform var(--transition-menu-duration) var(--transition-menu-timing),
+                      visibility var(--transition-menu-duration) var(--transition-menu-timing);
+
+  /* Carousel transition */
+  --transition-carousel-duration: 800ms;
+  --transition-carousel-timing: ease;
+  --transition-carousel: transform var(--transition-carousel-duration) var(--transition-carousel-timing);
+
+  /* Composite transitions */
   --transition-all: all var(--transition-standard),
                      outline-offset var(--transition-outline),
                      outline-width var(--transition-outline),
                      outline-color var(--transition-outline);
 
+  /* Animation durations */
+  --animation-duration-short: 200ms;
+  --animation-duration-medium: 500ms;
+  --animation-duration-long: 10s;
+
+  /* Standard values */
   --border-radius: 8px;
   --border-width: 1px;
   --outline-offset: 2px;

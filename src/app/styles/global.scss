@@ -1,8 +1,8 @@
-@import "./themes/theme-rogue-coast.scss";
-@import "./themes/theme-kruger.scss";
-@import "./themes/theme-monochrome.scss";
-@import "./grid.css";
-@import "./variables.scss";
+@use "./themes/theme-rogue-coast.scss";
+@use "./themes/theme-kruger.scss";
+@use "./themes/theme-monochrome.scss";
+@use "./grid.css";
+@use "./variables.scss";
 
 // Box-sizing reset
 *,

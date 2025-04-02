@@ -171,7 +171,7 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
       <div
         ref={gridRef}
         className={`flickr-gallery__masonry-grid ${isLoading ? 'flickr-gallery__masonry-grid--fade-out' : 'flickr-gallery__masonry-grid--fade-in'}`}
-        style={{ opacity: (layoutReady || photos.length === 0) ? 1 : 0.3, transition: 'opacity 0.3s ease' }}
+        style={{ opacity: (layoutReady || photos.length === 0) ? 1 : 0.2, transition: 'opacity 0.2s ease' }}
       >
         {photos.map((photo, index) => (
           <div

@@ -2,7 +2,7 @@
   color: var(--color-text-primary);
   text-decoration: underline;
   font-weight: 600;
-  transition: color var(--transition-standard);
+  transition: var(--transition-color);
 
   &:visited {
     color: var(--color-text-primary);

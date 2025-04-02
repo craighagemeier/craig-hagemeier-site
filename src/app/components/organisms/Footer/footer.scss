@@ -19,7 +19,7 @@
     justify-content: center;
     gap: 0.75rem;
     padding: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
     @media (min-width: 769px) {
       gap: 1rem;
@@ -32,7 +32,7 @@
       width: 40px;
       height: 40px;
       color: var(--color-footer-text);
-      transition: color var(--transition-standard);
+      transition: var(--transition-color);
 
       &:hover {
         color: var(--color-navigation-hover);
@@ -57,7 +57,7 @@
 
     a {
       color: var(--color-footer-text);
-      transition: color var(--transition-standard);
+      transition: var(--transition-color);
 
       &:hover {
         color: var(--color-navigation-hover);
