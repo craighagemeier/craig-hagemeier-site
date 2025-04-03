@@ -199,12 +199,12 @@ export default function EndurancePage() {
             </div>
             <div className="ch-row">
               <div className="ch-col">
-                <p>Getting into this race isn't easy. Option 1: Win another IRONMAN race. Yeah, that's not happening. I've got endurance, grit, and a good dose of stubbornness, but raw speed? Not so much. Option 2: Fundraise for a charity. A great cause, but there's only so many times I can hit up friends and family for donations. I'm saving that for when I finally run the Boston Marathon.</p>
+                <p>Getting into this race isn't easy. Option 1: Win another IRONMAN race. Yeah, that's not happening. I've got endurance, grit, and a good dose of stubbornness, but raw speed? Not so much. Option 2: Fundraise for a charity. A wonderful cause, but there are only so many times you can hit up friends and family for donations. I'm saving that for when I finally run the Boston Marathon.</p>
               </div>
             </div>
             <div className="ch-row">
               <div className="ch-col">
-                <p>That leaves Option 3: The Legacy Program. The deal? Finish 12 full IRONMAN races, and your name gets entered into a lottery. Stick with it long enough, and eventually, your number gets called. So that's the plan. One race at a time.</p>
+                <p>That leaves Option 3: The Legacy Program. The deal? Finish 12 full IRONMAN races, and your name gets added to the waitlist. Spend a little time there, and eventually, your name gets called. So that's the plan. One race at a time.</p>
               </div>
             </div>
           </div>
