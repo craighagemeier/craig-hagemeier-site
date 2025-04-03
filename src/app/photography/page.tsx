@@ -20,7 +20,7 @@ export default async function Photography() {
         </div>
         <div className="ch-row">
           <div className="ch-col">
-            <p>I've been taking photos for as long as I can remember. I love capturing the beauty of the world around me, and I'm always looking for the next great shot. I've been lucky enough to travel to some amazing places, and I love sharing my photos with others.</p>
+            <p>I've been taking photos for as long as I can remember. I love capturing the beauty of the world around me, and I'm always looking for the next great shot. I've been fortunate to travel to some amazing places, and I love sharing my photos with others.</p>
           </div>
         </div>
         <div className="ch-row">

@@ -89,6 +89,10 @@ section, article, aside {
 section > article:not(:last-child) {
   margin-bottom: 2rem;
 }
+section {
+  position: relative;
+  min-height: 400px;
+}
 
 aside {
   padding-bottom: 0;
