@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useState, useEffect } from "react";
+
 import { usePathname } from "next/navigation";
 
 interface ThemeContextType {
@@ -95,7 +96,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     // Apply transformations for monochrome theme (first letter effect for all headings)
     if (currentTheme === "monochrome") {
       headings.forEach((heading) => {
-        heading.innerHTML = heading.textContent?.replace(/\b(\w)/g, "<span class='theme-first-letter'>$1</span>") || "";
+        heading.innerHTML = escapeHtml(heading.textContent)?.replace(/\b(\w)/g, "<span class='theme-first-letter'>$1</span>") || "";
       });
     }
 
