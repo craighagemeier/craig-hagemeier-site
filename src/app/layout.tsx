@@ -15,19 +15,19 @@ export const metadata: Metadata = {
     title: "Craig Hagemeier | Exploring Ideas, Capturing Moments, Pushing Limits",
     description:
       "A journey through code, creativity, and adventure: racing through endurance events, capturing moments behind the lens, and exploring the world.",
-    url: "https://craig.hagemeier.com",
+    url: "https://craighagemeier.com",
     siteName: "Craig Hagemeier",
     images: [
       {
-        url: "https://craig.hagemeier.com/images/Craig-Hagemeier.jpg",
+        url: "https://craighagemeier.com/images/Craig-Hagemeier.jpg",
         width: 714,
         height: 714,
         alt: "Craig Hagemeier - Exploring Ideas, Capturing Moments, Pushing Limits",
       },
     ],
   },
-  metadataBase: new URL("https://craig.hagemeier.com"),
-  authors: [{ name: "Craig Hagemeier", url: "https://craig.hagemeier.com" }],
+  metadataBase: new URL("https://craighagemeier.com"),
+  authors: [{ name: "Craig Hagemeier", url: "https://craighagemeier.com" }],
   robots: "index, follow",
 };
 
