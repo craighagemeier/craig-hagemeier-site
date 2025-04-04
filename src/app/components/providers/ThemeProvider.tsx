@@ -92,7 +92,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         let content = el.innerHTML;
         // Process keywords for ticker effect
         content = content.replace(
-          /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS|ENOUGH)\b/gi,
+          /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS|ENOUGH|WONDERFUL|PERFECT)\b/gi,
           '<span class="theme-box theme-ticker">$1</span>'
         );
 
