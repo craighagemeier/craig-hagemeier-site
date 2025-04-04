@@ -1,7 +1,6 @@
 "use client";
 
 import React, { createContext, useState, useEffect } from "react";
-
 import { usePathname } from "next/navigation";
 
 interface ThemeContextType {
@@ -58,20 +57,6 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     }
   }, []);
 
-  // Utility function to escape HTML special characters
-  const escapeHTML = (str: string): string => {
-    return str.replace(/[&<>"']/g, (match) => {
-      const escapeMap: { [key: string]: string } = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;',
-      };
-      return escapeMap[match];
-    });
-  };
-
   // Function to apply theme-specific transformations
   const applyThemeTransformations = (currentTheme: string) => {
     if (typeof window === "undefined") return;
@@ -83,7 +68,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     headings.forEach((heading) => {
       heading.classList.remove("theme-box");
       // Restore original content without special formatting
-      heading.innerHTML = escapeHTML(heading.textContent || "");
+      heading.innerHTML = heading.textContent || "";
     });
 
     textElements.forEach((el) => {
@@ -96,7 +81,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     // Apply transformations for monochrome theme (first letter effect for all headings)
     if (currentTheme === "monochrome") {
       headings.forEach((heading) => {
-        heading.innerHTML = escapeHtml(heading.textContent)?.replace(/\b(\w)/g, "<span class='theme-first-letter'>$1</span>") || "";
+        heading.innerHTML = heading.textContent?.replace(/\b(\w)/g, "<span class='theme-first-letter'>$1</span>") || "";
       });
     }
 
@@ -107,7 +92,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         let content = el.innerHTML;
         // Process keywords for ticker effect
         content = content.replace(
-          /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS|ENOUGH|WONDERFUL|PERFECT)\b/gi,
+          /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS|ENOUGH)\b/gi,
           '<span class="theme-box theme-ticker">$1</span>'
         );
 
