@@ -57,6 +57,20 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     }
   }, []);
 
+  // Utility function to escape HTML special characters
+  const escapeHTML = (str: string): string => {
+    return str.replace(/[&<>"']/g, (match) => {
+      const escapeMap: { [key: string]: string } = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      };
+      return escapeMap[match];
+    });
+  };
+
   // Function to apply theme-specific transformations
   const applyThemeTransformations = (currentTheme: string) => {
     if (typeof window === "undefined") return;
@@ -68,7 +82,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     headings.forEach((heading) => {
       heading.classList.remove("theme-box");
       // Restore original content without special formatting
-      heading.innerHTML = heading.textContent || "";
+      heading.innerHTML = escapeHTML(heading.textContent || "");
     });
 
     textElements.forEach((el) => {
