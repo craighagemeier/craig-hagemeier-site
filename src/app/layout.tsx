@@ -45,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#ffffff" />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Archivo+Black&family=Outfit:wght@300..900&family=Playfair+Display:wght@400;700&display=swap" as="style" />
       </head>
       <body>
         <ThemeProvider>
