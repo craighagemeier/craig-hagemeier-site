@@ -1,4 +1,7 @@
-import { useMemo } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "../components/atoms/Link/Link";
 
 export default function Inspiration() {
@@ -21,7 +24,7 @@ export default function Inspiration() {
       label: "Thrive Hair Collective",
     },
     { href: "https://bradfrost.com/", label: "Brad Frost" },
-    { href: "illapiano.com", label: "Illapiano" },
+    { href: "https://illapiano.com", label: "Illapiano" },
     { href: "https://colornamer.robertcooper.me/", label: " Color Namer" },
     { href: "https://austinkleon.com/steal/", label: "Steal Like An Artist" },
     {
@@ -52,10 +55,17 @@ export default function Inspiration() {
       href: "https://medium.com/design-bootcamp/glassmorphism-in-web-design-2867f39fcf35",
       label: "How to implement glassmorphism in web design",
     },
+    {
+      href: "https://intunewellnesscb.com/",
+      label: "Intune Wellness",
+    }
   ];
 
-  const shuffledLinks = useMemo(() => {
-    return [...links].sort(() => Math.random() - 0.5);
+  const [shuffledLinks, setShuffledLinks] = useState(links);
+
+  useEffect(() => {
+    const shuffled = [...links].sort(() => Math.random() - 0.5);
+    setShuffledLinks(shuffled);
   }, []);
 
   return (
@@ -73,13 +83,22 @@ export default function Inspiration() {
       <div className="ch-row">
         <div className="ch-col">
           <ul>
-            {shuffledLinks.map(({ href, label }) => (
-              <li key={href}>
-                <Link href={href} target="_blank" aria-label={label}>
-                  {label}
-                </Link>
-              </li>
-            ))}
+            <AnimatePresence>
+              {shuffledLinks.map(({ href, label }) => (
+                <motion.li
+                  key={href}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Link href={href} target="_blank" aria-label={label}>
+                    {label}
+                  </Link>
+                </motion.li>
+              ))}
+            </AnimatePresence>
           </ul>
         </div>
       </div>

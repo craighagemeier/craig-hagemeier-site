@@ -20,6 +20,7 @@ const CubeCarousel: React.FC<CubeCarouselProps> = ({ photos }) => {
   const [isAutoRotating, setIsAutoRotating] = useState(true);
   const [isManualControl, setIsManualControl] = useState(false);
   const [translateZ, setTranslateZ] = useState("448px"); // Adjust when changing the number of photos
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
     const cubeElement = document.querySelector(".cube-carousel");
@@ -37,17 +38,47 @@ const CubeCarousel: React.FC<CubeCarouselProps> = ({ photos }) => {
 
   const totalFaces = photos.length;
 
+  // Preload all images before rendering
+  useEffect(() => {
+    let isMounted = true;
+
+    const preloadImages = async () => {
+      const promises = photos.map((photo) => {
+        return new Promise<void>((resolve) => {
+          const img = new Image();
+          img.src = photo.src;
+          img.onload = () => resolve();
+          img.onerror = () => {
+            console.error(`Failed to load image: ${photo.src}`);
+            resolve(); // resolve anyway to continue
+          };
+        });
+      });
+
+      await Promise.all(promises);
+      if (isMounted) {
+        setImagesLoaded(true);
+      }
+    };
+
+    preloadImages();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [photos]);
+
   useEffect(() => {
     let rotationInterval: NodeJS.Timeout;
 
-    if (isAutoRotating && !isManualControl) {
+    if (isAutoRotating && !isManualControl && imagesLoaded) {
       rotationInterval = setInterval(() => {
         setCurrentFace((prevFace) => (prevFace + 1) % totalFaces);
       }, 4000);
     }
 
     return () => clearInterval(rotationInterval);
-  }, [isAutoRotating, isManualControl, totalFaces]);
+  }, [isAutoRotating, isManualControl, totalFaces, imagesLoaded]);
 
   useEffect(() => {
     let idleTimer: NodeJS.Timeout;
@@ -79,6 +110,15 @@ const CubeCarousel: React.FC<CubeCarouselProps> = ({ photos }) => {
     const angle = 360 / totalFaces;
     return `rotateY(${index * angle}deg) translateZ(${translateZ})`;
   };
+
+  // Show loading state until images are ready
+  if (!imagesLoaded) {
+    return (
+      <div className="cube-carousel__loading">
+        Loading photos...
+      </div>
+    );
+  }
 
   return (
     <div className="cube-carousel">
@@ -118,10 +158,9 @@ const CubeCarousel: React.FC<CubeCarouselProps> = ({ photos }) => {
           <Button
             onClick={toggleAutoRotate}
             isActive={isAutoRotating}
-            >
-          {isAutoRotating ? 'Auto: On' : 'Auto: Off'}
+          >
+            {isAutoRotating ? 'Auto: On' : 'Auto: Off'}
           </Button>
-
           <Button onClick={handleNext}>
             Next &gt;
           </Button>
