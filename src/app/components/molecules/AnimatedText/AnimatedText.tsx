@@ -22,22 +22,33 @@ const sentences = [
 ];
 
 export default function AnimatedText() {
-  const [visibleSentences, setVisibleSentences] = useState<number>(0);
+  const [step, setStep] = useState<'waiting' | 'intro1' | 'intro2' | 'full'>('waiting');
 
   useEffect(() => {
-    if (visibleSentences < sentences.length) {
-      const timer = setTimeout(() => {
-        setVisibleSentences((prev) => prev + 1);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [visibleSentences]);
+    const timers = [
+      setTimeout(() => setStep('intro1'), 1000),
+      setTimeout(() => setStep('intro2'), 2000),
+      setTimeout(() => setStep('full'), 3000)
+    ];
+
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  let visibleSentences: string[] = [];
+
+  if (step === 'intro1') {
+    visibleSentences = sentences.slice(0, 1);
+  } else if (step === 'intro2') {
+    visibleSentences = sentences.slice(0, 3);
+  } else if (step === 'full') {
+    visibleSentences = sentences;
+  }
 
   return (
     <div>
-      {sentences.slice(0, visibleSentences).map((sentence, index) => {
-        if (sentence === "PARAGRAPH_BREAK") {
-          return <div key={index} style={{ marginBottom: "1rem" }}></div>;
+      {visibleSentences.map((sentence, index) => {
+        if (sentence === 'PARAGRAPH_BREAK') {
+          return <div key={index} style={{ marginBottom: '1rem' }} />;
         }
 
         return (
@@ -45,7 +56,7 @@ export default function AnimatedText() {
             key={index}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.3 }}
+            transition={{ duration: 0.5 }}
           >
             {sentence}
           </motion.p>
