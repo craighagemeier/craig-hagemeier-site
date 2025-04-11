@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { buildFlickrApiUrl, processFlickrPhoto } from '../../../lib/flickrUtils';
 
 const FLICKR_API_KEY = process.env.FLICKR_API_KEY;
 const FLICKR_USER_ID = process.env.FLICKR_USER_ID;
@@ -12,25 +13,18 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKR_API_KEY}&user_id=${FLICKR_USER_ID}&format=json&nojsoncallback=1&extras=url_sq,url_t,url_s,url_m,url_l,url_o,description&per_page=100&sort=${sort}`;
+    // Use the shared function to build the URL
+    const url = buildFlickrApiUrl(FLICKR_API_KEY, FLICKR_USER_ID, sort);
 
     const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`Flickr API returned status ${res.status}`);
+    }
+
     const data = await res.json();
 
-    const photos = data.photos.photo.map((photo: any) => ({
-      id: photo.id,
-      title: photo.title,
-      url: photo.url_o || photo.url_l || photo.url_m || `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`,
-      urls: {
-        small: photo.url_s || `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`,
-        medium: photo.url_m || `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
-        large: photo.url_l || `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`,
-        original: photo.url_o || `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`,
-      },
-      width: photo.width_o || photo.width_l || photo.width_m,
-      height: photo.height_o || photo.height_l || photo.height_m,
-      description: photo.description?._content,
-    }));
+    // Use the shared function to process photos
+    const photos = data.photos.photo.map(processFlickrPhoto);
 
     return NextResponse.json(photos);
   } catch (error) {
