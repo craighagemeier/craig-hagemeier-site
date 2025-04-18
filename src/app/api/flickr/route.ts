@@ -26,7 +26,9 @@ export async function GET(request: NextRequest) {
     // Use the shared function to process photos
     const photos = data.photos.photo.map(processFlickrPhoto);
 
-    return NextResponse.json(photos);
+    const response = NextResponse.json(photos);
+    response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=60');
+    return response;
   } catch (error) {
     console.error('Error fetching Flickr photos:', error);
     return NextResponse.json({ error: "Failed to fetch photos" }, { status: 500 });
