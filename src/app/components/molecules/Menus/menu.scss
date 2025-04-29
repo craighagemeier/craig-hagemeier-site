@@ -15,7 +15,7 @@
   visibility: hidden;
   pointer-events: none;
 
-  @media (min-width: 769px) {
+  @media (min-width: 744px) {
     width: 240px;
   }
 }
@@ -37,7 +37,7 @@
   pointer-events: none;
   border-bottom-left-radius: var(--menu-border-radius);
 
-  @media (min-width: 769px) {
+  @media (min-width: 744px) {
     width: 240px;
   }
 
@@ -113,7 +113,7 @@
   pointer-events: none;
   border-bottom-left-radius: var(--menu-border-radius);
 
-  @media (min-width: 769px) {
+  @media (min-width: 744px) {
     width: 240px;
   }
 
