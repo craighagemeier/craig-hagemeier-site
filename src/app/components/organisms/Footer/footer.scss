@@ -21,7 +21,7 @@
     padding: 0;
     margin-bottom: 1rem;
     flex-wrap: wrap;
-    @media (min-width: 769px) {
+    @media (min-width: 744px) {
       gap: 1rem;
     }
 
@@ -79,6 +79,10 @@
 
 // Fix sticky color on mobile
 @media (hover: none) {
+  .footer {
+    padding-bottom: 3rem;
+  }
+  // Fix sticky color on mobile
   .footer__socialList a:hover {
     color: var(--color-text-white);
     -webkit-tap-highlight-color: transparent;
