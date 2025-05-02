@@ -1,9 +1,20 @@
+
 import Link from "../components/atoms/Link/Link";
 import FlickrGallery from "../components/molecules/FlickrGallery/FlickrGallery";
 import { fetchFlickrPhotos } from "../../lib/flickr";
+import { Metadata } from "next";
 
-export default async function Photography({ searchParams }: { searchParams: { sort?: string } }) {
-  const sort = searchParams.sort || "date-taken-desc";
+export const metadata: Metadata = {
+  title: "Photography",
+  description: "Photography portfolio showcasing recent captures",
+};
+
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function Photography({ searchParams }: Props) {
+  const sort = typeof searchParams.sort === 'string' ? searchParams.sort : "date-taken-desc";
   const photos = await fetchFlickrPhotos(sort);
 
   return (
