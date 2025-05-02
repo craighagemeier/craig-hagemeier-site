@@ -8,6 +8,8 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const sort = searchParams.get('sort') || 'date-taken-desc';
 
+  console.log(`API route called with sort parameter: ${sort}`);
+
   if (!FLICKR_API_KEY || !FLICKR_USER_ID) {
     return NextResponse.json({ error: "Flickr API Key or User ID is missing" }, { status: 500 });
   }
@@ -16,7 +18,11 @@ export async function GET(request: NextRequest) {
     // Use the shared function to build the URL
     const url = buildFlickrApiUrl(FLICKR_API_KEY, FLICKR_USER_ID, sort);
 
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      cache: 'no-store',  // Prevent fetch from caching
+      next: { revalidate: 0 } // For Next.js 13+ fetch
+    });
+
     if (!res.ok) {
       throw new Error(`Flickr API returned status ${res.status}`);
     }
@@ -27,7 +33,10 @@ export async function GET(request: NextRequest) {
     const photos = data.photos.photo.map(processFlickrPhoto);
 
     const response = NextResponse.json(photos);
-    response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=60');
+
+    // Set headers to prevent caching
+    response.headers.set('Cache-Control', 'no-store, max-age=0');
+
     return response;
   } catch (error) {
     console.error('Error fetching Flickr photos:', error);
