@@ -15,12 +15,11 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Use the shared function to build the URL
     const url = buildFlickrApiUrl(FLICKR_API_KEY, FLICKR_USER_ID, sort);
 
     const res = await fetch(url, {
-      cache: 'no-store',  // Prevent fetch from caching
-      next: { revalidate: 0 } // For Next.js 13+ fetch
+      cache: 'no-store',
+      next: { revalidate: 0 }
     });
 
     if (!res.ok) {
