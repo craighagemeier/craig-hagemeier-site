@@ -1,24 +1,15 @@
-
 import Link from "../components/atoms/Link/Link";
 import FlickrGallery from "../components/molecules/FlickrGallery/FlickrGallery";
 import { fetchFlickrPhotos } from "../../lib/flickr";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Photography",
-  description: "Photography portfolio showcasing recent captures",
-};
-
-interface SearchParams {
-  sort?: string;
+type PageProps = {
+  params: Record<string, string>;
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
-export default async function Photography({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
-  const sort = searchParams.sort || "date-taken-desc";
+export default async function Page({ searchParams }: PageProps) {
+  const sort = searchParams.sort as string || "date-taken-desc";
+
   const photos = await fetchFlickrPhotos(sort);
 
   return (
