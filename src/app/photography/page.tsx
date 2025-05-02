@@ -2,8 +2,15 @@ import Link from "../components/atoms/Link/Link";
 import FlickrGallery from "../components/molecules/FlickrGallery/FlickrGallery";
 import { fetchFlickrPhotos } from "../../lib/flickr";
 
-export default async function Photography() {
-  const photos = await fetchFlickrPhotos("date-taken-desc");
+type PageProps = {
+  params: Record<string, string>;
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export default async function Page({ searchParams }: PageProps) {
+  const sort = searchParams.sort as string || "date-taken-desc";
+
+  const photos = await fetchFlickrPhotos(sort);
 
   return (
     <div>
