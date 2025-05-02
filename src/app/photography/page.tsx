@@ -9,12 +9,16 @@ export const metadata: Metadata = {
   description: "Photography portfolio showcasing recent captures",
 };
 
-type Props = {
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+interface SearchParams {
+  sort?: string;
+}
 
-export default async function Photography({ searchParams }: Props) {
-  const sort = typeof searchParams.sort === 'string' ? searchParams.sort : "date-taken-desc";
+export default async function Photography({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const sort = searchParams.sort || "date-taken-desc";
   const photos = await fetchFlickrPhotos(sort);
 
   return (
