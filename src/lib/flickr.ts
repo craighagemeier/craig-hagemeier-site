@@ -9,12 +9,18 @@ export async function fetchFlickrPhotos(sort = "date-taken-desc") {
     throw new Error("Flickr API Key or User ID is missing");
   }
 
-  const url = buildFlickrApiUrl(FLICKR_API_KEY, FLICKR_USER_ID, sort);
-  console.log("Fetching Flickr photos with URL:", url);
+  const timestamp = new Date().getTime();
+  const sortWithTimestamp = `${sort}`;
+
+  const url = buildFlickrApiUrl(FLICKR_API_KEY, FLICKR_USER_ID, sortWithTimestamp);
+  console.log("Fetching Flickr photos with sort:", sort);
 
   let res;
   try {
-    res = await fetch(url);
+    res = await fetch(url, {
+      cache: 'no-store',
+      next: { revalidate: 0 }
+    });
   } catch (err) {
     console.error("Network error while fetching from Flickr:", err);
     throw new Error("Network error while fetching from Flickr");
@@ -38,7 +44,7 @@ export async function fetchFlickrPhotos(sort = "date-taken-desc") {
     throw new Error("Unexpected Flickr API response structure");
   }
 
-  console.log(`Fetched ${data.photos.photo.length} photos from Flickr`);
+  console.log(`Fetched ${data.photos.photo.length} photos from Flickr with sort: ${sort}`);
 
   return data.photos.photo.map(processFlickrPhoto);
 }

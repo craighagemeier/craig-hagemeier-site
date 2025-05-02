@@ -2,8 +2,9 @@ import Link from "../components/atoms/Link/Link";
 import FlickrGallery from "../components/molecules/FlickrGallery/FlickrGallery";
 import { fetchFlickrPhotos } from "../../lib/flickr";
 
-export default async function Photography() {
-  const photos = await fetchFlickrPhotos("date-taken-desc");
+export default async function Photography({ searchParams }: { searchParams: { sort?: string } }) {
+  const sort = searchParams.sort || "date-taken-desc";
+  const photos = await fetchFlickrPhotos(sort);
 
   return (
     <div>
@@ -62,4 +63,4 @@ export default async function Photography() {
   );
 }
 
-export const revalidate = 3600;
+export const revalidate = 60;

@@ -34,7 +34,20 @@ const sortOptions: SortOption[] = [
 ];
 
 export default function FlickrGallery({ photos: initialPhotos }: { photos: FlickrPhoto[] }) {
-  const [sortOption, setSortOption] = useState<string>("date-taken-desc");
+  // Get the initial sort option from URL or use default
+  const [sortOption, setSortOption] = useState<string>(() => {
+    // Check if we're in the browser
+    if (typeof window !== 'undefined') {
+      // Try to get sort from URL search params
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlSort = urlParams.get('sort');
+      // Return URL sort if it's valid, otherwise use default
+      if (urlSort && sortOptions.some(option => option.value === urlSort)) {
+        return urlSort;
+      }
+    }
+    return "date-taken-desc"; // Default sort if not in URL
+  });
   const [photos, setPhotos] = useState<FlickrPhoto[]>(initialPhotos);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageElements, setImageElements] = useState<{ [key: string]: HTMLImageElement | null }>({});
@@ -48,7 +61,12 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
     setImageElements({});
 
     try {
-      const response = await fetch(`/api/flickr?sort=${sort}`);
+      // Add cache-busting timestamp to prevent cached responses
+      const timestamp = new Date().getTime();
+      const response = await fetch(`/api/flickr?sort=${sort}&_t=${timestamp}`, {
+        // Force a new request (no caching)
+        cache: 'no-store'
+      });
       if (!response.ok) throw new Error(`API returned status ${response.status}`);
 
       const newPhotos = await response.json();
@@ -65,9 +83,55 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
   const handleSortChange = (option: SortOption) => {
     if (sortOption !== option.value) {
       setSortOption(option.value);
+      // Update URL with the new sort parameter
+      if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href);
+        url.searchParams.set('sort', option.value);
+        window.history.pushState({}, '', url.toString());
+      }
       fetchSortedPhotos(option.value);
     }
   };
+
+  // Effect to respond to URL changes (like when user hits back button)
+  useEffect(() => {
+    const handlePopState = () => {
+      if (typeof window !== 'undefined') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlSort = urlParams.get('sort');
+
+        if (urlSort && sortOptions.some(option => option.value === urlSort) && urlSort !== sortOption) {
+          setSortOption(urlSort);
+          fetchSortedPhotos(urlSort);
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [sortOption]);
+
+  // This effect runs on initial mount to sync the state with URL if needed
+  useEffect(() => {
+    // Check if the current URL sort param doesn't match our initial photos sort
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlSort = urlParams.get('sort');
+
+      // If URL has a sort param and it's different from what we have in state
+      if (urlSort && sortOptions.some(option => option.value === urlSort) && urlSort !== sortOption) {
+        setSortOption(urlSort);
+        fetchSortedPhotos(urlSort);
+      }
+
+      // If no sort in URL but we have a non-default sort, update URL
+      else if (!urlSort && sortOption !== "date-taken-desc") {
+        const url = new URL(window.location.href);
+        url.searchParams.set('sort', sortOption);
+        window.history.replaceState({}, '', url.toString());
+      }
+    }
+  }, []);
 
   const getItemSizeClass = (photo: FlickrPhoto, index: number) => {
     let baseClass = 'flickr-gallery__item';
