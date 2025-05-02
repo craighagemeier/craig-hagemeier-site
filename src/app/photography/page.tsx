@@ -1,9 +1,13 @@
+
 import Link from "../components/atoms/Link/Link";
 import FlickrGallery from "../components/molecules/FlickrGallery/FlickrGallery";
 import { fetchFlickrPhotos } from "../../lib/flickr";
 
-export default async function Photography({ searchParams }: { searchParams: { sort?: string } }) {
-  const sort = searchParams.sort || "date-taken-desc";
+export default async function Page(props: any) {
+  const searchParams = props.searchParams || {};
+  const sortParam = searchParams.sort;
+  const sort = typeof sortParam === 'string' ? sortParam : "date-taken-desc";
+
   const photos = await fetchFlickrPhotos(sort);
 
   return (
