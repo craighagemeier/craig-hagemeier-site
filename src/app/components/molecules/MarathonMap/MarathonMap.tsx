@@ -5,7 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./marathon-map.scss";
 
-const completedStates = ["Arizona", "California", "Florida", "Illinois", "Indiana", "Iowa", "Kentucky", "Maryland", "Michigan", "Minnesota", "New York", "Oklahoma", "Tennessee", "Texas", "Vermont", "Virginia", "Washington", "Wisconsin"];
+const completedStates = ["Arizona", "California", "Florida", "Illinois", "Indiana", "Iowa", "Kentucky", "Maryland", "Michigan", "Minnesota", "New Mexico", "New York", "Oklahoma", "Oregon", "Tennessee", "Texas", "Vermont", "Virginia", "Washington", "Wisconsin"];
 
 const MarathonMap = () => {
   const mapRef = useRef<L.Map | null>(null);
