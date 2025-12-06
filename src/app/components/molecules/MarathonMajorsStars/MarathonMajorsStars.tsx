@@ -21,8 +21,8 @@ const MarathonMajorsStars = () => {
     },
     {
       name: "Berlin",
-      completed: false,
-      year: "TBD",
+      completed: true,
+      year: "2025",
       description: "The fastest marathon course with 9 world records set."
     },
     {

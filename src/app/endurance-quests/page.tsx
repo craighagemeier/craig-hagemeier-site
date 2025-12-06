@@ -1,8 +1,28 @@
-import CubeCarousel from "../components/molecules/CubeCarousel/CubeCarousel";
-import IronmanProgressTracker from "../components/molecules/IronmanProgressTracker";
+'use client';
+
+import dynamic from "next/dynamic";
 import Link from "../components/atoms/Link/Link";
-import MarathonMap from "../components/molecules/MarathonMap/MarathonMap";
-import MarathonMajorsStars from "../components/molecules/MarathonMajorsStars/MarathonMajorsStars";
+
+const CubeCarousel = dynamic(
+  () => import("../components/molecules/CubeCarousel/CubeCarousel"),
+  { ssr: false }
+);
+
+const IronmanProgressTracker = dynamic(
+  () => import("../components/molecules/IronmanProgressTracker"),
+  { ssr: false }
+);
+
+const MarathonMap = dynamic(
+  () => import("../components/molecules/MarathonMap/MarathonMap"),
+  { ssr: false }
+);
+
+const MarathonMajorsStars = dynamic(
+  () => import("../components/molecules/MarathonMajorsStars/MarathonMajorsStars"),
+  { ssr: false }
+);
+
 
 const racePhotos = [
   {
@@ -48,7 +68,7 @@ const racePhotos = [
       "AIDS LifeCycle 2016 - Cycling 545 miles from San Francisco to Los Angeles",
   },
   {
-    src: "/images/endurance/Chicago-IronMonster-team.jpg",
+    src: "/images/endurance/Chicago-IronMonster-team-2020.jpg",
     alt: "Chicago IronMonster team",
     caption: "Team Chicago IronMonster - February 2020",
   },
@@ -59,9 +79,9 @@ const racePhotos = [
       "Havana Cuba Marathon, 2019 - Running through the streets of Havana",
   },
   {
-    src: "/images/endurance/IRONMAN-Louisville.jpg",
+    src: "/images/endurance/Chicago-IronMonster-team-2015.jpg",
     alt: "IRONMAN Louisville team photo",
-    caption: "Team Chicago IronMonster - IRONMAN Louisville, 2016",
+    caption: "Team Chicago IronMonster - IRONMAN Wisconsin, 2015",
   },
   {
     src: "/images/endurance/IRONMAN-Arizona.jpg",
@@ -129,12 +149,12 @@ const ironmanRaces = [
     name: "Wisconsin",
     location: "Madison",
     date: "2025",
-    completed: false,
+    completed: true,
   },
   {
-    name: "TBD",
-    location: "TBD",
-    date: "TBD",
+    name: "Wisconsin",
+    location: "Madison",
+    date: "2026",
     completed: false,
   },
   {
@@ -210,7 +230,7 @@ export default function EndurancePage() {
           </div>
           <div className="ch-col-xs-12 ch-col-sm-6 ch-col-md-7 ch-col-lg-6 ch-col-xl-6">
             <IronmanProgressTracker
-              completedRaces={9}
+              completedRaces={10}
               totalRaces={12}
               raceData={ironmanRaces}
             />
@@ -232,7 +252,7 @@ export default function EndurancePage() {
             </div>
             <div className="ch-row">
               <div className="ch-col">
-                <p><strong>18 of 50 States Completed</strong></p>
+                <p><strong>20 of 50 States Completed</strong></p>
               </div>
             </div>
           </div>
