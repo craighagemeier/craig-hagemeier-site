@@ -8,7 +8,12 @@ export default async function Page(props: any) {
   const sortParam = searchParams.sort;
   const sort = typeof sortParam === 'string' ? sortParam : "date-taken-desc";
 
-  const photos = await fetchFlickrPhotos(sort);
+  let photos = [];
+  try {
+    photos = await fetchFlickrPhotos(sort);
+  } catch (err) {
+    console.error("Failed to fetch Flickr photos:", err);
+  }
 
   return (
     <div>
@@ -66,5 +71,3 @@ export default async function Page(props: any) {
     </div>
   );
 }
-
-export const revalidate = 60;
