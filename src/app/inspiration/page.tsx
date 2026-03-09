@@ -58,7 +58,35 @@ export default function Inspiration() {
     {
       href: "https://intunewellnesscb.com/",
       label: "Intune Wellness",
-    }
+    },
+    {
+      href: "https://www.instagram.com/davidjudegreene/",
+      label: "David Jude Greene",
+    },
+    {
+      href: "https://uiverse.io/FColombati/spotty-snake-82",
+      label: "Neumorphism.io: FColombati ",
+    },
+    {
+      href: "https://neumorphism.io/",
+      label: "Neumorphism.io: Playground for experimenting with soft UI shadows and highlights",
+    },
+    {
+      href: "https://www.presentandcorrect.com/blogs/blog/rams-palette",
+      label: "Rams Palette: Dieter Rams-inspired color palette",
+    },
+    {
+      href: "https://uiverse.io/Praashoo7/average-swan-99",
+      label: "Neumorphism.io:Praashoo7",
+    },
+    {
+      href: "https://uiverse.io/Pradeepsaranbishnoi/jolly-robin-0",
+      label: "Neumorphism.io: Pradeepsaranbishnoi",
+    },
+    {
+      href: "https://uiverse.io/Peary74/tough-panther-45",
+      label: "Neumorphism.io: Peary74",
+    },
   ];
 
   const [shuffledLinks, setShuffledLinks] = useState(links);
