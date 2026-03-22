@@ -15,9 +15,9 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
 
 const getInitialTheme = (): string => {
   if (typeof window !== "undefined") {
-    return localStorage.getItem("selectedTheme") || "dieter-rams";
+    return localStorage.getItem("selectedTheme") || "monochrome";
   }
-  return "dieter-rams";
+  return "monochrome";
 };
 
 const getInitialColorMode = (): string => {
