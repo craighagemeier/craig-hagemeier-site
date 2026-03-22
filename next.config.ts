@@ -1,14 +1,10 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
-  // Enable SASS/SCSS support
   sassOptions: {
     includePaths: ['./src/app/styles'],
   },
-  experimental: {
-    lightningCssTransform: false,
-  },
-}
+};
 
 export default nextConfig;
