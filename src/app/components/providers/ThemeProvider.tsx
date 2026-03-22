@@ -144,16 +144,20 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
 
-    const effectiveColorMode =
-      colorMode === "auto" ? systemPreference : colorMode;
+    const id = setTimeout(() => {
+      const effectiveColorMode =
+        colorMode === "auto" ? systemPreference : colorMode;
 
-    if (effectiveColorMode === "light") {
-      document.documentElement.style.setProperty("color-scheme", "light");
-    } else if (effectiveColorMode === "dark") {
-      document.documentElement.style.setProperty("color-scheme", "dark");
-    } else {
-      document.documentElement.style.removeProperty("color-scheme");
-    }
+      if (effectiveColorMode === "light") {
+        document.documentElement.style.setProperty("color-scheme", "light");
+      } else if (effectiveColorMode === "dark") {
+        document.documentElement.style.setProperty("color-scheme", "dark");
+      } else {
+        document.documentElement.style.removeProperty("color-scheme");
+      }
+    }, 0);
+
+    return () => clearTimeout(id);
   }, [colorMode, systemPreference, isLoaded]);
   
   // Listen for page transition completion
