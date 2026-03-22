@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useState, useEffect, useLayoutEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 interface ThemeContextType {
@@ -109,21 +109,20 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   };
 
   // Main theme effect
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
 
     localStorage.setItem("selectedTheme", theme);
     localStorage.setItem("selectedColorMode", colorMode);
 
-    document.body.classList.forEach((cls) => {
-      if (cls.startsWith("theme-")) {
-        document.body.classList.remove(cls);
-      }
-    });
+    // Remove all theme classes
+    document.body.classList.remove("theme-monochrome", "theme-kruger", "theme-rogue-coast", "theme-dieter-rams");
+
+    // Add theme class
     document.body.classList.add(`theme-${theme}`);
 
     // Function to apply theme with retries
-    const applyThemeWithRetries = (retries = 1, delay = 100) => {
+    const applyThemeWithRetries = (retries = 3, delay = 200) => {
       // Apply the theme transformations
       applyThemeTransformations(theme);
 
@@ -136,30 +135,22 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     };
 
     // Start applying theme with retries
-    setTimeout(() => {
-      applyThemeWithRetries();
-    }, 0);
+    applyThemeWithRetries();
+
+    // Determine which color mode to actually apply
+    const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
+
+    // If color mode is specified, override the system preference
+    if (effectiveColorMode === "light") {
+      document.documentElement.style.setProperty("color-scheme", "light");
+    } else if (effectiveColorMode === "dark") {
+      document.documentElement.style.setProperty("color-scheme", "dark");
+    } else {
+      // This should not happen with our logic, but just in case
+      document.documentElement.style.removeProperty("color-scheme");
+    }
   }, [theme, colorMode, systemPreference, isLoaded]);
 
-  useEffect(() => {
-    if (!isLoaded || typeof window === "undefined") return;
-
-    const id = setTimeout(() => {
-      const effectiveColorMode =
-        colorMode === "auto" ? systemPreference : colorMode;
-
-      if (effectiveColorMode === "light") {
-        document.documentElement.style.setProperty("color-scheme", "light");
-      } else if (effectiveColorMode === "dark") {
-        document.documentElement.style.setProperty("color-scheme", "dark");
-      } else {
-        document.documentElement.style.removeProperty("color-scheme");
-      }
-    }, 0);
-
-    return () => clearTimeout(id);
-  }, [colorMode, systemPreference, isLoaded]);
-  
   // Listen for page transition completion
   useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
