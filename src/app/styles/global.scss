@@ -5,6 +5,10 @@
 @use "./grid.css";
 @use "./variables.scss";
 
+:root {
+  color-scheme: light dark;
+}
+
 // Box-sizing reset
 *,
 *::before,
