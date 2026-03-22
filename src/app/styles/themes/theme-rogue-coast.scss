@@ -223,3 +223,11 @@
 .theme-rogue-coast .button:active {
   background: var(--glass-bg-mid);
 }
+
+// Fix sticky color on mobile
+@media (hover: none) {
+  .footer__socialList a:hover {
+    color: var(--color-navigation-focus);
+    -webkit-tap-highlight-color: transparent;
+  }
+}

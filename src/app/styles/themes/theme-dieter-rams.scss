@@ -1,0 +1,1134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+.theme-dieter-rams {
+  /* -------------------------------------------------------
+  PRIMITIVE THEME TOKENS
+  ------------------------------------------------------- */
+
+  /* TYPOGRAPHY */
+  --font-family-heading: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* COLOR PALETTE */
+  --rams-black: #3b4b59;
+  --rams-white: #dfe2df;
+  --rams-red: light-dark(#c73a3a, #ff5a5a);
+  --rams-orange: light-dark(#9c4f14, #ff9a3c);
+  --rams-yellow: light-dark(#d6a21f, #ffd24a);
+  --rams-green: light-dark(#005c4b, #00BD9A);
+  --rams-blue: light-dark(#1f3f7a, #4f8cff);
+  --rams-text: light-dark(var(--rams-black), var(--rams-white));
+
+  /* RADII */
+  --rams-radius-xs: 2px;
+  --rams-radius-sm: 6px;
+  --rams-radius-md: 8px;
+  --rams-radius-lg: 16px;
+  --rams-radius-round: 50%;
+
+  /* BORDERS */
+  --rams-divider: light-dark(#a8aca8, #3c3f3c);
+  --rams-border-subtle: 1px solid rgba(0, 0, 0, 0.08);
+  --rams-border-strong: 1px solid var(--rams-divider);
+
+  /* SHARED LIGHT/SHADOW ANCHORS */
+  --rams-light-x: 28%;
+  --rams-light-y: 18%;
+  --rams-light-center: circle at 50% 50%;
+  --rams-shadow-raised:
+    -5px -5px 10px light-dark(rgba(255, 255, 255, .7), rgba(255, 255, 255, .08)),
+    6px 6px 12px rgba(0, 0, 0, .28);
+  --rams-shadow-pressed:
+    inset 6px 6px 10px rgba(0, 0, 0, .65),
+    inset -4px -4px 8px rgba(255, 255, 255, .35);
+
+  /* SURFACES */
+  --rams-surface: light-dark(#e5e7e4, #2b2e2b);
+  --rams-surface-raised: light-dark(#d6d9d6, #3a3d3a);
+  --rams-panel: light-dark(#cfd3cf, #242624);
+  --rams-control-tray:
+    inset 2px 2px 4px rgba(0, 0, 0, .35),
+    inset -2px -2px 4px rgba(255, 255, 255, .55),
+    0 3px 6px rgba(0, 0, 0, .25);
+  --rams-edge-highlight:
+    inset 1px 1px 0 light-dark(rgba(255, 255, 255, .6), rgba(255, 255, 255, .12)),
+    inset -1px -1px 0 rgba(0, 0, 0, .25);
+  --rams-inset-soft:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.25),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+  --rams-inset-soft-focus:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.28),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+
+  /* MOTION */
+  --rams-motion-fast: 80ms;
+  --rams-motion-medium: 120ms;
+  
+  /* BUTTONS */
+  --rams-button-highlight-strip:
+    linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, .65),
+      transparent),
+    linear-gradient(to right,
+      rgba(37, 36, 36, 0),
+      rgba(0, 0, 0, .12),
+      rgba(0, 0, 0, 0));
+  --rams-button-highlight-press-shift: 2px;
+  --rams-button-highlight-press-opacity: 0.4;
+
+  /* -------------------------------------------------------
+  TYPOGRAPHY
+  ------------------------------------------------------- */
+  --color-text-primary: var(--rams-text);
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    font-size: 1rem;
+
+    @media (min-width: 744px) {
+      font-size: 2rem;
+    }
+  }
+  
+  /* -------------------------------------------------------
+  PAGE BACKGROUND
+  ------------------------------------------------------- */
+  --color-background-page: var(--rams-surface);
+
+  .page-structure {
+    position: relative;
+    background:
+      /* brushed aluminum grain */
+      repeating-linear-gradient(90deg,
+        light-dark(rgba(0, 0, 0, 0.035),
+          rgba(255, 255, 255, 0.02)) 0px,
+        light-dark(rgba(0, 0, 0, 0.035),
+          rgba(255, 255, 255, 0.02)) 1px,
+        transparent 1px,
+        transparent 2px),
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0.04),
+        rgba(0, 0, 0, 0.04)),
+      var(--rams-surface, light-dark(#e5e7e4, #2b2e2b));
+    background-repeat: repeat;
+    background-size: auto;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      background:
+        radial-gradient(circle at var(--rams-light-x, 28%) var(--rams-light-y, 18%),
+          light-dark(rgba(255, 255, 255, 0.45),
+            rgba(255, 255, 255, 0.15)),
+          transparent 60%);
+    }
+  }
+
+  /* -------------------------------------------------------
+  HEADER
+  ------------------------------------------------------- */
+  --color-header-top-bar-bg: transparent;
+  --color-header-bottom-bar-bg: var(--rams-panel);
+  --color-header-text: var(--rams-text);
+  --header-bottom-bar-border: var(--rams-border-strong);
+  --header-bottom-bar-box-shadow:
+    /* thin Rams hardware lip */
+    var(--rams-edge-highlight),
+    /* top lighting highlight */
+    inset 2px 1px 4px light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.32)),
+    /* lower depth shadow */
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15);
+
+  --header-bottom-bar-backdrop-filter: none;
+  --header-image-border: 2px solid var(--rams-divider);
+  --header-image-border-radius: var(--rams-radius-md);
+
+  .header__image {
+    box-shadow: var(--rams-shadow-raised);
+    transition:
+      transform var(--transition-standard),
+      box-shadow var(--transition-standard);
+     
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        transform: scale(1.02);
+        box-shadow:
+          -8px -8px 16px light-dark(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.08)),
+          8px 8px 16px rgba(0, 0, 0, 0.25);
+      }
+    } 
+  }
+
+  /* -------------------------------------------------------
+  NAVIGATION
+  ------------------------------------------------------- */
+  --color-navigation-focus: var(--rams-green);
+  --color-navigation-hover: var(--rams-green);
+  --color-navigation-active: var(--rams-green);
+
+  /* -------------------------------------------------------
+  FOCUS INDICATOR
+  ------------------------------------------------------- */
+  --rams-focus-ring:
+    0 0 0 2px var(--rams-surface),
+    0 0 0 4px var(--rams-green);
+
+  a:focus-visible {
+    outline: none;
+    box-shadow: var(--rams-focus-ring);
+  }
+
+  /* -------------------------------------------------------
+  FOOTER
+  ------------------------------------------------------- */
+  --color-footer-bg: var(--rams-panel);
+  --color-footer-text: var(--rams-text);
+  --footer-border: var(--rams-border-strong);
+  --footer-backdrop-filter: none;
+  
+  @media (hover: none) {
+    .footer__socialList a:hover {
+      color: var(--rams-text);
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+
+  /* -------------------------------------------------------
+  MENU
+  ------------------------------------------------------- */
+  --color-menu-bg: var(--rams-panel);
+  --menu-backdrop-filter: none;
+  --menu-top-border: var(--rams-border-strong);
+  --menu-divider: 1px solid var(--rams-divider);
+  --menu-border-radius: var(--rams-radius-lg);
+
+  --menu-box-shadow:
+   /* subtle machined edge — inset highlights and shadows for depth */
+    inset 1px 1px 0 light-dark(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2)),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.4),
+   /* soft contact shadow — gives lift off surface */
+    0 3px 6px rgba(0, 0, 0, 0.35),
+   /* ambient shadow — define tray separation from background */
+    6px 10px 22px rgba(0, 0, 0, 0.32),
+   /* top highlight — sharper micro edge catch for industrial look */
+    -2px -2px 6px light-dark(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.08)),
+   /* extra subtle edge highlight to enhance dark theme readability */
+    -1px -1px 2px rgba(255, 255, 255, 0.18);
+
+  /* -------------------------------------------------------
+  THEME MENU TOGGLE BUTTONS / BRAUN AUDIO 308
+  ------------------------------------------------------- */
+  .theme-menu__toggle-container {
+    padding: 1.5rem 0;
+    border-top: var(--menu-divider);
+    background: var(--rams-surface-raised);
+
+    box-shadow:
+      inset 2px 2px 5px rgba(0, 0, 0, 0.25),
+      inset -2px -2px 4px light-dark(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.08));
+  }
+
+  /* Individual button colors */
+  #theme-button-light {
+    --theme-bg: var(--rams-yellow);
+    color: #111;
+  }
+  #theme-button-dark {
+    --theme-bg: var(--rams-green);
+    color: #fff;
+  }
+  #theme-button-auto {
+    --theme-bg: var(--rams-blue);
+    color: #fff;
+  }
+
+  .theme-menu__button {
+    all: unset;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: var(--rams-radius-round);
+    background: var(--theme-bg);
+    background-blend-mode: soft-light;
+    cursor: pointer;
+    z-index: 1;
+
+    background:
+      /* subtle concave dish */
+      radial-gradient(var(--rams-light-center),
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.06) 28%,
+        transparent 48%),
+      /* thin circular ridge */
+      radial-gradient(var(--rams-light-center),
+        transparent 63%,
+        light-dark(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.22)) 64.5%,
+        light-dark(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.45)) 68%,
+        transparent 71%),
+      /* directional top-left lighting */
+      radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+        light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.38)) 0%,
+        rgba(255, 255, 255, 0.12) 22%,
+        transparent 46%),
+      /* ABS specular highlight */
+      radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.18) 10%,
+        transparent 18%),
+      var(--theme-bg);
+
+    /* Raised unselected button */
+    box-shadow:
+      0 14px 18px rgba(0, 0, 0, 0.28),
+      0 6px 8px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -3px 4px rgba(0, 0, 0, 0.25);
+
+    transition:
+      box-shadow var(--rams-motion-fast) ease,
+      background-color var(--rams-motion-medium) ease;
+
+    /* Fixed rim / outer ring */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: var(--rams-radius-round);
+      z-index: -1;
+
+      box-shadow:
+        /* outer metal edge */
+        0 0 0 1px light-dark(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.18)),
+        /* specular top edge highlight */
+        inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.18)),
+        /* inner wall shadow */
+        inset 4px 5px 10px rgba(0, 0, 0, 0.45),
+        /* faint bottom reflection */
+        inset -2px -2px 4px light-dark(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.06));
+
+      background:
+        radial-gradient(circle at var(--rams-light-x) calc(var(--rams-light-y) - 2%),
+          light-dark(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.12)),
+          transparent 60%);
+    }
+
+    /* Mouse press & keyboard focus: match shadows */
+    &:focus-visible,
+    &:active:not(.theme-menu__button--selected) {
+      box-shadow: var(--rams-shadow-pressed);
+
+      &:focus-visible {
+        border-radius: var(--rams-radius-round);
+        box-shadow:
+          var(--rams-shadow-pressed),
+          var(--rams-focus-ring);
+      }
+    }
+
+    /* Selected button: recessed below panel, rim stays */
+    &--selected {
+      box-shadow: var(--rams-shadow-pressed);
+
+      background:
+        radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+          rgba(0, 0, 0, 0.22) 0%,
+          rgba(0, 0, 0, 0.12) 45%,
+          transparent 65%),
+        var(--theme-bg);
+
+      filter: brightness(82%);
+    }
+
+    svg {
+      transition: transform var(--rams-motion-fast) ease;
+    }
+
+    &--selected svg {
+      transform: scale(0.97);
+    }
+  }
+  
+  /* -------------------------------------------------------
+  CONTACT FORM
+  ------------------------------------------------------- */
+  --color-input-border-focus: var(--rams-divider);
+  --color-input-error-border: var(--rams-red);
+  --color-input-error-text: var(--rams-red);
+
+  form {
+    background: var(--rams-surface);
+    border-radius: var(--rams-radius-lg);
+    padding: 1.25rem;
+    box-shadow:
+      /* Rams hardware edge */
+      var(--rams-edge-highlight),
+      /* Raised surface */
+      -10px -10px 20px light-dark(rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.08)),
+      12px 12px 24px rgba(0, 0, 0, 0.25);
+
+    input,
+    textarea,
+    input:invalid,
+    textarea:invalid {
+      appearance: none;
+      border-radius: var(--rams-radius-md);
+      box-shadow: var(--rams-inset-soft)
+    }
+
+    input,
+    textarea {
+      border: var(--rams-border-subtle);
+    }
+
+    input:focus,
+    textarea:focus,
+    input:invalid:focus,
+    textarea:invalid:focus {
+      box-shadow: var(--rams-inset-soft-focus),
+        0 0 0 2px var(--rams-surface),
+        0 0 0 4px rgba(120, 120, 120, 0.35);
+      outline: none;
+    }
+
+    .button {
+      position: relative;
+      padding: 0.7rem 1.3rem;
+      border-radius: var(--rams-radius-md);
+      border: var(--rams-border-subtle);
+      color: light-dark(#111111, #f5f5f5);;
+      background-color: light-dark(#c0c0c0, #4a4d4a);
+      background-blend-mode: overlay;
+      cursor: pointer;
+      user-select: none;
+      background-image:
+        radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+          rgba(255, 255, 255, 0.65),
+          rgba(255, 255, 255, 0.25) 35%,
+          transparent 55%),
+        radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+          rgba(0, 0, 0, 0.18),
+          transparent 70%);
+
+      /* Raised hardware state */
+      box-shadow:
+        var(--rams-shadow-raised),
+        1px 1px 0 rgba(255, 255, 255, 0.25),
+        -1px -1px 0 rgba(0, 0, 0, 0.15);
+      transition:
+        transform var(--rams-motion-fast) ease,
+        box-shadow var(--rams-motion-fast) ease,
+        background-color var(--rams-motion-medium) ease;
+
+      /* Rams highlight strip */
+      &::after {
+        content: "";
+        position: absolute;
+        top: 70%;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        border-radius: var(--rams-radius-xs);
+        background: var(--rams-button-highlight-strip);
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0.48;
+        transition:
+          transform var(--rams-motion-fast) ease,
+          opacity var(--rams-motion-fast) ease;
+      }
+
+      &:focus-visible {
+        outline: none;
+
+        background-color: light-dark(#b0b0b0, #424542);
+        background-image:
+          radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.35) 35%,
+            transparent 55%),
+          radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+            rgba(0, 0, 0, 0.22),
+            transparent 70%),
+          linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15),
+            transparent 40%),
+          linear-gradient(315deg,
+            rgba(0, 0, 0, 0.12),
+            transparent 40%);
+
+        box-shadow:
+          -3px -3px 6px light-dark(rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.08)),
+          4px 4px 8px rgba(0, 0, 0, 0.25),
+          1px 1px 0 rgba(255, 255, 255, 0.25),
+          -1px -1px 0 rgba(0, 0, 0, 0.15),
+          0 0 0 2px var(--rams-surface),
+          0 0 0 4px rgba(120, 120, 120, 0.35);
+      }
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: light-dark(#b0b0b0, #424542);
+          background-image:
+            radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+              rgba(255, 255, 255, 0.75),
+              rgba(255, 255, 255, 0.35) 35%,
+              transparent 55%),
+            radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+              rgba(0, 0, 0, 0.22),
+              transparent 70%),
+            linear-gradient(135deg,
+              rgba(255, 255, 255, 0.15),
+              transparent 40%),
+            linear-gradient(315deg,
+              rgba(0, 0, 0, 0.12),
+              transparent 40%);
+          box-shadow:
+            -3px -3px 6px light-dark(rgba(255, 255, 255, 0.7),
+              rgba(255, 255, 255, 0.08)),
+            4px 4px 8px rgba(0, 0, 0, 0.25),
+            1px 1px 0 rgba(255, 255, 255, 0.25),
+            -1px -1px 0 rgba(0, 0, 0, 0.15);
+        }
+      }
+
+      &:active  {
+        background-color: light-dark(#909090, #383b38);
+        transform: translateY(1.5px);
+        box-shadow:
+          inset 4px 4px 8px rgba(0, 0, 0, 0.45),
+          inset -4px -4px 8px rgba(255, 255, 255, 0.45);
+
+        &::after {
+          transform: translateY(var(--rams-button-highlight-press-shift));
+          opacity: var(--rams-button-highlight-press-opacity);
+        }
+      }
+
+      &:focus-visible:active {
+        box-shadow:
+          inset 4px 4px 8px rgba(0, 0, 0, 0.45),
+          inset -4px -4px 8px rgba(255, 255, 255, 0.45),
+          0 0 0 2px var(--rams-surface),
+          0 0 0 4px rgba(120, 120, 120, 0.35);
+      }      
+    }
+  }
+
+
+  /* -------------------------------------------------------
+  PHOTOGRAPHY
+  ------------------------------------------------------- */
+
+  /* Flickr sort buttons */
+  .flickr-gallery__sort-buttons {
+    margin: 2rem auto 1rem;
+    display: flex;
+    border-radius: 14px;
+    overflow: visible;
+    background: var(--rams-surface-raised);
+    box-shadow: var(--rams-control-tray);
+    padding: 8px;
+    max-width: var(--container-width-sm);
+
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    #sort-button-recent {
+      --led-color: var(--rams-green);
+    }
+
+    #sort-button-interesting {
+      --led-color: var(--rams-orange);
+    }
+
+    #sort-button-oldest {
+      --led-color: var(--rams-red);
+    }
+
+    [id^="sort-button-"] {
+      all: unset;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 0.4rem 1.15rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--rams-text);
+      border-radius: var(--rams-radius-md);
+      cursor: pointer;
+      user-select: none;
+      background:
+        linear-gradient(to bottom,
+          light-dark(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.2)) 0%,
+          rgba(255, 255, 255, 0.25) 12%,
+          rgba(255, 255, 255, 0.06) 30%,
+          transparent 45%),
+        linear-gradient(to bottom,
+          transparent 60%,
+          rgba(0, 0, 0, 0.15) 75%,
+          rgba(0, 0, 0, 0.3) 100%),
+        var(--rams-panel);
+      box-shadow:
+        inset 0 2px 3px rgba(255, 255, 255, 0.25),
+        inset 0 -4px 7px rgba(0, 0, 0, .5);
+      transition:
+        transform var(--rams-motion-fast) ease,
+        box-shadow var(--rams-motion-fast) ease,
+        filter var(--rams-motion-medium) ease;
+
+      /* Rams highlight strip */
+      &::after {
+        content: "";
+        position: absolute;
+        top: 64%;
+        left: 6%;
+        right: 6%;
+        height: 2px;
+        border-radius: var(--rams-radius-xs);
+        background: var(--rams-button-highlight-strip);
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0.48;
+        transition:
+          transform var(--rams-motion-fast) ease,
+          opacity var(--rams-motion-fast) ease;
+      }
+
+      &:focus-visible {
+        outline: none;
+        transform: translateY(0.4px);
+        box-shadow:
+          inset 0 2px 3px rgba(255, 255, 255, 0.25),
+          inset 0 -4px 7px rgba(0, 0, 0, .5),
+          inset 0 3px 4px light-dark(rgba(0, 0, 0, .35), rgba(0, 0, 0, .6)),
+          inset 0 -3px 5px light-dark(rgba(255, 255, 255, .28), rgba(255, 255, 255, .12)),
+          var(--rams-focus-ring);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          transform: translateY(0.4px);
+          box-shadow:
+            inset 0 3px 4px light-dark(rgba(0, 0, 0, .35), rgba(0, 0, 0, .6)),
+            inset 0 -3px 5px light-dark(rgba(255, 255, 255, .28), rgba(255, 255, 255, .12));
+        }
+      }
+
+      &:active:not(.button--active),
+      &:focus-visible:active:not(.button--active) {
+        transform: translateY(1px);
+        box-shadow:
+          inset 0 5px 7px rgba(0, 0, 0, .65),
+          inset 0 -2px 3px rgba(255, 255, 255, .18);
+        
+         &:focus-visible {
+          box-shadow:
+            inset 0 5px 7px rgba(0, 0, 0, .65),
+            inset 0 -2px 3px rgba(255, 255, 255, .18),
+            var(--rams-focus-ring);
+        }
+
+        &::after {
+          transform: translateY(var(--rams-button-highlight-press-shift));
+          opacity: var(--rams-button-highlight-press-opacity);
+        }
+      }
+
+      &.button--active,
+      &.button--active:hover {
+        border-radius: 10px;
+        transform: none;
+        background:
+          radial-gradient(ellipse at 50% 24%,
+            light-dark(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.22)) 0%,
+            light-dark(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.10)) 18%,
+            light-dark(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)) 35%,
+            rgba(0, 0, 0, 0.06) 55%,
+            rgba(0, 0, 0, 0.30) 85%),
+          linear-gradient(to right,
+            rgba(255, 255, 255, .45),
+            rgba(0, 0, 0, .35),
+            rgba(255, 255, 255, .45)) center 62% / 88% 1px no-repeat,
+          var(--rams-panel);
+
+        box-shadow:
+          inset 0 6px 10px rgba(0, 0, 0, 0.75),
+          inset 0 -4px 6px rgba(255, 255, 255, 0.25),
+          inset 6px 0 8px rgba(0, 0, 0, 0.35),
+          inset -6px 0 8px rgba(255, 255, 255, 0.25);
+        outline: 1px solid light-dark(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08));
+        outline-offset: -1px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 8px;
+          left: 10px;
+          width: 6px;
+          height: 6px;
+          border-radius: var(--rams-radius-round);
+
+          background: var(--led-color);
+          box-shadow:
+            0 0 5px var(--led-color),
+            inset 0 1px 1px rgba(255, 255, 255, 0.7),
+            inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: -1px;
+          border-radius: inherit;
+          pointer-events: none;
+
+          background:
+            radial-gradient(140% 80% at 50% -25%,
+              light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18)) 0%,
+              light-dark(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)) 35%,
+              transparent 60%);
+
+          mix-blend-mode: soft-light;
+          opacity: 0.65;
+
+          box-shadow:
+            inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.12)),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+        }
+
+        &:focus-visible {
+          outline: none;
+          box-shadow:
+            inset 0 6px 10px rgba(0, 0, 0, 0.75),
+            inset 0 -4px 6px rgba(255, 255, 255, 0.25),
+            inset 6px 0 8px rgba(0, 0, 0, 0.35),
+            inset -6px 0 8px rgba(255, 255, 255, 0.25),
+            var(--rams-focus-ring);
+          z-index: 2;
+        }
+      }
+    }
+  }
+
+  /* Loading spinner */
+  .spinner {
+    &__text {
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      opacity: 0.6;
+      color: var(--rams-text);
+    }
+
+    &__loader {
+      width: 28px;
+      height: 28px;
+
+      border-radius: var(--rams-radius-round);
+
+      /* full dial ring */
+      border: 2px solid light-dark(rgba(0, 0, 0, 0.25),
+          rgba(255, 255, 255, 0.25));
+
+      /* subtle highlight segment */
+      border-top-color: light-dark(rgba(0, 0, 0, 0.55),
+          rgba(255, 255, 255, 0.6));
+
+      animation: spinner-spin 1.6s linear infinite;
+
+      margin-bottom: 0.5rem;
+
+      /* subtle depth */
+      box-shadow:
+        var(--rams-edge-highlight);
+    }
+  }
+
+  /* -------------------------------------------------------
+  ENDURANCE
+  ------------------------------------------------------- */
+
+  /* Marathon map */
+  --color-state-completed: var(--rams-orange);
+
+  /* Marathon stars */
+  --color-star-default: #999;
+  --color-star-default-text: #000;
+  --color-star-completed: var(--rams-orange);
+  --color-star-completed-text: light-dark(#fff, #000);
+  --color-star-tooltip-background: var(--rams-panel);
+  --color-star-tooltip-border: var(--rams-border-strong);
+  --color-star-tooltip-box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.25);
+
+  /* -------------------------------------------------------
+  PHOTO CAROUSEL CONTROLS
+  ------------------------------------------------------- */
+  .cube-carousel__controls {
+    margin-top: 5rem;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 14px;
+    background: var(--rams-surface-raised);
+    box-shadow: var(--rams-control-tray);
+
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      width: 100%;
+    }
+  }
+
+  .cube-carousel__controls .button-group .button {
+    all: unset;
+    position: relative;
+    width: 100%;
+    height: 88px;
+    border-radius: var(--rams-radius-sm);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    cursor: pointer;
+    background:
+      /* molded circular dish */
+      radial-gradient(var(--rams-light-center),
+        rgba(0, 0, 0, .10) 0%,
+        rgba(0, 0, 0, .06) 28%,
+        rgba(0, 0, 0, .03) 44%,
+        transparent 64%),
+      /* subtle circular ridge highlight */
+      radial-gradient(var(--rams-light-center),
+        transparent 62%,
+        light-dark(rgba(255, 255, 255, .16), rgba(255, 255, 255, .06)) 64%,
+        light-dark(rgba(0, 0, 0, .10), rgba(0, 0, 0, .22)) 68%,
+        transparent 75%),
+      /* Rams cylindrical lighting */
+      radial-gradient(ellipse at 50% 20%,
+        light-dark(rgba(255, 255, 255, .65), rgba(255, 255, 255, .22)) 0%,
+        light-dark(rgba(255, 255, 255, .35), rgba(255, 255, 255, .12)) 18%,
+        transparent 40%),
+      linear-gradient(to bottom,
+        transparent 55%,
+        rgba(0, 0, 0, .20) 100%),
+      /* subtle mold seam */
+      linear-gradient(to right,
+        rgba(255, 255, 255, .25),
+        rgba(0, 0, 0, .12),
+        rgba(255, 255, 255, .25)) center 60% / 82% 1px no-repeat,
+      linear-gradient(to right,
+        transparent,
+        rgba(255, 255, 255, .18),
+        transparent) center 78% / 60% 1px no-repeat,
+      radial-gradient(var(--rams-light-center),
+        rgba(255, 255, 255, .06),
+        transparent 70%),
+      var(--rams-panel);
+
+    /* Rams edge bevel */
+    box-shadow:
+      -3px -3px 6px light-dark(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.15)), // brighter top highlight
+      4px 6px 10px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -3px 4px rgba(0, 0, 0, 0.35);
+
+    transition:
+      transform var(--rams-motion-fast) ease,
+      box-shadow var(--rams-motion-fast) ease,
+      background var(--rams-motion-medium) ease;
+
+    /* button icon layer */
+    &::before {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: currentColor;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+      /* subtle etched shadow */
+      filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
+    }
+
+    /* rewind */
+    &[data-transport="rewind"]::before {
+      mask-image: url("/icons/transport-rewind.svg");
+      -webkit-mask-image: url("/icons/transport-rewind.svg");
+    }
+    /* play */
+    &[data-transport="play"]::before {
+      mask-image: url("/icons/transport-play.svg");
+      -webkit-mask-image: url("/icons/transport-play.svg");
+    }
+    /* pause */
+    &[data-transport="pause"]::before {
+      mask-image: url("/icons/transport-pause.svg");
+      -webkit-mask-image: url("/icons/transport-pause.svg");
+    }
+    /* fast forward */
+    &[data-transport="fast-forward"]::before {
+      mask-image: url("/icons/transport-fast-forward.svg");
+      -webkit-mask-image: url("/icons/transport-fast-forward.svg");
+    }
+
+    /* Rams highlight strip */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 64%;
+      left: 14%;
+      right: 14%;
+      height: 2px;
+      border-radius: var(--rams-radius-sm);
+      background: var(--rams-button-highlight-strip);
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.48;
+      transition:
+        transform var(--rams-motion-fast) ease,
+        opacity var(--rams-motion-fast) ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover:not(:active):not(:focus-visible) {
+        transform: translateY(1px);
+        opacity: 0.85;
+        box-shadow:
+          -3px -3px 6px light-dark(rgba(255, 255, 255, .7), rgba(255, 255, 255, .08)),
+          4px 4px 8px rgba(0, 0, 0, .25),
+          inset 0 1px 0 rgba(255, 255, 255, .35),
+          inset 0 -1px 0 rgba(0, 0, 0, .25);
+      }
+    }
+
+    &:active {
+      transform: translateY(3px);
+      box-shadow: var(--rams-shadow-pressed);
+      &::after {
+        transform: translateY(var(--rams-button-highlight-press-shift));
+        opacity: var(--rams-button-highlight-press-opacity);
+      }
+    }
+
+    &:focus-visible:active {
+      transform: translateY(3px);
+      box-shadow:
+        var(--rams-shadow-pressed),
+        var(--rams-focus-ring);
+      &:after {
+        transform: translateY(2px);
+        opacity: 0.4;
+      }
+    }
+
+    &:focus-visible {
+      transform: translateY(1px);
+      opacity: 0.85;
+      box-shadow:
+        -3px -3px 6px light-dark(rgba(255, 255, 255, .7), rgba(255, 255, 255, .08)),
+        4px 4px 8px rgba(0, 0, 0, .25),
+        inset 0 1px 0 rgba(255, 255, 255, .35),
+        inset 0 -1px 0 rgba(0, 0, 0, .25),
+        var(--rams-focus-ring);
+    }
+  }
+
+
+  /* -------------------------------------------------------
+   IRONMAN PROGRESS TRACKER DIETER RAMS / BRAUN T3 DIAL
+  ------------------------------------------------------- */
+  --color-progress-bar-bg: #999;
+  --color-progress-bar-completed: var(--rams-orange);
+  --color-progress-bar-current: var(--rams-green);
+  --color-progress-bar-upcoming: #999;
+  --rams-progress-dial-shadow-top: light-dark(rgba(255, 255, 255, 0.55),
+      rgba(255, 255, 255, 0.18));
+  --rams-progress-dial-shadow-bottom: light-dark(rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.65));
+
+  .ironman-circular-progress {
+    &__container {
+      border-radius: var(--rams-radius-round);
+      background: var(--rams-surface-raised);
+      /* Rams elevation */
+      box-shadow:
+        var(--rams-shadow-raised),
+        inset 1px 1px 0 light-dark(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.08)),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      /* subtle top lighting */
+      background-image:
+        radial-gradient(circle at var(--rams-light-x) var(--rams-light-y),
+          light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18)) 0%,
+          transparent 55%);
+      /* inner highlight ring */
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border-radius: var(--rams-radius-round);
+        pointer-events: none;
+        box-shadow:
+          inset 2px 2px 4px rgba(0, 0, 0, 0.25),
+          inset -2px -2px 4px light-dark(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.12));
+        opacity: 0.9;
+      }
+
+      /* dial outer ring */
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border-radius: var(--rams-radius-round);
+        pointer-events: none;
+        border: var(--rams-border-strong);
+        box-shadow:
+          inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.15)),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+          0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    /* dial track */
+    &__path {
+      fill: none;
+      stroke-width: 4;
+      opacity: 0.7;
+    }
+
+    /* progress indicator */
+    &__progress {
+      fill: none;
+      stroke: color-mix(in srgb, var(--color-progress-bar-completed) 85%, black);
+      stroke-width: 4;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.4s ease;
+      filter:
+        drop-shadow(-0.5px -0.5px 0 var(--rams-progress-dial-shadow-top)) drop-shadow(0.5px 1.5px 2px var(--rams-progress-dial-shadow-bottom)) drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.4));
+    }
+
+    /* dial markers */
+    &__milestone {
+      r: 3;
+      fill: var(--color-progress-bar-upcoming);
+      filter:
+        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+      stroke: none;
+      transition: fill 180ms ease;
+      &--completed {
+        fill: var(--color-progress-bar-completed);
+      }
+      &--current {
+        fill: var(--color-progress-bar-current);
+      }
+    }
+
+    /* dial numbers hidden */
+    &__milestone-text {
+      font-size: 0;
+    }
+
+    &__central-text {
+      font-size: 1.15rem;
+      font-weight: 500;
+      fill: var(--rams-text);
+      opacity: 0.7;
+      letter-spacing: 0.02em;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    &__central-subtext {
+      font-size: 0.85rem;
+      fill: var(--rams-text);
+      opacity: 0.7;
+    }
+
+    &__legend-dot {
+      &--completed {
+        box-shadow:
+          0 0 5px var(--color-progress-bar-completed),
+          inset 0 1px 1px rgba(255, 255, 255, 0.7),
+          inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+      }
+
+      &--current {
+        box-shadow:
+          0 0 5px var(--color-progress-bar-current),
+          inset 0 1px 1px rgba(255, 255, 255, 0.7),
+          inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+      }
+
+      &--upcoming {
+        box-shadow:
+          0 0 5px var(--color-progress-bar-upcoming),
+          inset 0 1px 1px rgba(255, 255, 255, 0.7),
+          inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    /* station labels / race names */
+    &__milestone-label {
+      font-size: 0.7rem;
+      fill: var(--rams-text);
+      opacity: 0.7;
+      letter-spacing: 0.04em;
+    }
+
+    &__milestone-date {
+      fill: var(--rams-text);
+      opacity: 0.5;
+      font-size: 0.6rem;
+    }
+    
+    // Hide milestone indidators and legend everywhere
+    &__milestone,
+    &__legend {
+      display: none;
+    }
+
+    // only display milestone indicators and legend where SVG R value supported
+    @supports (selector(:has(*))) {
+      @supports (r: 1) {
+        &__milestone,
+        &__legend {
+        display: flex;
+        }
+      }
+    }
+  }
+}

@@ -7,9 +7,7 @@ import Link from "../components/atoms/Link/Link";
 export default function Inspiration() {
   const links = [
     { href: "https://geoapa.com/", label: "George Apazidis" },
-    { href: "https://www.joshmbell.com/", label: "Josh Bell" },
-    { href: "https://metatronstudios.com/", label: "Metatron Studios" },
-    {
+    { href: "https://www.joshmbell.com/", label: "Josh Bell" },{
       href: "https://www.carlos-otero.com/press#/world-of-interiors/",
       label: "Carlos Otero",
     },
@@ -87,6 +85,10 @@ export default function Inspiration() {
       href: "https://uiverse.io/Peary74/tough-panther-45",
       label: "Neumorphism.io: Peary74",
     },
+    { href: "https://codepen.io/Pedro-Ondiviela/pen/emzdMKj", label: "Pedro Ondiviela" },
+    { href: "https://en.wikipedia.org/wiki/Dieter_Rams", label: "Dieter Rams" },
+    { href: "https://www.mandydempseyphotography.com/", label: "Mandy Dempsey Photography"},
+    { href: "https://michaelreh.com/", label: "Michael Reh"},
   ];
 
   const [shuffledLinks, setShuffledLinks] = useState(links);

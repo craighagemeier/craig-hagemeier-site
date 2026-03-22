@@ -47,6 +47,7 @@ export default function ThemeToggler({ isMenuOpen }: ThemeTogglerProps) {
     { value: "monochrome", label: "Monochrome" },
     { value: "kruger", label: "Barbara Kruger" },
     { value: "rogue-coast", label: "Rogue Coast" },
+    { value: "dieter-rams", label: "Dieter Rams" },
   ];
 
   if (!isLoaded) return null; // Wait until loaded to prevent flashing
@@ -79,6 +80,7 @@ export default function ThemeToggler({ isMenuOpen }: ThemeTogglerProps) {
       </ul>
       <div className="theme-menu__toggle-container">
         <button
+          id="theme-button-light"
           type="button"
           aria-label="Enable Light Mode"
           onClick={() => setColorMode("light")}
@@ -88,6 +90,7 @@ export default function ThemeToggler({ isMenuOpen }: ThemeTogglerProps) {
           <Sun size={20} />
         </button>
         <button
+          id="theme-button-dark"
           type="button"
           aria-label="Enable Dark Mode"
           onClick={() => setColorMode("dark")}
@@ -97,6 +100,7 @@ export default function ThemeToggler({ isMenuOpen }: ThemeTogglerProps) {
           <Moon size={20} />
         </button>
         <button
+          id="theme-button-auto"
           type="button"
           aria-label="Use System Preference"
           onClick={() => setColorMode("auto")}

@@ -215,9 +215,11 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
               {sortOptions.map((option) => (
                 <Button
                   key={option.id}
+                  id={`sort-button-${option.id}`} 
                   onClick={() => handleSortChange(option)}
                   isActive={sortOption === option.value}
                   disabled={isLoading}
+                  aria-pressed={sortOption === option.value} 
                 >
                   {option.label}
                 </Button>
@@ -227,7 +229,7 @@ export default function FlickrGallery({ photos: initialPhotos }: { photos: Flick
         </div>
       </div>
 
-      {isLoading && <Spinner text="Loading photos..." />}
+      {isLoading && <Spinner text="Loading…" />}
 
       <div
         ref={gridRef}
