@@ -125,10 +125,18 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
     if (effectiveColorMode === "light") {
       document.documentElement.style.setProperty("color-scheme", "light");
+      // Override LightningCSS polyfill variables
+      document.documentElement.style.setProperty("--lightningcss-light", "initial");
+      document.documentElement.style.setProperty("--lightningcss-dark", " ");
     } else if (effectiveColorMode === "dark") {
       document.documentElement.style.setProperty("color-scheme", "dark");
+      // Override LightningCSS polyfill variables
+      document.documentElement.style.setProperty("--lightningcss-light", " ");
+      document.documentElement.style.setProperty("--lightningcss-dark", "initial");
     } else {
       document.documentElement.style.removeProperty("color-scheme");
+      document.documentElement.style.removeProperty("--lightningcss-light");
+      document.documentElement.style.removeProperty("--lightningcss-dark");
     }
   }, [theme, colorMode, systemPreference, isLoaded]);
 
