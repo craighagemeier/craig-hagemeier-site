@@ -139,21 +139,23 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     setTimeout(() => {
       applyThemeWithRetries();
     }, 0);
+  }, [theme, colorMode, systemPreference, isLoaded]);
 
-    // Determine which color mode to actually apply
-    const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
+  useEffect(() => {
+    if (!isLoaded || typeof window === "undefined") return;
 
-    // If color mode is specified, override the system preference
-    if (effectiveColorMode === "auto") {
-      // Let CSS handle it (this is the key fix)
-      document.documentElement.style.setProperty("color-scheme", "light dark");
-    } else if (effectiveColorMode === "light") {
+    const effectiveColorMode =
+      colorMode === "auto" ? systemPreference : colorMode;
+
+    if (effectiveColorMode === "light") {
       document.documentElement.style.setProperty("color-scheme", "light");
     } else if (effectiveColorMode === "dark") {
       document.documentElement.style.setProperty("color-scheme", "dark");
+    } else {
+      document.documentElement.style.removeProperty("color-scheme");
     }
-  }, [theme, colorMode, systemPreference, isLoaded]);
-
+  }, [colorMode, systemPreference, isLoaded]);
+  
   // Listen for page transition completion
   useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
