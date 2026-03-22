@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useState, useEffect, useLayoutEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 interface ThemeContextType {
@@ -15,9 +15,9 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
 
 const getInitialTheme = (): string => {
   if (typeof window !== "undefined") {
-    return localStorage.getItem("selectedTheme") || "dieter-rams";
+    return localStorage.getItem("selectedTheme") || "monochrome";
   }
-  return "dieter-rams";
+  return "monochrome";
 };
 
 const getInitialColorMode = (): string => {
@@ -28,7 +28,7 @@ const getInitialColorMode = (): string => {
 };
 
 const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const pathname = usePathname(); // Use pathname inside the component
+  const pathname = usePathname();
   const [theme, setTheme] = useState<string>(getInitialTheme);
   const [colorMode, setColorMode] = useState<string>(getInitialColorMode);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -38,11 +38,9 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Check initial system preference
     const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     setSystemPreference(darkModeMediaQuery.matches ? "dark" : "light");
 
-    // Listen for changes in system preference
     const handler = (e: MediaQueryListEvent) => {
       setSystemPreference(e.matches ? "dark" : "light");
     };
@@ -64,10 +62,8 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     const headings = document.querySelectorAll("h1, h2, h3, h4");
     const textElements = document.querySelectorAll("h1, h2, h3, h4, p");
 
-    // First, clean up all theme-specific transformations
     headings.forEach((heading) => {
       heading.classList.remove("theme-box");
-      // Restore original content without special formatting
       heading.innerHTML = heading.textContent || "";
     });
 
@@ -78,28 +74,22 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         .replace(/<span class='theme-first-letter'>(.*?)<\/span>/gi, "$1");
     });
 
-    // Apply transformations for monochrome theme (first letter effect for all headings)
     if (currentTheme === "monochrome") {
       headings.forEach((heading) => {
         heading.innerHTML = heading.textContent?.replace(/\b(\w)/g, "<span class='theme-first-letter'>$1</span>") || "";
       });
     }
 
-    // Apply transformations for Kruger theme
     if (currentTheme === "kruger") {
-      // Apply Kruger theme transformations to text elements
       textElements.forEach((el) => {
         let content = el.innerHTML;
-        // Process keywords for ticker effect
         content = content.replace(
           /\b(YOU|ARE|BEAUTIFUL|AMAZING|EPIC|EXTRAORDINARY|LIMITLESS|ENOUGH|WONDERFUL|PERFECT)\b/gi,
           '<span class="theme-box theme-ticker">$1</span>'
         );
-
         el.innerHTML = content;
       });
 
-      // Ensure the theme-box class is not applied to H1 in Kruger theme
       headings.forEach((heading) => {
         if (heading.tagName !== "H1") {
           heading.classList.add("theme-box");
@@ -109,22 +99,16 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   };
 
   // Main theme effect
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
 
     localStorage.setItem("selectedTheme", theme);
     localStorage.setItem("selectedColorMode", colorMode);
 
-    document.body.classList.forEach((cls) => {
-      if (cls.startsWith("theme-")) {
-        document.body.classList.remove(cls);
-      }
-    });
+    document.body.classList.remove("theme-monochrome", "theme-kruger", "theme-rogue-coast", "theme-dieter-rams");
     document.body.classList.add(`theme-${theme}`);
 
-    // Function to apply theme with retries
-    const applyThemeWithRetries = (retries = 1, delay = 100) => {
-      // Apply the theme transformations
+    const applyThemeWithRetries = (retries = 3, delay = 200) => {
       applyThemeTransformations(theme);
 
       if (retries > 0) {
@@ -135,21 +119,15 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       }
     };
 
-    // Start applying theme with retries
-    setTimeout(() => {
-      applyThemeWithRetries();
-    }, 0);
+    applyThemeWithRetries();
 
-    // Determine which color mode to actually apply
     const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
 
-    // If color mode is specified, override the system preference
     if (effectiveColorMode === "light") {
       document.documentElement.style.setProperty("color-scheme", "light");
     } else if (effectiveColorMode === "dark") {
       document.documentElement.style.setProperty("color-scheme", "dark");
     } else {
-      // This should not happen with our logic, but just in case
       document.documentElement.style.removeProperty("color-scheme");
     }
   }, [theme, colorMode, systemPreference, isLoaded]);
@@ -158,15 +136,12 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
 
-    // Listen for page transition completion
     const handleTransitionComplete = () => {
-      // Reapply theme transformations
       applyThemeTransformations(theme);
     };
 
     window.addEventListener('pageTransitionComplete', handleTransitionComplete);
 
-    // Apply theme on initial load
     setTimeout(() => {
       applyThemeTransformations(theme);
     }, 100);
@@ -180,17 +155,14 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   useEffect(() => {
     if (!isLoaded) return;
 
-    // When route changes, wait for animation to complete
     const timer = setTimeout(() => {
       applyThemeTransformations(theme);
-    }, 500); // slightly longer than the page transition duration
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [pathname, isLoaded, theme]);
 
-  // Prevent render until the theme is loaded
-  if (!isLoaded) return null;
-
+  // Render children hidden until theme is loaded to avoid hydration mismatch
   return (
     <ThemeContext.Provider value={{
       theme,
@@ -199,7 +171,9 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       setColorMode,
       isLoaded
     }}>
-      {children}
+      <div style={{ visibility: isLoaded ? "visible" : "hidden" }}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };
