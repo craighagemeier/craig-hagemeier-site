@@ -1,5 +1,5 @@
 import PageStructure from "./components/templates/PageStructure";
-import ThemeProvider, { colorModeScript } from "./components/providers/ThemeProvider";
+import ThemeProvider from "./components/providers/ThemeProvider";
 import { Metadata } from "next";
 import "./styles/global.scss";
 
@@ -40,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" href="/favicon.ico" />

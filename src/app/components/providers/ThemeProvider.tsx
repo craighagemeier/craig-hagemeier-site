@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useState, useEffect, useLayoutEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 interface ThemeContextType {
@@ -26,28 +26,6 @@ const getInitialColorMode = (): string => {
   }
   return "auto";
 };
-
-// Blocking script to inject into <head> via your layout.tsx.
-// This runs before React hydrates, preventing any flash of wrong color scheme in production.
-// Add this to your root layout:
-//
-//   <head>
-//     <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
-//   </head>
-//
-export const colorModeScript = `
-(function() {
-  try {
-    var mode = localStorage.getItem('selectedColorMode') || 'auto';
-    var effective = mode;
-    if (mode === 'auto') {
-      effective = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-color-mode', effective);
-    document.documentElement.style.setProperty('color-scheme', effective);
-  } catch(e) {}
-})();
-`;
 
 const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname();
@@ -121,20 +99,16 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   };
 
   // Main theme effect
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
 
     localStorage.setItem("selectedTheme", theme);
     localStorage.setItem("selectedColorMode", colorMode);
 
-    document.body.classList.forEach((cls) => {
-      if (cls.startsWith("theme-")) {
-        document.body.classList.remove(cls);
-      }
-    });
+    document.body.classList.remove("theme-monochrome", "theme-kruger", "theme-rogue-coast", "theme-dieter-rams");
     document.body.classList.add(`theme-${theme}`);
 
-    const applyThemeWithRetries = (retries = 1, delay = 100) => {
+    const applyThemeWithRetries = (retries = 3, delay = 200) => {
       applyThemeTransformations(theme);
 
       if (retries > 0) {
@@ -145,16 +119,17 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       }
     };
 
-    setTimeout(() => {
-      applyThemeWithRetries();
-    }, 0);
+    applyThemeWithRetries();
 
-    // Determine effective color mode and apply it.
-    // The blocking script (colorModeScript) handles the initial paint in production;
-    // this effect keeps things in sync whenever the user toggles.
     const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
-    document.documentElement.setAttribute("data-color-mode", effectiveColorMode);
-    document.documentElement.style.setProperty("color-scheme", effectiveColorMode);
+
+    if (effectiveColorMode === "light") {
+      document.documentElement.style.setProperty("color-scheme", "light");
+    } else if (effectiveColorMode === "dark") {
+      document.documentElement.style.setProperty("color-scheme", "dark");
+    } else {
+      document.documentElement.style.removeProperty("color-scheme");
+    }
   }, [theme, colorMode, systemPreference, isLoaded]);
 
   // Listen for page transition completion
@@ -187,8 +162,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     return () => clearTimeout(timer);
   }, [pathname, isLoaded, theme]);
 
-  if (!isLoaded) return null;
-
+  // Render children hidden until theme is loaded to avoid hydration mismatch
   return (
     <ThemeContext.Provider value={{
       theme,
@@ -197,7 +171,9 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       setColorMode,
       isLoaded
     }}>
-      {children}
+      <div style={{ visibility: isLoaded ? "visible" : "hidden" }}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };
