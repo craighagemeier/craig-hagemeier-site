@@ -29,10 +29,12 @@
   --transition-carousel: transform var(--transition-carousel-duration) var(--transition-carousel-timing);
 
   /* Composite transitions */
-  --transition-all: all var(--transition-standard),
-                     outline-offset var(--transition-outline),
-                     outline-width var(--transition-outline),
-                     outline-color var(--transition-outline);
+  --transition-all: background-color var(--transition-standard),
+                    box-shadow var(--transition-standard),
+                    border-color var(--transition-standard),
+                    transform var(--transition-standard),                     outline-offset var(--transition-outline),
+                    outline-width var(--transition-outline),
+                    outline-color var(--transition-outline);
 
   /* Animation durations */
   --animation-duration-short: 200ms;

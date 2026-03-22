@@ -1,3 +1,4 @@
+@use "./themes/theme-dieter-rams.scss";
 @use "./themes/theme-rogue-coast.scss";
 @use "./themes/theme-kruger.scss";
 @use "./themes/theme-monochrome.scss";
@@ -57,6 +58,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  transition: opacity 120ms ease;
 }
 
 // Root container

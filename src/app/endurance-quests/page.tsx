@@ -58,14 +58,12 @@ const racePhotos = [
   {
     src: "/images/endurance/IRONMAN-Wisconsin-finish-line.jpg",
     alt: "IRONMAN Wisconsin finish line",
-    caption:
-      "Finish line with family after my first IRONMAN - Madison, Wisconsin, 2015",
+    caption: "Finish line with family after my first IRONMAN - Wisconsin 2015",
   },
   {
     src: "/images/endurance/ALC.jpg",
     alt: "AIDS LifeCycle",
-    caption:
-      "AIDS LifeCycle 2016 - Cycling 545 miles from San Francisco to Los Angeles",
+    caption: "AIDS LifeCycle 2016 - Cycling 545 miles from San Francisco to Los Angeles",
   },
   {
     src: "/images/endurance/Chicago-IronMonster-team-2020.jpg",
@@ -75,8 +73,7 @@ const racePhotos = [
   {
     src: "/images/endurance/Marathon-Havana-Cuba.jpg",
     alt: "Havana Cuba Marathon",
-    caption:
-      "Havana Cuba Marathon, 2019 - Running through the streets of Havana",
+    caption: "Havana, Cuba Marathon, 2019",
   },
   {
     src: "/images/endurance/Chicago-IronMonster-team-2015.jpg",

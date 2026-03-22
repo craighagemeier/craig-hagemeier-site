@@ -40,13 +40,17 @@ const IronmanProgressTracker: React.FC<IronmanProgressTrackerProps> = ({
 
   // Parameters for milestone positions
   const milestoneRadius = radius + 15;
+  const labelRadius = radius + 65;
 
   // Create an array of milestone positions in a circle
   const milestones = Array.from({ length: totalRaces }).map((_, index) => {
     const angle = (index / totalRaces) * 2 * Math.PI - Math.PI / 2; // Start from the top (12 o'clock)
+    const visualAngle = (index / totalRaces) * 2 * Math.PI - Math.PI / 2;
     const x = milestoneRadius * Math.cos(angle);
     const y = milestoneRadius * Math.sin(angle);
-    return { x, y, angle, completed: index < completedRaces, current: index === completedRaces };
+    const labelX = labelRadius * Math.cos(visualAngle);
+    const labelY = labelRadius * Math.sin(visualAngle);
+    return { x, y, angle, labelX, labelY, visualAngle, completed: index < completedRaces, current: index === completedRaces };
   });
 
   return (
@@ -116,9 +120,16 @@ const IronmanProgressTracker: React.FC<IronmanProgressTrackerProps> = ({
               : "ironman-circular-progress__milestone--upcoming";
 
             // Calculate text anchor and position adjustment based on angle
-            const textAnchor = milestone.x > 0 ? "start" : milestone.x < 0 ? "end" : "middle";
-            const textDx = milestone.x > 0 ? 35 : milestone.x < 0 ? -35 : 0;
-            const textDy = milestone.y > 0 ? 35 : milestone.y < 0 ? -35 : milestone.x !== 0 ? 0 : milestone.y === 0 ? -35 : 0;
+            const cos = Math.cos(milestone.visualAngle);
+            const sin = Math.sin(milestone.visualAngle);
+            const textAnchor =
+              Math.abs(cos) < 0.2
+                ? "middle"
+                : cos > 0
+                ? "start"
+                : "end";
+            const textDx = cos > 0 ? 8 : cos < 0 ? -8 : 0;
+            const textDy = sin > 0 ? 14 : sin < 0 ? -14 : 0;
 
             return (
               <g key={index}>
@@ -140,8 +151,8 @@ const IronmanProgressTracker: React.FC<IronmanProgressTrackerProps> = ({
                 {races[index].name && (
                   <>
                     <text
-                      x={milestone.x + textDx}
-                      y={milestone.y + textDy - 8}
+                      x={milestone.labelX + textDx}
+                      y={milestone.labelY + textDy - 8}
                       textAnchor={textAnchor}
                       className="ironman-circular-progress__milestone-label"
                     >
@@ -149,8 +160,8 @@ const IronmanProgressTracker: React.FC<IronmanProgressTrackerProps> = ({
                     </text>
                     {races[index].date && (
                       <text
-                        x={milestone.x + textDx}
-                        y={milestone.y + textDy + 12}
+                        x={milestone.labelX + textDx}
+                        y={milestone.labelY + textDy + 12}
                         textAnchor={textAnchor}
                         className="ironman-circular-progress__milestone-date"
                       >

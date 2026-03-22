@@ -141,6 +141,7 @@ const CubeCarousel: React.FC<CubeCarouselProps> = ({ photos }) => {
                 src={photo.src}
                 alt={photo.alt}
                 className="cube-carousel__face-img"
+                tabIndex={-1}
               />
               <div className="cube-carousel__face-caption">
                 {photo.caption}
@@ -152,16 +153,18 @@ const CubeCarousel: React.FC<CubeCarouselProps> = ({ photos }) => {
 
       <div className="cube-carousel__controls">
         <ButtonGroup>
-          <Button onClick={handlePrev}>
+          <Button onClick={handlePrev} aria-label="Previous item" data-transport="rewind">
             &lt; Back
           </Button>
           <Button
             onClick={toggleAutoRotate}
             isActive={isAutoRotating}
+            aria-label={isAutoRotating ? "Pause auto rotate" : "Play auto rotate"}
+            data-transport={isAutoRotating ? "pause" : "play"}
           >
             {isAutoRotating ? 'Auto: On' : 'Auto: Off'}
           </Button>
-          <Button onClick={handleNext}>
+          <Button onClick={handleNext} aria-label="Next item" data-transport="fast-forward">
             Next &gt;
           </Button>
         </ButtonGroup>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 
 interface ThemeContextType {
@@ -15,9 +15,9 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
 
 const getInitialTheme = (): string => {
   if (typeof window !== "undefined") {
-    return localStorage.getItem("selectedTheme") || "monochrome";
+    return localStorage.getItem("selectedTheme") || "dieter-rams";
   }
-  return "monochrome";
+  return "dieter-rams";
 };
 
 const getInitialColorMode = (): string => {
@@ -109,20 +109,21 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   };
 
   // Main theme effect
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isLoaded || typeof window === "undefined") return;
 
     localStorage.setItem("selectedTheme", theme);
     localStorage.setItem("selectedColorMode", colorMode);
 
-    // Remove all theme classes
-    document.body.classList.remove("theme-monochrome", "theme-kruger", "theme-rogue-coast");
-
-    // Add theme class
+    document.body.classList.forEach((cls) => {
+      if (cls.startsWith("theme-")) {
+        document.body.classList.remove(cls);
+      }
+    });
     document.body.classList.add(`theme-${theme}`);
 
     // Function to apply theme with retries
-    const applyThemeWithRetries = (retries = 3, delay = 200) => {
+    const applyThemeWithRetries = (retries = 1, delay = 100) => {
       // Apply the theme transformations
       applyThemeTransformations(theme);
 
@@ -135,7 +136,9 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     };
 
     // Start applying theme with retries
-    applyThemeWithRetries();
+    setTimeout(() => {
+      applyThemeWithRetries();
+    }, 0);
 
     // Determine which color mode to actually apply
     const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
