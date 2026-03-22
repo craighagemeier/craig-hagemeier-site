@@ -6,6 +6,9 @@ const nextConfig = {
   sassOptions: {
     includePaths: ['./src/app/styles'],
   },
+  experimental: {
+    lightningCssTransform: false,
+  },
 }
 
 export default nextConfig;
