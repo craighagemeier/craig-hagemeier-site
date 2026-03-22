@@ -15,9 +15,9 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
 
 const getInitialTheme = (): string => {
   if (typeof window !== "undefined") {
-    return localStorage.getItem("selectedTheme") || "monochrome";
+    return localStorage.getItem("selectedTheme") || "dieter-rams";
   }
-  return "monochrome";
+  return "dieter-rams";
 };
 
 const getInitialColorMode = (): string => {
@@ -144,13 +144,13 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     const effectiveColorMode = colorMode === "auto" ? systemPreference : colorMode;
 
     // If color mode is specified, override the system preference
-    if (effectiveColorMode === "light") {
+    if (effectiveColorMode === "auto") {
+      // Let CSS handle it (this is the key fix)
+      document.documentElement.style.setProperty("color-scheme", "light dark");
+    } else if (effectiveColorMode === "light") {
       document.documentElement.style.setProperty("color-scheme", "light");
     } else if (effectiveColorMode === "dark") {
       document.documentElement.style.setProperty("color-scheme", "dark");
-    } else {
-      // This should not happen with our logic, but just in case
-      document.documentElement.style.removeProperty("color-scheme");
     }
   }, [theme, colorMode, systemPreference, isLoaded]);
 
