@@ -31,6 +31,39 @@ export const metadata: Metadata = {
   robots: "index, follow",
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://craighagemeier.com/#person",
+  name: "Craig Hagemeier",
+  url: "https://craighagemeier.com",
+  image: "https://craighagemeier.com/images/Craig-Hagemeier.jpg",
+  description:
+    "Craig Hagemeier is a technology professional, photographer, and endurance athlete.",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of Illinois Urbana-Champaign",
+  },
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "Bachelor's degree",
+    name: "Bachelor of Science in Business Administration",
+    recognizedBy: {
+      "@type": "CollegeOrUniversity",
+      name: "University of Illinois Urbana-Champaign",
+    },
+  },
+  knowsAbout: [
+    "Computer Science",
+    "Software Development",
+    "Web Development",
+    "Design Systems",
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/craighagemeier/",
+  ],
+};
+
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -45,6 +78,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#ffffff" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Archivo+Black&family=Outfit:wght@300..900&family=Playfair+Display:wght@400;700&display=swap" as="style" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Archivo+Black&family=Outfit:wght@300..900&family=Playfair+Display:wght@400;700&display=swap" />
       </head>
