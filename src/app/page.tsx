@@ -5,7 +5,7 @@ export default function HomePage() {
     <section className="ch-container">
       <div className="ch-row">
         <div className="ch-col">
-          <h2>Explore, Create, Experiment</h2>
+          <h2>Explore, Create, Push limits</h2>
         </div>
       </div>
       <div className="ch-row">
