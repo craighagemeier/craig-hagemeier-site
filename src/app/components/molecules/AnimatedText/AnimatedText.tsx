@@ -6,19 +6,19 @@ import { useState, useEffect } from 'react';
 const sentences = [
   "Hi, I'm Craig!",
   "PARAGRAPH_BREAK",
-  "I'm a front-end developer based in Chicago.",
+  "I'm a software engineer based in Chicago.",
   "PARAGRAPH_BREAK",
   "I like building things.",
   "PARAGRAPH_BREAK",
-  "As a kid, it was Legos and treehouses. Later, I helped the carpenters in my family build an actual house. These days, my builds are digital — web pages, design systems, interactive experiences.",
+  "As a kid, it was Legos and treehouses. Later, I helped the carpenters in my family build an actual house. These days, my builds are digital: web pages, design systems, interactive experiences.",
   "PARAGRAPH_BREAK",
-  "The work I do for clients? Pixel-perfect. But this site? Not so much. This is a playground. A place to experiment, break things, and test ideas — some good, some questionable. The Kruger theme? Fun, but chaotic. The Rogue Coast glassmorphism theme? Stylish, but an accessibility nightmare. (You can try them both using the 🎨 icon in the header.)",
+  "The work I do professionally? Thoughtful, precise, and built to last. But this site? Not so much. This is a playground. A place to experiment, break things, and test ideas. Some good. Some questionable. The Kruger theme? Fun, but chaotic. The Rogue Coast glassmorphism theme? Stylish, but an accessibility nightmare. (You can try them both using the 🎨 icon in the header.)",
   "PARAGRAPH_BREAK",
-  "I'm an advocate of great design, clean code, and systems that scale. I've built two full-scale design systems in my career, and I'm always thinking about the next one. But this site isn't about polished case studies or perfect portfolios. It's a space to tinker, create, and see what happens.",
+  "I'm an advocate of great design, clean code, and systems that scale. I've spent my career building the systems and tools that make good work possible, and I'm always thinking about what could work better. But this site isn't about polished case studies or perfect portfolios. It's a space to tinker, create, and see what happens.",
   "PARAGRAPH_BREAK",
   "So feel free to explore. Check out my latest photos. See what endurance challenge I'm working on. Get inspired to make something. Capture something. Go somewhere new. Push yourself.",
   "PARAGRAPH_BREAK",
-  "Because nothing is ever truly finished — not the work we do, not the things we build, not even ourselves. We're all a work in progress, shaping and reshaping every day. That's both the challenge and the reward, because who we are is always ours to create."
+  "Because nothing is ever truly finished. Not the work we do, not the things we build, not even ourselves. We're all a work in progress, shaping and reshaping every day. That's both the challenge and the reward, because who we are is always ours to create."
 ];
 
 export default function AnimatedText() {

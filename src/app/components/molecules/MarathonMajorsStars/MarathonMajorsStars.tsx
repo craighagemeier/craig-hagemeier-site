@@ -47,7 +47,13 @@ const MarathonMajorsStars = () => {
       name: "Sydney",
       completed: false,
       year: "TBD",
-      description: "The newest addition to the World Marathon Majors."
+      description: "The seventh World Marathon Major and Australia's first."
+    },
+    {
+      name: "Cape Town",
+      completed: false,
+      year: "TBD",
+      description: "Africa's first World Marathon Major, with a spectacular course beneath Table Mountain."
     }
   ];
 
