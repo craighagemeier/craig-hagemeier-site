@@ -152,7 +152,7 @@ const ironmanRaces = [
     name: "Wisconsin",
     location: "Madison",
     date: "2026",
-    completed: false,
+    completed: true,
   },
   {
     name: "TBD",
@@ -227,7 +227,7 @@ export default function EndurancePage() {
           </div>
           <div className="ch-col-xs-12 ch-col-sm-6 ch-col-md-7 ch-col-lg-6 ch-col-xl-6">
             <IronmanProgressTracker
-              completedRaces={10}
+              completedRaces={11}
               totalRaces={12}
               raceData={ironmanRaces}
             />
@@ -287,7 +287,7 @@ export default function EndurancePage() {
           <div className="ch-col-xs-12 ch-col-sm-6 ch-col-md-6 ch-col-lg-6 ch-col-xl-6">
             <div className="ch-row">
               <div className="ch-col">
-                <p>Some finish lines come with a little extra shine. The{" "} <em>Six Star Medal</em>&nbsp;&nbsp;is for runners who complete all the World Marathon Majors. That's Boston, New York, Chicago, Berlin, London, and Tokyo. But just when you think you've reached the summit, they add another peak. In 2025, Sydney joined the list, and now there's a{" "} <em>Seven Star Medal</em>. Who knows what's next?</p>
+                <p>Some finish lines come with a little extra shine. The{" "} <em>Six Star Medal</em>&nbsp;&nbsp;is for runners who complete all the World Marathon Majors. That's Boston, New York, Chicago, Berlin, London, and Tokyo. But just when you think you've reached the summit, they add another peak. Sydney joined the list in 2025, followed by Cape Town in 2026. Now there are eight Majors, and the next milestone may be a{" "} <em>Nine Star Medal</em>. Who knows what's next?</p>
               </div>
             </div>
             <div className="ch-row">

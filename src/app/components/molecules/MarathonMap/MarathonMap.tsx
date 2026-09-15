@@ -29,7 +29,7 @@ const MarathonMap = () => {
         keyboard: false,
       });
 
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key=cb1_3mhu_1_931054a8b3574f0f83b370b4", {
         attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
       }).addTo(mapRef.current);
 
