@@ -249,7 +249,7 @@ export default function EndurancePage() {
             </div>
             <div className="ch-row">
               <div className="ch-col">
-                <p><strong>20 of 50 States Completed</strong></p>
+                <p><strong>21 of 50 States Completed</strong></p>
               </div>
             </div>
           </div>
